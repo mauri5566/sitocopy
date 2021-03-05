@@ -1,1 +1,34 @@
-<p>sequences works!</p>
+Found Sequences in RC00
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Sequence ID</th>
+            <th>Prefix</th>
+			<th>Collector Peer</th>
+            <th>RRC</th>
+            <th>Start Time</th>
+			<th>End Time</th>
+			<th>Show More Info</th>
+        </tr>
+	</thead>
+	<tr *ngFor = "let sequence of sequences">
+		<td>
+			{{sequence.id}}
+		</td>
+		<td>
+			{{sequence.prefix}}
+		</td>
+		<td>
+			{{sequence.collectorPeer.peerIPAddress}}[AS:{{sequence.collectorPeer.peerAS}}]
+		</td>
+		<td>
+			{{sequence.rRC}}
+		</td>
+		<td>
+			{{sequence.start}}
+		</td>
+		<td>
+			{{sequence.end}}
+		</td>
+	</tr>
+</table>

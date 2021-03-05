@@ -1,0 +1,11 @@
+table {
+  width: 75%;
+}
+
+thead {
+    background-color: #efefef;
+}
+
+td {
+    width:33%;
+}
