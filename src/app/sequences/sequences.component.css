@@ -1,16 +1,35 @@
-table {
-  width: 100%;
+
+
+th {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
 }
 
-thead {
-    background-color: #efefef;
+.mat-cell{
+  padding: 8px 100px 8px 0;
 }
+
 
 td {
-    width:33%;
-    border: black;
+    width:100%;
 }
-tr{
-  border: black;
-  
+
+tr:nth-of-type(even){
+  background-color: #f3f3f3;
+}
+
+tr:last-of-type{
+  border-bottom: 2px solid #009879;
+}
+.mat-elevation-z8{
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  width: 95%;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 }
