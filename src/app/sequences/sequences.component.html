@@ -1,34 +1,37 @@
-Found Sequences in RC00
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Sequence ID</th>
-            <th>Prefix</th>
-			<th>Collector Peer</th>
-            <th>RRC</th>
-            <th>Start Time</th>
-			<th>End Time</th>
-			<th>Show More Info</th>
-        </tr>
-	</thead>
-	<tr *ngFor = "let sequence of sequences">
-		<td>
-			{{sequence.id}}
-		</td>
-		<td>
-			{{sequence.prefix}}
-		</td>
-		<td>
-			{{sequence.collectorPeer.peerIPAddress}}[AS:{{sequence.collectorPeer.peerAS}}]
-		</td>
-		<td>
-			{{sequence.rRC}}
-		</td>
-		<td>
-			{{sequence.start}}
-		</td>
-		<td>
-			{{sequence.end}}
-		</td>
-	</tr>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Sequence ID">
+    <th mat-header-cell *matHeaderCellDef> Sequence ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Prefix">
+    <th mat-header-cell *matHeaderCellDef> Prefix </th>
+    <td mat-cell *matCellDef="let element"> {{element.prefix}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="RRC">
+    <th mat-header-cell *matHeaderCellDef> RRC </th>
+    <td mat-cell *matCellDef="let element"> {{element.rRC}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Start Time">
+    <th mat-header-cell *matHeaderCellDef> Start Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.start}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="End Time">
+    <th mat-header-cell *matHeaderCellDef> End Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.end}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

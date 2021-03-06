@@ -1,5 +1,5 @@
 table {
-  width: 75%;
+  width: 100%;
 }
 
 thead {
@@ -8,4 +8,9 @@ thead {
 
 td {
     width:33%;
+    border: black;
+}
+tr{
+  border: black;
+  
 }

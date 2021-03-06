@@ -3,8 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SequencesComponent } from './sequences/sequences.component';
-import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    MatTableModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: SequencesComponent },
     ]),
