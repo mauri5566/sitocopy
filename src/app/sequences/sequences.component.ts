@@ -7,11 +7,21 @@ import {MatTableDataSource} from '@angular/material/table';
   selector: 'app-sequences',
   templateUrl: './sequences.component.html',
   styleUrls: ['./sequences.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class SequencesComponent {
-  displayedColumns: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time'];
-  dataSource = new MatTableDataSource<Sequences>(ELEMENT_DATA);
+  columnsToDisplay: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time'];
+  dataSource = ELEMENT_DATA;
+  expandedElement: Sequences [] = [];
 }
+
+  
 export interface Sequences{
 	id: string;
 	prefix: string;
