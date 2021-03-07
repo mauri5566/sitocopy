@@ -38,7 +38,22 @@
               <div class="example-element-detail"
                   [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                 <div>
-                  <h1>Dati aggiuntivi</h1>
+                  <div>Number of updates: <b>{{element.updates}}</b></div>
+                  <div>Number of announcements: <b>{{element.announces}}</b></div>
+                  <div>Number of withdrawals: <b>{{element.withdraws}}</b></div>
+                  <div>AS Origin(s): <b>{{element.asOrigins}}</b></div>
+                  <div>Distinct AS-Paths observed during this sequence: <b>{{element.asPathNumber}}</b></div>
+                  <div>Length of the longest common AS-Path suffix: <b>{{element.longestCommonAsPathSuffix}}</b></div>
+                  <div>Has one or more updates with the aggregator field: <b>{{element.hasAggregator}}</b></div>
+                </div>
+              <div class="secondoBlocco">
+                  <div>Contains loops: <b>{{element.containsLoops}}</b></div>
+                  <div>Contains As-Path loops: <b>{{element.containsAsPathLoops}}</b></div>
+                  <div>Number of occurrencies of the most frequent announcement: <b>{{element.mostFrequentUpdateFrequency}}</b></div>
+                  <div>Most Frequent announcement frequency (upd/min): <b>{{element.mostFrequentUpdateFrequencyInMin}}</b></div>
+                  <div>Duration (days): <b>{{element.duration}}</b></div>
+                  <div>Average frequency of the sequence: <b>{{element.frequency}}</b></div>
+                  <div>Run ID: <b>{{element.runID}}</b></div>
                 </div>
               </div>
             </td>

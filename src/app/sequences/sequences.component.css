@@ -18,7 +18,21 @@ th {
   padding: 8px 100px 0px 0;
 }
 
+.largezza{
+  width: 50%;
+}
+.annotazione1{
+  color: darkgrey;
+  width: 30%;
+  font-size: 0.7em;
+  padding-left: 600px;
+}
 
+.annotazione2{
+  color:darkgrey;
+  padding-left: 100px;
+  padding-top: 25px;
+}
 td {
     width:100%;
 }
@@ -49,5 +63,17 @@ tr.example-detail-row {
 .example-element-detail {
   overflow: hidden;
   display: flex;
+}
+
+.bottomright {
+  position: relative;
+  bottom: 0px;
+  right: -400px;
+  width: 30%
+}
+
+.secondoBlocco{
+  padding-left:20px;
+  padding-bottom: 20px;
 }
 
