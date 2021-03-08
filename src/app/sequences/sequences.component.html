@@ -1,8 +1,9 @@
 <html>
 <table mat-table
               [dataSource]="dataSource" multiTemplateDataRows
-              class="mat-elevation-z8">
-        <ng-container matColumnDef="Sequence ID">
+              class="mat-elevation-z8">\
+        <tr>
+          <ng-container matColumnDef="Sequence ID">
             <th mat-header-cell *matHeaderCellDef> Sequence ID </th>
             <td mat-cell *matCellDef="let element"> {{element.id}} </td>
           </ng-container>
@@ -31,29 +32,37 @@
             <th mat-header-cell *matHeaderCellDef> End Time </th>
             <td mat-cell *matCellDef="let element"> {{element.end}} </td>
           </ng-container>
+        </tr>
 
           <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
           <ng-container matColumnDef="expandedDetail">
             <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
               <div class="example-element-detail"
                   [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                <div>
-                  <div>Number of updates: <b>{{element.updates}}</b></div>
-                  <div>Number of announcements: <b>{{element.announces}}</b></div>
-                  <div>Number of withdrawals: <b>{{element.withdraws}}</b></div>
-                  <div>AS Origin(s): <b>{{element.asOrigins}}</b></div>
-                  <div>Distinct AS-Paths observed during this sequence: <b>{{element.asPathNumber}}</b></div>
-                  <div>Length of the longest common AS-Path suffix: <b>{{element.longestCommonAsPathSuffix}}</b></div>
-                  <div>Has one or more updates with the aggregator field: <b>{{element.hasAggregator}}</b></div>
+                <div class = "annotazione">Info on the involved prefix retrieved from third-party data sources.
+                  <br>This info describes the prefix in its actual state that may be different from the one
+                  <br> in the time frame of the sequence.</div>
+                <div class = "border"></div>
+                <div class = "background1"></div>
+                <div class = "primoBlocco">
+                  Number of updates: <b>{{element.updates}}</b>
+                  <br>Number of announcements: <b>{{element.announces}}</b>
+                  <br>Number of withdrawals: <b>{{element.withdraws}}</b>
+                  <br>AS Origin(s): <b>{{element.asOrigins}}</b>
+                  <br>Distinct AS-Paths observed during this sequence: <b>{{element.asPathNumber}}</b>
+                  <br>Length of the longest common AS-Path suffix: <b>{{element.longestCommonAsPathSuffix}}</b>
+                  <br>Has one or more updates with the aggregator field: <b>{{element.hasAggregator}}</b>
                 </div>
-              <div class="secondoBlocco">
-                  <div>Contains loops: <b>{{element.containsLoops}}</b></div>
-                  <div>Contains As-Path loops: <b>{{element.containsAsPathLoops}}</b></div>
-                  <div>Number of occurrencies of the most frequent announcement: <b>{{element.mostFrequentUpdateFrequency}}</b></div>
-                  <div>Most Frequent announcement frequency (upd/min): <b>{{element.mostFrequentUpdateFrequencyInMin}}</b></div>
-                  <div>Duration (days): <b>{{element.duration}}</b></div>
-                  <div>Average frequency of the sequence: <b>{{element.frequency}}</b></div>
-                  <div>Run ID: <b>{{element.runID}}</b></div>
+                <div class ="border2"></div>
+                <div class = "background2"></div>
+                <div class="secondoBlocco">
+                  Contains loops: <b>{{element.containsLoops}}</b>
+                  <br>Contains As-Path loops: <b>{{element.containsAsPathLoops}}</b>
+                  <br>Number of occurrencies of the most frequent announcement: <b>{{element.mostFrequentUpdateFrequency}}</b>
+                  <br>Most Frequent announcement frequency (upd/min): <b>{{element.mostFrequentUpdateFrequencyInMin}}</b>
+                  <br>Duration (days): <b>{{element.duration}}</b>
+                  <br>Average frequency of the sequence: <b>{{element.frequency}}</b>
+                  <br>Run ID: <b>{{element.runID}}</b>
                 </div>
               </div>
             </td>
