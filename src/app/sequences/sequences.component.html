@@ -1,7 +1,7 @@
 <html>
+<div class="mat-elevation-z8">
 <table mat-table
-              [dataSource]="dataSource" multiTemplateDataRows
-              class="mat-elevation-z8">\
+              [dataSource]="dataSource" multiTemplateDataRows>
         <tr>
           <ng-container matColumnDef="Sequence ID">
             <th mat-header-cell *matHeaderCellDef> Sequence ID </th>
@@ -79,6 +79,7 @@
                   <span class="noselect">AS tree view<br>without aggregator</span>
                   <div id="circle"></div>
                 </div>
+                <div class="titoletto"> Sequence analysis</div>
                 <!--<button onclick="window.location.href='https://w3docs.com';">
       Click Here
     </button>-->
@@ -94,4 +95,6 @@
           </tr>
           <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         </table>
+        <mat-paginator [pageSizeOptions]="[10,20]" showFirstLastButtons></mat-paginator>
+        </div>
 </html>

@@ -6,6 +6,7 @@ import { SequencesComponent } from './sequences/sequences.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import {HttpClientModule} from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
     MatTableModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatPaginatorModule,
     RouterModule.forRoot([
       { path: '', component: SequencesComponent },
     ]),

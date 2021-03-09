@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {SequencesService} from '../sequences.service';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-sequences',
@@ -15,10 +16,17 @@ import {MatTableDataSource} from '@angular/material/table';
     ]),
   ],
 })
-export class SequencesComponent {
+export class SequencesComponent implements AfterViewInit{
   columnsToDisplay: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource<Sequences>(ELEMENT_DATA);
+
   expandedElement: Sequences [] = [];
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 }
 
   
@@ -122,6 +130,222 @@ const ELEMENT_DATA: Sequences[] = [
       withdraws: 14351, updates: 81560,
       duration: '104.11:39:44',
       frequency: 0.009034532384301271
+    },
+    {
+      id: '5ee56984a62b68061ce5b638',
+      prefix: '2a0d:8d80::/32',
+      rRC: 0,
+      collectorPeer: {
+        peerBGPId: 0,
+        peerIPAddress: '2a07:a40::',
+        peerAS: 48821
+      },
+      start: '2019-01-01T00:00:00Z',
+      end: '2019-03-26T22:53:52Z',
+      runID: 'RRC00-v6',
+      longestCommonAsPathSuffix: 1,
+      asPathNumber: 12,
+      asOrigins: [31424],
+      hasAggregator: false,
+      containsLoops: false,
+      containsAsPathLoops: true,
+      mostFrequentUpdateFrequency: 176682,
+      mostFrequentUpdateFrequencyInMin: 1.4442607334681918,
+      hasAsPathsNotValid: false,
+      announces: 732493,
+      withdraws: 0,
+      updates: 732493,
+      duration: '84.22:53:52',
+      frequency: 0.09979425157819476
+    },
+    {
+      id: '5ee56984a62b68061ce5b638',
+      prefix: '2a0d:8d80::/32',
+      rRC: 0,
+      collectorPeer: {
+        peerBGPId: 0,
+        peerIPAddress: '2a07:a40::',
+        peerAS: 48821
+      },
+      start: '2019-01-01T00:00:00Z',
+      end: '2019-03-26T22:53:52Z',
+      runID: 'RRC00-v6',
+      longestCommonAsPathSuffix: 1,
+      asPathNumber: 12,
+      asOrigins: [31424],
+      hasAggregator: false,
+      containsLoops: false,
+      containsAsPathLoops: true,
+      mostFrequentUpdateFrequency: 176682,
+      mostFrequentUpdateFrequencyInMin: 1.4442607334681918,
+      hasAsPathsNotValid: false,
+      announces: 732493,
+      withdraws: 0,
+      updates: 732493,
+      duration: '84.22:53:52',
+      frequency: 0.09979425157819476
+    },
+    {
+      id: '5ee56984a62b68061ce5b638',
+      prefix: '2a0d:8d80::/32',
+      rRC: 0,
+      collectorPeer: {
+        peerBGPId: 0,
+        peerIPAddress: '2a07:a40::',
+        peerAS: 48821
+      },
+      start: '2019-01-01T00:00:00Z',
+      end: '2019-03-26T22:53:52Z',
+      runID: 'RRC00-v6',
+      longestCommonAsPathSuffix: 1,
+      asPathNumber: 12,
+      asOrigins: [31424],
+      hasAggregator: false,
+      containsLoops: false,
+      containsAsPathLoops: true,
+      mostFrequentUpdateFrequency: 176682,
+      mostFrequentUpdateFrequencyInMin: 1.4442607334681918,
+      hasAsPathsNotValid: false,
+      announces: 732493,
+      withdraws: 0,
+      updates: 732493,
+      duration: '84.22:53:52',
+      frequency: 0.09979425157819476
+    },
+    {
+      id: '5ee56984a62b68061ce5b638',
+      prefix: '2a0d:8d80::/32',
+      rRC: 0,
+      collectorPeer: {
+        peerBGPId: 0,
+        peerIPAddress: '2a07:a40::',
+        peerAS: 48821
+      },
+      start: '2019-01-01T00:00:00Z',
+      end: '2019-03-26T22:53:52Z',
+      runID: 'RRC00-v6',
+      longestCommonAsPathSuffix: 1,
+      asPathNumber: 12,
+      asOrigins: [31424],
+      hasAggregator: false,
+      containsLoops: false,
+      containsAsPathLoops: true,
+      mostFrequentUpdateFrequency: 176682,
+      mostFrequentUpdateFrequencyInMin: 1.4442607334681918,
+      hasAsPathsNotValid: false,
+      announces: 732493,
+      withdraws: 0,
+      updates: 732493,
+      duration: '84.22:53:52',
+      frequency: 0.09979425157819476
+    },
+    {
+      id: '5ee56984a62b68061ce5b638',
+      prefix: '2a0d:8d80::/32',
+      rRC: 0,
+      collectorPeer: {
+        peerBGPId: 0,
+        peerIPAddress: '2a07:a40::',
+        peerAS: 48821
+      },
+      start: '2019-01-01T00:00:00Z',
+      end: '2019-03-26T22:53:52Z',
+      runID: 'RRC00-v6',
+      longestCommonAsPathSuffix: 1,
+      asPathNumber: 12,
+      asOrigins: [31424],
+      hasAggregator: false,
+      containsLoops: false,
+      containsAsPathLoops: true,
+      mostFrequentUpdateFrequency: 176682,
+      mostFrequentUpdateFrequencyInMin: 1.4442607334681918,
+      hasAsPathsNotValid: false,
+      announces: 732493,
+      withdraws: 0,
+      updates: 732493,
+      duration: '84.22:53:52',
+      frequency: 0.09979425157819476
+    },
+    {
+      id: '5ee56984a62b68061ce5b638',
+      prefix: '2a0d:8d80::/32',
+      rRC: 0,
+      collectorPeer: {
+        peerBGPId: 0,
+        peerIPAddress: '2a07:a40::',
+        peerAS: 48821
+      },
+      start: '2019-01-01T00:00:00Z',
+      end: '2019-03-26T22:53:52Z',
+      runID: 'RRC00-v6',
+      longestCommonAsPathSuffix: 1,
+      asPathNumber: 12,
+      asOrigins: [31424],
+      hasAggregator: false,
+      containsLoops: false,
+      containsAsPathLoops: true,
+      mostFrequentUpdateFrequency: 176682,
+      mostFrequentUpdateFrequencyInMin: 1.4442607334681918,
+      hasAsPathsNotValid: false,
+      announces: 732493,
+      withdraws: 0,
+      updates: 732493,
+      duration: '84.22:53:52',
+      frequency: 0.09979425157819476
+    },
+    {
+      id: '5ee56984a62b68061ce5b638',
+      prefix: '2a0d:8d80::/32',
+      rRC: 0,
+      collectorPeer: {
+        peerBGPId: 0,
+        peerIPAddress: '2a07:a40::',
+        peerAS: 48821
+      },
+      start: '2019-01-01T00:00:00Z',
+      end: '2019-03-26T22:53:52Z',
+      runID: 'RRC00-v6',
+      longestCommonAsPathSuffix: 1,
+      asPathNumber: 12,
+      asOrigins: [31424],
+      hasAggregator: false,
+      containsLoops: false,
+      containsAsPathLoops: true,
+      mostFrequentUpdateFrequency: 176682,
+      mostFrequentUpdateFrequencyInMin: 1.4442607334681918,
+      hasAsPathsNotValid: false,
+      announces: 732493,
+      withdraws: 0,
+      updates: 732493,
+      duration: '84.22:53:52',
+      frequency: 0.09979425157819476
+    },
+    {
+      id: '5ee56984a62b68061ce5b638',
+      prefix: '2a0d:8d80::/32',
+      rRC: 0,
+      collectorPeer: {
+        peerBGPId: 0,
+        peerIPAddress: '2a07:a40::',
+        peerAS: 48821
+      },
+      start: '2019-01-01T00:00:00Z',
+      end: '2019-03-26T22:53:52Z',
+      runID: 'RRC00-v6',
+      longestCommonAsPathSuffix: 1,
+      asPathNumber: 12,
+      asOrigins: [31424],
+      hasAggregator: false,
+      containsLoops: false,
+      containsAsPathLoops: true,
+      mostFrequentUpdateFrequency: 176682,
+      mostFrequentUpdateFrequencyInMin: 1.4442607334681918,
+      hasAsPathsNotValid: false,
+      announces: 732493,
+      withdraws: 0,
+      updates: 732493,
+      duration: '84.22:53:52',
+      frequency: 0.09979425157819476
     },
 ];
 
