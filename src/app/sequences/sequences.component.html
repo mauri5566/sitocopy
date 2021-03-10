@@ -3,10 +3,10 @@
 <table mat-table
               [dataSource]="dataSource" multiTemplateDataRows>
         <tr>
-          <ng-container matColumnDef="Sequence ID">
-            <th mat-header-cell *matHeaderCellDef> Sequence ID </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-          </ng-container>
+            <ng-container  matColumnDef="Sequence ID">
+              <th mat-header-cell *matHeaderCellDef> Sequence ID </th>  
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
 
           <ng-container matColumnDef="Prefix">
             <th mat-header-cell *matHeaderCellDef> Prefix </th>
@@ -64,25 +64,34 @@
                   <br>Average frequency of the sequence: <b>{{element.frequency}}</b>
                   <br>Run ID: <b>{{element.runID}}</b>
                 </div>
-                <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-                <div id="btn">
-                  <span class="noselect">Sequence Chart</span>
-                  <div id="circle"></div>
+                <div class="titoletto">
+                  <h1>Sequence analysis</h1>
                 </div>
-                <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-                <div id="btn1">
-                  <span class="noselect">Ripestat bgp <br>update activity</span>
-                  <div id="circle"></div>
+                <div class="titoletto1">
+                  <h1>Widgets</h1>
                 </div>
-                <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-                <div id="btn2">
-                  <span class="noselect">AS tree view<br>without aggregator</span>
-                  <div id="circle"></div>
+                <div class="buttons">
+                  <div class="container">
+                    <a href="https://twitter.com/masuwa1018" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                      <span>AS TREE WITHOUT AGGREGATOR</span>
+                    </a>
+                  </div>
                 </div>
-                <div class="titoletto"> Sequence analysis</div>
-                <!--<button onclick="window.location.href='https://w3docs.com';">
-      Click Here
-    </button>-->
+                <div class="buttons">
+                  <div class="container1">
+                    <a href="https://twitter.com/masuwa1018" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                      <span>SEQUENCE CHART</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="buttons">
+                  <div class="container2">
+                    <a href="https://twitter.com/masuwa1018" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                      <span>RIPE STAT BGP UPDATE ACTIVITY</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="invisibile">ao</div>
               </div>
             </td>
           </ng-container>

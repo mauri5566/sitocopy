@@ -1,5 +1,5 @@
 html {
-  background-image: url(../pattern.jpg);
+  background-image: url(../imma.jpg);
   overflow: hidden;
   background-size: cover;
   width: 100%;
@@ -16,17 +16,49 @@ th {
     font-size: 1.5em;
 }
 .annotazione{
-  padding-top: 170px;
-  padding-right:0px;
+  position:absolute;
+  top: 220px;
+  left:0px;
   font-size:0.7em;
   color: darkgray;
 }
 
-.titoletto{
-  color: red;
-  padding-left:100px;
-  padding-top:20px
+.invisibile{
+  padding-top:290px;
+  height:1px;
+  width:1px;
 }
+
+.titoletto{
+  position:absolute;
+  left:0px;
+  top:13px;
+}
+.titoletto h1{
+  color: black; 
+  font-family: 'Orienta', sans-serif;
+  font-weight: 400;  
+  font-size:1.25em;
+  text-align: center; 
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.titoletto1{
+  position:absolute;
+  right:90px;
+  top:13px;
+}
+.titoletto1 h1{
+  color: black; 
+  font-family: 'Orienta', sans-serif;
+  font-weight: 400;  
+  font-size:1.25em;
+  text-align: center; 
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
 
 td {
     width:100%;
@@ -42,15 +74,16 @@ tr:hover{
   margin: 25px 0;
   font-size: 0.9em;
   width: 95%;
-  border-radius: 5px 5px 0 0;
+  border-radius: 15px 15px 0 0;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
 }
 
-.mat-cell{
-  padding: 0px 100px 0px 0;
+.mat-header-cell{
+
+  padding-right:150px;
 }
 tr.example-element-row:not(.example-expanded-row):hover {
   background: whitesmoke;
@@ -83,20 +116,20 @@ tr:last-of-type{
 
 .primoBlocco{
   position: absolute;
-  top: 20px;
+  top: 60px;
   left: 7px;
   padding-bottom: 20px
 }
 
 .secondoBlocco{
   position:absolute;
-  left: 410px;
-  top: 20px;
+  left: 400px;
+  top: 60px;
 }
 
 .border{
   position:absolute;
-  top: 16px;
+  top: 56px;
   left: 0px;
   border-left: 5px solid #009879;
   height: 150px;
@@ -105,8 +138,8 @@ tr:last-of-type{
 
 .border2{
   position:absolute;
-  top: 16px;
-  left: 400px;
+  top: 56px;
+  left: 390px;
   border-left: 5px solid #009879;
   height: 150px;
   border-radius: 5px 0px 0px 5px;
@@ -114,19 +147,23 @@ tr:last-of-type{
 
 .background1{
   position: absolute;
-  top:16px;
+  top:56px;
   left:5px;
   height:150px;
   width: 360px;
   background-color:#009879;
   opacity: 50%;
   border-radius: 0px 15px 15px 0px;
+  /*border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  border-width: 2px;*/
 }
 
 .background2{
   position: absolute;
-  top:16px;
-  left:405px;
+  top:56px;
+  left:395px;
   height:150px;
   width: 480px;
   background-color:#009879;
@@ -134,152 +171,196 @@ tr:last-of-type{
   border-radius: 0px 15px 15px 0px;
 }
 
-#btn {
-  background: #222;
-  height: 30px;
-  width: 200px;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 20px;
-  /*font-family: 'Cookie', cursive;*/
-  position: absolute;
-  top:20px;
-  right:30px;
-  transition: 1s;
-  -webkit-tap-highlight-color: transparent;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: #FFF;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+}
+
+.buttons {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+      flex-wrap: wrap;
   justify-content: center;
-  cursor: pointer;
-  padding-top: 5px;
-}
-
-#btn #circle {
-  width: 5px;
-  height: 5px;
-  background: transparent;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  overflow: hidden;
-  transition: 500ms;
-}
-
-.noselect {
-  -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-}
-
-#btn:hover {
-  background-color: #009879;
-}
-
-#btn:hover #circle {
-  height: 35px;
-  width: 200px;
-  left: 0;
-  border-radius: 0;
-  border-bottom: 2px solid whitesmoke;
-}
-
-#btn1 {
-  background: #222;
-  height: 40px;
-  width: 200px;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 20px;
-  /*font-family: 'Cookie', cursive;*/
-  position: absolute;
-  top:65px;
-  right:30px;
-  transition: 1s;
-  -webkit-tap-highlight-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding-top: 5px;
-}
-
-#btn1 #circle {
-  width: 5px;
-  height: 5px;
-  background: transparent;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  overflow: hidden;
-  transition: 500ms;
-}
-
-#btn1:hover {
-  background-color: #009879;
-}
-
-#btn1:hover #circle {
-  height: 45px;
-  width: 200px;
-  left: 0;
-  border-radius: 0;
-  border-bottom: 2px solid whitesmoke;
-}
-
-#btn2 {
-  background: #222;
-  height: 40px;
-  width: 200px;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 20px;
-  /*font-family: 'Cookie', cursive;*/
-  position: absolute;
-  top:120px;
-  right:30px;
-  transition: 1s;
-  -webkit-tap-highlight-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding-top: 5px;
-}
-
-#btn2 #circle {
-  width: 5px;
-  height: 5px;
-  background: transparent;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  overflow: hidden;
-  transition: 500ms;
-}
-
-#btn2:hover {
-  background-color: #009879;
-}
-
-#btn2:hover #circle {
-  height: 45px;
-  width: 200px;
-  left: 0;
-  border-radius: 0;
-  border-bottom: 2px solid whitesmoke;
-}
-
-span{
   text-align: center;
+  width: 250px;
+  height: 100%;
+  margin: 0 auto;
+
 }
+
+.container {
+  position:absolute;
+  right:3px;
+  top:65px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(0, 152, 121, 0.25);
+  width: 260px;
+  height:30px;
+  border-radius: 5px 5px 5px 5px;
+  border: solid 1px #000;
+}
+
+h1 {
+  text-align: left;
+  color: #444;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.4em;
+  font-size: 1em;
+}
+
+p {
+  text-align: center;
+  color: #444;
+  letter-spacing: 0.05em;
+  font-size: 0.8em;
+  margin: 0 0 2em;
+}
+
+
+.btn {
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 30px;
+  max-width: 300px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+  margin:auto;
+  
+}
+.btn:hover {
+  text-decoration: none;
+}
+
+.buttons1 {
+  display: flex;
+  flex-direction: row;
+      flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  width: 180px;
+  height: 100%;
+  margin: 0 auto;
+
+}
+
+.container1 {
+  position:absolute;
+  right:3px;
+  top:115px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #FFF;
+  width: 260px;
+  height:30px;
+  background-color: rgba(0, 152, 121, 0.45);
+  border-radius: 5px 5px 5px 5px;
+  border: solid 1px #000;
+}
+
+.buttons1 {
+  display: flex;
+  flex-direction: row;
+      flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  width: px;
+  height: 100%;
+  margin: 0 auto;
+
+}
+
+.container2 {
+  position:absolute;
+  right:3px;
+  top:165px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #FFF;
+  width: 260px;
+  height:30px;
+  background-color: rgba(0, 152, 121, 0.65);
+  border-radius: 5px 5px 5px 5px;
+  border: solid 1px #000;
+}
+
+
+
+/*btn_background*/
+.effect04 {
+  --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
+  display: var(--uismLinkDisplay);
+  color: #000;
+  border: solid  0px #000;
+  border-radius: 4px 4px 4px 4px;
+  position: relative;
+  transition-duration: 0.4s;
+  overflow: hidden;
+}
+
+.effect04::before,
+.effect04 span{
+    margin: 0 auto;
+	transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+  transition-duration: 0.4s;
+}
+
+/* 文字1を上に */
+.effect04:hover{
+
+  background-color: #000;
+}
+
+/* HOVERしたら文字1を上に */
+.effect04:hover span{
+  -webkit-transform: translateY(-400%) scale(-0.1,20);
+          transform: translateY(-400%) scale(-0.1,20);
+}
+
+/*文字2*/
+.effect04::before{
+  content: attr(data-sm-link-text);
+	color: #FFF;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: translateY(500%) scale(-0.1,20);
+          transform: translateY(500%) scale(-0.1,20);
+}
+
+/* HOVERしたら文字2を上に */
+.effect04:hover::before{
+  letter-spacing: 0.05em;
+  -webkit-transform: translateY(0) scale(1,1);
+          transform: translateY(0) scale(1,1);
+}
+
 
 
