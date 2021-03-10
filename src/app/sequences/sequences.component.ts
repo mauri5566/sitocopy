@@ -24,31 +24,11 @@ export class SequencesComponent implements AfterViewInit{
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  // tslint:disable-next-line: typedef
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 }
-
-  
-/*export interface Sequences{
-	id: string;
-	prefix: string;
-  rRC : number;
-  collectorPeer: {peerBGPId: number, peerIPAddress: string, peerAS: number}
-	start: string;
-  end: string;
-  longestCommonAsPathSuffix: number,
-  asPathNumber: number,
-  mostFrequentUpdateFrequency: number,
-  mostFrequentUpdateFrequencyInMin: number,
-  hasAsPathsNotValid: boolean,
-  announces: number,
-  withdraws: number,
-  updates: number,
-  duration: string,
-  frequency: number
-}
-*/
 
 const ELEMENT_DATA: Sequences[] = [
   {
