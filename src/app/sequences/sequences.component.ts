@@ -28,8 +28,13 @@ export class SequencesComponent implements AfterViewInit{
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-}
 
+
+// tslint:disable-next-line: typedef
+applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+}
 const ELEMENT_DATA: Sequences[] = [
   {
       id: '5ee56984a62b68061ce5b638',

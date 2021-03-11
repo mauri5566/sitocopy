@@ -68,6 +68,35 @@ td {
 tr:hover{
   background-color: whitesmoke;
 }
+.icona{
+ color: black;
+}
+
+.mat-toolbar{
+  background-color:#009879;
+  height:40px;
+}
+
+.mat-toolbar span{
+  padding-left:50px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-weight:400;
+}
+
+.mat-form-field{
+  padding-left:600px;
+  color:#ffffff;
+  width:200px;
+}
+
+mat-label{
+  font-size:0.8em;
+}
+
+mat-paginator{
+  border-bottom: 3px solid #009879;
+}
 
 .mat-elevation-z8{
   border-collapse: collapse;

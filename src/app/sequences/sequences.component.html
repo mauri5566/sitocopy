@@ -1,5 +1,15 @@
 <html>
 <div class="mat-elevation-z8">
+  <mat-toolbar>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">
+      <a href="https://twitter.com/masuwa1018" class="icona">home</a>
+    </mat-icon>
+    <span>FOUND SEQUENCES IN RRC00</span>
+    <mat-form-field>
+      <mat-label>Filter by ID</mat-label>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="" #input>
+    </mat-form-field>
+  </mat-toolbar>
 <table mat-table
               [dataSource]="dataSource" multiTemplateDataRows>
         <tr>
