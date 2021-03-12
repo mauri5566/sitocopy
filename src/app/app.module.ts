@@ -15,7 +15,7 @@ import{ MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
-    SequencesComponent
+    SequencesComponent,
   ],
   imports: [
     BrowserModule,

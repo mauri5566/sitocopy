@@ -19,28 +19,28 @@
             </ng-container>
 
           <ng-container matColumnDef="Prefix">
-            <th mat-header-cell *matHeaderCellDef> Prefix </th>
+            <th mat-header-cell *matHeaderCellDef class ="prefix"> Prefix </th>
             <td mat-cell *matCellDef="let element"> {{element.prefix}} </td>
           </ng-container>
 
           <ng-container matColumnDef="Collector Peer">
-            <th mat-header-cell *matHeaderCellDef> Collector Peer </th>
+            <th mat-header-cell *matHeaderCellDef class ="collectorPeer"> Collector Peer </th>
             <td mat-cell *matCellDef="let element"> {{element.collectorPeer.peerIPAddress}}[<b>AS:</b>{{element.collectorPeer.peerAS}}] </td>
           </ng-container>
 
           <ng-container matColumnDef="RRC">
-            <th mat-header-cell *matHeaderCellDef> RRC </th>
+            <th mat-header-cell *matHeaderCellDef class = "rrc"> RRC </th>
             <td mat-cell *matCellDef="let element"> {{element.rRC}} </td>
           </ng-container>
 
           <ng-container matColumnDef="Start Time">
-            <th mat-header-cell *matHeaderCellDef> Start Time </th>
-            <td mat-cell *matCellDef="let element"> {{element.start}} </td>
+            <th mat-header-cell *matHeaderCellDef class = "startTime"> Start Time </th>
+            <td mat-cell *matCellDef="let element"> {{element.start | date:'short' }} </td>
           </ng-container>
 
           <ng-container matColumnDef="End Time">
-            <th mat-header-cell *matHeaderCellDef> End Time </th>
-            <td mat-cell *matCellDef="let element"> {{element.end}} </td>
+            <th mat-header-cell *matHeaderCellDef  class="endTime"> End Time </th>
+            <td mat-cell *matCellDef="let element" class="endTime"> {{element.end | date:'short'}} </td>
           </ng-container>
         </tr>
 
@@ -48,7 +48,7 @@
           <ng-container matColumnDef="expandedDetail">
             <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
               <div class="example-element-detail"
-                  [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                  [@detailExpand]="checkExpanded(element) ? 'expanded' : 'collapsed'">
                 <div class = "annotazione">Info on the involved prefix retrieved from third-party data sources.
                   <br>This info describes the prefix in its actual state that may be different from the one
                   <br> in the time frame of the sequence.</div>
@@ -66,11 +66,18 @@
                 <div class ="border2"></div>
                 <div class = "background2"></div>
                 <div class="secondoBlocco">
-                  Contains loops: <b>{{element.containsLoops}}</b>
-                  <br>Contains As-Path loops: <b>{{element.containsAsPathLoops}}</b>
+                  Number of updates: <b>{{element.updates}}</b>
+                  <br>Number of announcements: <b>{{element.announces}}</b>
+                  <br>Number of withdrawals: <b>{{element.withdraws}}</b>
+                  <br>AS Origin(s): <b>{{element.asOrigins}}</b>
+                  <br>Distinct AS-Paths observed during this sequence: <b>{{element.asPathNumber}}</b>
+                  <br>Length of the longest common AS-Path suffix: <b>{{element.longestCommonAsPathSuffix}}</b>
+                  <br>Has one or more updates with the aggregator field: <b>{{element.hasAggregator}}</b>
+                  <br>Contains updates with AS-Path xAyBz/x'By'Az' patterns:
                   <br>Number of occurrencies of the most frequent announcement: <b>{{element.mostFrequentUpdateFrequency}}</b>
                   <br>Most Frequent announcement frequency (upd/min): <b>{{element.mostFrequentUpdateFrequencyInMin}}</b>
                   <br>Duration (days): <b>{{element.duration}}</b>
+                  <br>Is the prefix a beacon (if yes there will be the name):
                   <br>Average frequency of the sequence: <b>{{element.frequency}}</b>
                   <br>Run ID: <b>{{element.runID}}</b>
                 </div>
@@ -109,8 +116,8 @@
           <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
           <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
               class="example-element-row"
-              [class.example-expanded-row]="expandedElement === element"
-              (click)="expandedElement = expandedElement === element ? null : element">
+              [class.example-expanded-row]="checkExpanded(element)"
+              (click)="pushPopElement(element)">
           </tr>
           <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         </table>

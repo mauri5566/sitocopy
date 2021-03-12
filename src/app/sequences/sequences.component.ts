@@ -19,7 +19,6 @@ import {MatPaginator} from '@angular/material/paginator';
 export class SequencesComponent implements AfterViewInit{
   columnsToDisplay: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time'];
   dataSource = new MatTableDataSource<Sequences>(ELEMENT_DATA);
-
   expandedElement: Sequences [] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -34,6 +33,29 @@ export class SequencesComponent implements AfterViewInit{
 applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  checkExpanded(element: Sequences): boolean {
+    let flag = false;
+    this.expandedElement.forEach(e => {
+      if (e === element) {
+        flag = true;
+
+      }
+    });
+    return flag;
+  }
+
+  // tslint:disable-next-line: typedef
+  pushPopElement(element: Sequences) {
+    const index = this.expandedElement.indexOf(element);
+    console.log(index);
+    if (index === -1) {
+        this.expandedElement.push(element);
+    } else {
+      this.expandedElement.splice(index, 1);
+    }
+  }
+
 }
 const ELEMENT_DATA: Sequences[] = [
   {
