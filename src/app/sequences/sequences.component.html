@@ -5,11 +5,41 @@
       <a href="https://twitter.com/masuwa1018" class="icona">home</a>
     </mat-icon>
     <span>FOUND SEQUENCES IN RRC00</span>
-    <mat-form-field>
+    <!--<mat-form-field>
       <mat-label>Filter by ID</mat-label>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="" #input>
-    </mat-form-field>
+    </mat-form-field>-->
+    <button mat-raised-button (click)="togglePanel()">TOGGLE</button>
   </mat-toolbar>
+  <mat-expansion-panel [expanded]="panelOpenState">
+    <div class = "backgroundIDFilter"></div>
+    <div class = "borderIDFilter"></div>
+    <mat-form-field appearance="fill" class="IDFilter">
+      <mat-label>Sequence ID:</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <div class = "backgroundPrefix"></div>
+    <div class = "borderPrefix"></div>
+    <mat-form-field appearance="fill" class="PrefixFilter">
+      <mat-label>Prefix:</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <div class = "backgroundAsOrigin"></div>
+    <div class = "borderAsOrigin"></div>
+    <mat-form-field appearance="fill" class="AsOriginFilter">
+      <mat-label>As Origin:</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <div class = "backgroundSuffix"></div>
+    <div class = "borderSuffix"></div>
+    <mat-form-field appearance="fill" class="SuffixFilter">
+      <mat-label>Minimum suffix length:</mat-label>
+        <input matInput>
+    </mat-form-field>
+   
+    <div class="invisibile">ao</div>
+
+</mat-expansion-panel>
 <table mat-table
               [dataSource]="dataSource" multiTemplateDataRows>
         <tr>
@@ -55,13 +85,10 @@
                 <div class = "border"></div>
                 <div class = "background1"></div>
                 <div class = "primoBlocco">
-                  Number of updates: <b>{{element.updates}}</b>
-                  <br>Number of announcements: <b>{{element.announces}}</b>
-                  <br>Number of withdrawals: <b>{{element.withdraws}}</b>
-                  <br>AS Origin(s): <b>{{element.asOrigins}}</b> Holder:
-                  <br>Distinct AS-Paths observed during this sequence: <b>{{element.asPathNumber}}</b>
-                  <br>Length of the longest common AS-Path suffix: <b>{{element.longestCommonAsPathSuffix}}</b>
-                  <br>Has one or more updates with the aggregator field: <b>{{element.hasAggregator}}</b>
+                  Resource: <b>{{element.id}}</b>
+                  <br>announced:
+                  <br>AS Origin(s): <b>{{element.asOrigins}}</b>
+                  <br>Holder:
                 </div>
                 <div class ="border2"></div>
                 <div class = "background2"></div>

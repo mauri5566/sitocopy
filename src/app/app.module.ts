@@ -12,6 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSortModule} from '@angular/material/sort';
 import{ MatFormFieldModule} from '@angular/material/form-field';
 import{ MatInputModule} from '@angular/material/input';
+import{ MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import{ MatInputModule} from '@angular/material/input';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
+    MatExpansionModule,
     RouterModule.forRoot([
       { path: '', component: SequencesComponent },
     ]),

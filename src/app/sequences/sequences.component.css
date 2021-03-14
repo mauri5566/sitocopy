@@ -8,12 +8,12 @@ html {
   overflow-y: scroll;
 }
 
-th {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
-    font-size: 1.5em;
+th {  
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.5em;
 }
 .annotazione{
   position:absolute;
@@ -84,21 +84,134 @@ tr:hover{
   font-weight:400;
 }
 
-.mat-form-field{
-  padding-left:600px;
-  color:#ffffff;
-  width:200px;
+.IDFilter{
+  position:absolute;
+  top:20px;
+  left:30px;
+  width:220px;
 }
 
+.backgroundIDFilter{
+  position:absolute;
+  border-radius: 0 5px 0 0;
+  background-color: rgba(0, 152, 121, 0.25);;
+  top:20px;
+  left:30px;
+  width: 220px;
+  height:50px;
+}
+
+.borderIDFilter{
+  position:absolute;
+  border-radius: 5px 0 0 5px;
+  top:20px;
+  height:51px;
+  width:5px;
+  left:25px;
+  background-color:black;
+}
+
+.PrefixFilter{
+  position:absolute;
+  top:20px;
+  left:330px;
+  width:220px;
+}
+
+.backgroundPrefix{
+  position:absolute;
+  border-radius: 0 5px 0 0;
+  background-color: rgba(0, 152, 121, 0.25);;
+  top:20px;
+  left:330px;
+  width: 220px;
+  height:50px;
+}
+
+.borderPrefix{
+  position:absolute;
+  border-radius: 5px 0 0 5px;
+  top:20px;
+  height:51px;
+  width:5px;
+  left:325px;
+  background-color:black;
+}
+
+.AsOriginFilter{
+  position:absolute;
+  top:20px;
+  left:630px;
+  width:220px;
+}
+
+.backgroundAsOrigin{
+  position:absolute;
+  border-radius: 0 5px 0 0;
+  background-color: rgba(0, 152, 121, 0.25);;
+  top:20px;
+  left:630px;
+  width: 220px;
+  height:50px;
+}
+
+.borderAsOrigin{
+  position:absolute;
+  border-radius: 5px 0 0 5px;
+  top:20px;
+  height:51px;
+  width:5px;
+  left:625px;
+  background-color:black;
+}
+
+.SuffixFilter{
+  position:absolute;
+  top:20px;
+  left:930px;
+  width:220px;
+}
+
+.backgroundSuffix{
+  position:absolute;
+  border-radius: 0 5px 0 0;
+  background-color: rgba(0, 152, 121, 0.25);;
+  top:20px;
+  left:930px;
+  width: 220px;
+  height:50px;
+}
+
+.borderSuffix{
+  position:absolute;
+  border-radius: 5px 0 0 5px;
+  top:20px;
+  height:51px;
+  width:5px;
+  left:925px;
+  background-color:black;
+}
 mat-label{
-  font-size:0.8em;
+  position:relative;
+  font-size:1.2em;
 }
 
 mat-paginator{
   border-bottom: 3px solid #009879;
 }
 
+mat-expansion-panel{
+position:relative;
+background-color: whitesmoke;
+}
+
+.mat-toolbar button{
+  position: relative;
+  left:700px;
+}
+
 .mat-elevation-z8{
+  position: relative;
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9em;

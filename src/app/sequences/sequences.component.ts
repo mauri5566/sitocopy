@@ -20,6 +20,7 @@ export class SequencesComponent implements AfterViewInit{
   columnsToDisplay: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time'];
   dataSource = new MatTableDataSource<Sequences>(ELEMENT_DATA);
   expandedElement: Sequences [] = [];
+  panelOpenState = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -56,6 +57,10 @@ applyFilter(filterValue: string) {
     }
   }
 
+  // tslint:disable-next-line: typedef
+  togglePanel() {
+    this.panelOpenState = !this.panelOpenState;
+}
 }
 const ELEMENT_DATA: Sequences[] = [
   {
