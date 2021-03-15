@@ -76,8 +76,8 @@ td {
 tr:hover{
   background-color: whitesmoke;
 }
-.icona{
- color: black;
+.home{
+ color: white;
 }
 
 .mat-toolbar{
@@ -95,8 +95,8 @@ tr:hover{
 .IDFilter{
   position:absolute;
   top:20px;
-  left:30px;
-  width:220px;
+  left:2.46%;
+  width:18.1%;
 }
 
 .backgroundIDFilter{
@@ -104,8 +104,8 @@ tr:hover{
   border-radius: 0 5px 0 0;
   background-color: rgba(0, 152, 121, 0.25);;
   top:20px;
-  left:30px;
-  width: 220px;
+  left:2.46%;
+  width: 18.1%;
   height:50px;
 }
 
@@ -114,16 +114,16 @@ tr:hover{
   border-radius: 5px 0 0 5px;
   top:20px;
   height:51px;
-  width:5px;
-  left:25px;
+  width:0.41%;
+  left:2.05%;
   background-color:#009879;
 }
 
 .PrefixFilter{
   position:absolute;
   top:90px;
-  left:30px;
-  width:220px;
+  left:2.46%;
+  width:18.1%;
 }
 
 .backgroundPrefix{
@@ -131,8 +131,8 @@ tr:hover{
   border-radius: 0 5px 0 0;
   background-color: rgba(0, 152, 121, 0.25);;
   top:90px;
-  left:30px;
-  width: 220px;
+  left:2.46%;
+  width: 18.1%;
   height:50px;
 }
 
@@ -141,16 +141,16 @@ tr:hover{
   border-radius: 5px 0 0 5px;
   top:90px;
   height:51px;
-  width:5px;
-  left:25px;
+  width:0.41%;
+  left:2.05%;
   background-color:#009879;
 }
 
 .AsOriginFilter{
   position:absolute;
   top:20px;
-  left:330px;
-  width:220px;
+  left:27.18%;
+  width:18.1%;
 }
 
 .backgroundAsOrigin{
@@ -158,8 +158,8 @@ tr:hover{
   border-radius: 0 5px 0 0;
   background-color: rgba(0, 152, 121, 0.25);;
   top:20px;
-  left:330px;
-  width: 220px;
+  left:27.18%;
+  width: 18.1%;
   height:50px;
 }
 
@@ -168,16 +168,16 @@ tr:hover{
   border-radius: 5px 0 0 5px;
   top:20px;
   height:51px;
-  width:5px;
-  left:325px;
+  width:0.4%;
+  left:26.77%;
   background-color:#009879;
 }
 
 .SuffixFilter{
   position:absolute;
   top:90px;
-  left:330px;
-  width:220px;
+  left:27.18%;
+  width:18.1%;
 }
 
 .backgroundSuffix{
@@ -185,8 +185,8 @@ tr:hover{
   border-radius: 0 5px 0 0;
   background-color: rgba(0, 152, 121, 0.25);;
   top:90px;
-  left:330px;
-  width: 220px;
+  left:27.18%;
+  width: 18.1%;
   height:50px;
 }
 
@@ -195,24 +195,24 @@ tr:hover{
   border-radius: 5px 0 0 5px;
   top:90px;
   height:51px;
-  width:5px;
-  left:325px;
+  width:0.41%;
+  left:26.77%;
   background-color:#009879;
 }
 
 .collectorPeerInformation{
   position:absolute;
   top:170px;
-  left:40px;
-  width:300px;
+  left:3.29%;
+  width:24.71%;
 }
 
 .borderCollectorPeerInformation{
   position:absolute;
   top:170px;
-  left:25px;
+  left:2.06%;
   height:210px;
-  width:5px;
+  width:0.41%;
   background-color:#009879;
   border-radius: 5px 0 0 5px;
 }
@@ -220,9 +220,9 @@ tr:hover{
 .backgroundCollectorPeerInformation{
   position:absolute;
   top:170px;
-  left:30px;
+  left:2.47%;
   height:210px;
-  width:320px;
+  width:26.36%;
   background-color: rgba(0, 152, 121, 0.25);;
   border-radius: 0 5px 5px 0;
 }
@@ -244,13 +244,13 @@ tr:hover{
 .collectorPeerIPFilter{
   position:absolute;
   top:80px;
-  width:250px;
+  width:75%;
 }
 
 .backgroundCollectorPeerIPFilter{
   position:absolute;
   top:80px;
-  width:250px;
+  width:75%;
   height:50px;
   background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
@@ -259,13 +259,13 @@ tr:hover{
 .collectorPeerASnFilter{
   position:absolute;
   top:150px;
-  width:250px;
+  width:75%;
 }
 
 .backgroundCollectorPeerASnFilter{
   position:absolute;
   top:150px;
-  width:250px;
+  width:75%;
   height:50px;
   background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
@@ -274,16 +274,16 @@ tr:hover{
 .duration{
   position:absolute;
   top:170px;
-  left:440px;
-  width:300px;
+  left:36.24%;
+  width:24.71%;
 }
 
 .borderDuration{
   position:absolute;
   top:170px;
-  left:425px;
+  left:35%;
   height:210px;
-  width:5px;
+  width:0.41%;
   background-color:#009879;
   border-radius: 5px 0 0 5px;
 }
@@ -291,9 +291,9 @@ tr:hover{
 .backgroundDuration{
   position:absolute;
   top:170px;
-  left:430px;
+  left:35.42%;
   height:210px;
-  width:320px;
+  width:26.36%;
   background-color: rgba(0, 152, 121, 0.25);;
   border-radius: 0 5px 5px 0;
 }
@@ -315,13 +315,13 @@ tr:hover{
 .durationGreaterFilter{
   position:absolute;
   top:80px;
-  width:300px;
+  width:101%;
 }
 
 .backgroundDurationGreaterFilter{
   position:absolute;
   top:80px;
-  width:300px;
+  width:101%;
   height:50px;
   background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
@@ -330,13 +330,13 @@ tr:hover{
 .durationSmallerFilter{
   position:absolute;
   top:150px;
-  width:300px;
+  width:101%;
 }
 
 .backgroundDurationSmallerFilter{
   position:absolute;
   top:150px;
-  width:300px;
+  width:101%;
   height:50px;
   background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
@@ -345,8 +345,8 @@ tr:hover{
 .updateFilter{
   position:absolute;
   top: 20px;
-  right: 62px;
-  width: 520px;
+  right: 5.11%;
+  width: 42.83%;
 }
 
 .borderUpdate{
@@ -354,8 +354,8 @@ tr:hover{
   border-radius: 5px 0 0 5px;
   top:20px;
   height:51px;
-  width:5px;
-  right:582px;
+  width:0.41%;
+  right:47.93%;
   background-color:#009879;
   opacity:50%;
 }
@@ -363,8 +363,8 @@ tr:hover{
 .updateFilter2{
   position:absolute;
   top: 90px;
-  right: 62px;
-  width: 520px;
+  right: 5.11%;
+  width: 42.83%;
 }
 
 .borderUpdate2{
@@ -372,8 +372,8 @@ tr:hover{
   border-radius: 5px 0 0 5px;
   top:90px;
   height:51px;
-  width:5px;
-  right:582px;
+  width:0.41%;
+  right:47.93%;
   background-color:#009879;
   opacity:50%;
 }
@@ -381,16 +381,16 @@ tr:hover{
 .dates{
   position:absolute;
   top:170px;
-  left:840px;
-  width:300px;
+  left:69.18%;
+  width:24.71%;
 }
 
 .borderDates{
   position:absolute;
   top:170px;
-  left:825px;
+  left:67.95%;
   height:210px;
-  width:5px;
+  width:0.41%;
   background-color:#009879;
   border-radius: 5px 0 0 5px;
 }
@@ -398,9 +398,9 @@ tr:hover{
 .backgroundDates{
   position:absolute;
   top:170px;
-  left:830px;
+  left:68.36%;
   height:210px;
-  width:320px;
+  width:26.36%;
   background-color: rgba(0, 152, 121, 0.25);;
   border-radius: 0 5px 5px 0;
 }
@@ -422,13 +422,13 @@ tr:hover{
 .startFilter{
   position:absolute;
   top:80px;
-  width:250px;
+  width:80%;
 }
 
 .backgroundStartFilter{
   position:absolute;
   top:80px;
-  width:250px;
+  width:80%;
   height:51px;
   background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
@@ -437,13 +437,13 @@ tr:hover{
 .endFilter{
   position:absolute;
   top:150px;
-  width:250px;
+  width:80%;
 }
 
 .backgroundEndFilter{
   position:absolute;
   top:150px;
-  width:250px;
+  width:80%;
   height:51px;
   background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
@@ -452,16 +452,16 @@ tr:hover{
 .minimum{
   position:absolute;
   top:420px;
-  left:280px;
-  width:640px;
+  left:23.06%;
+  width:52.71%;
 }
 
 .borderMinimum{
   position:absolute;
   top:420px;
-  left:265px;
+  left:21.83%;
   height:130px;
-  width:5px;
+  width:0.41%;
   background-color:#009879;
   border-radius: 5px 0 0 5px;
 }
@@ -469,9 +469,9 @@ tr:hover{
 .backgroundMinimum{
   position:absolute;
   top:420px;
-  left:270px;
+  left:22.24%;
   height:130px;
-  width:650px;
+  width:53.54%;
   background-color: rgba(0, 152, 121, 0.25);;
   border-radius: 0 5px 5px 0;
 }
@@ -493,13 +493,13 @@ tr:hover{
 .updatesFilter{
   position:absolute;
   top:70px;
-  width:180px;
+  width:28%;
 }
 
 .backgroundUpdatesFilter{
   position:absolute;
   top:70px;
-  width:180px;
+  width:28%;
   height:51px;
   background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
@@ -508,16 +508,16 @@ tr:hover{
 .withdrawsFilter{
   position:absolute;
   top:70px;
-  width:180px;
-  left:220px;
+  width:28%;
+  left:34.5%;
 }
 
 .backgroundWithdrawsFilter{
   position:absolute;
   top:70px;
-  width:180px;
+  width:28.23%;
   height:51px;
-  left:220px;
+  left:34.5%;
   background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
 }
@@ -525,16 +525,16 @@ tr:hover{
 .announcesFilter{
   position:absolute;
   top:70px;
-  width:180px;
-  left:440px;
+  width:28.23%;
+  left:69%;
 }
 
 .backgroundAnnouncesFilter{
   position:absolute;
   top:70px;
-  width:180px;
+  width:28.23%;
   height:51px;
-  left:440px;
+  left:69%;
   background-color: whitesmoke;
   border-radius: 5px 5px 0 0;
 }
@@ -555,6 +555,9 @@ background-color: whitesmoke;
 .mat-toolbar button{
   position: relative;
   left:700px;
+  background-color: #009879;
+  border: solid 0px;
+  color:white
 }
 
 .mat-elevation-z8{
@@ -570,10 +573,6 @@ background-color: whitesmoke;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
 }
 
-/*.mat-header-cell{
-  white-space: nowrap;
-  padding-right:120px;
-}*/
 tr.example-element-row:not(.example-expanded-row):hover {
   background: whitesmoke;
 }
@@ -627,8 +626,8 @@ tr:last-of-type{
 
 .primoBlocco{
   position: absolute;
-  top: 80px;
-  left: 7px;
+  top: 34%;
+  left: 1%;
   padding-bottom: 20px
 }
 
