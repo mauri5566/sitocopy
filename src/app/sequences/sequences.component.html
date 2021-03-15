@@ -36,10 +36,101 @@
       <mat-label>Minimum suffix length:</mat-label>
         <input matInput>
     </mat-form-field>
+    <div class = "backgroundCollectorPeerInformation"></div>
+    <div class = "borderCollectorPeerInformation"></div>
+    <div class = "collectorPeerInformation">
+      <div class = "backgroundCollectorPeerIPFilter"></div>
+      <div class = "backgroundCollectorPeerASnFilter"></div>
+      <h1>Collector Peer Informations:</h1>
+      <span>You can filter by ASN or IP of the collector peer.</span>
+      <mat-form-field appearance="fill" class="collectorPeerIPFilter">
+        <mat-label>Collector Peer IP:</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="collectorPeerASnFilter">
+        <mat-label>Collector Peer ASn:</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+    <div class = "backgroundDuration"></div>
+    <div class = "borderDuration"></div>
+    <div class = "duration">
+      <div class = "backgroundDurationGreaterFilter"></div>
+      <div class = "backgroundDurationSmallerFilter"></div>
+      <h1>Duration:</h1>
+      <span>You can choose the maximum and minimum duration for the sequences.</span>
+      <mat-form-field appearance="fill" class="durationGreaterFilter">
+        <mat-label>Duration greater or equal than (days):</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="durationSmallerFilter">
+        <mat-label>Duration smaller or equal than (days):</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+    <div class = "backgroundDates"></div>
+    <div class = "borderDates"></div>
+    <div class = "dates">
+      <div class = "backgroundStartFilter"></div>
+      <div class = "backgroundEndFilter"></div>
+      <h1>Dates:</h1>
+      <span>You can choose the time period of the sequences.</span>
+      <mat-form-field appearance="fill" class = "startFilter">
+        <mat-label>Starts after or on:</mat-label>
+        <input matInput [matDatepicker]="picker1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class = "endFilter">
+        <mat-label>Ends before or on:</mat-label>
+        <input matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class = "borderUpdate"></div>
+    <mat-form-field appearance="fill" class="updateFilter">
+        <mat-label>Has at least one update with the aggregator field:</mat-label>
+        <mat-select>
+          <mat-option value="one">None</mat-option>
+          <mat-option value="two">True</mat-option>
+          <mat-option value="three">False</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class = "borderUpdate2"></div>
+    <mat-form-field appearance="fill" class="updateFilter2">
+        <mat-label>Contains at least two updates with AS-Paths xAyBz and uBvAw</mat-label>
+        <mat-select>
+          <mat-option value="one">None</mat-option>
+          <mat-option value="two">True</mat-option>
+          <mat-option value="three">False</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class = "backgroundMinimum"></div>
+    <div class = "borderMinimum"></div>
+    <div class = "minimum">
+      <div class = "backgroundUpdatesFilter"></div>
+      <div class = "backgroundWithdrawsFilter"></div>
+      <div class = "backgroundAnnouncesFilter"></div>
+      <h1>Minimum numbers:</h1>
+      <span>You can choose the maximum and minimum duration for the sequences.</span>
+      <mat-form-field appearance="fill" class="updatesFilter">
+        <mat-label>Updates:</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="withdrawsFilter">
+        <mat-label>Withdraws:</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="announcesFilter">
+        <mat-label>Announces:</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
    
-    <div class="invisibile">ao</div>
+    <div class="invisibile2">ao</div>
 
-</mat-expansion-panel>
+  </mat-expansion-panel>
 <table mat-table
               [dataSource]="dataSource" multiTemplateDataRows>
         <tr>
