@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Sequences } from './sequences/sequences.component';
-import { retry, catchError } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +15,7 @@ export class SequencesService {
   public getData(){
     return this.http.get<Sequences>('https://bgpie.net/api/sequence/5ee56984a62b68061ce5b638');
   }
+
 
   /*getSequence(id: number) : Observable<ISequence[]> {
       return this.http.get<ISequence[]>("https://bgpie.net/api/sequence/[id]")

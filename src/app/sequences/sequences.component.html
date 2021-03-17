@@ -142,7 +142,7 @@
             </ng-container>
 
           <ng-container matColumnDef="Prefix">
-            <th mat-header-cell *matHeaderCellDef class ="prefix"> Prefix </th>
+            <th mat-header-cell *matHeaderCellDef class = "prefix"> Prefix </th>
             <td mat-cell *matCellDef="let element"> {{element.prefix}} </td>
           </ng-container>
 
@@ -180,8 +180,13 @@
                 <div class = "primoBlocco">
                   Resource: <b>{{element.id}}</b>
                   <br>announced:
-                  <br>AS Origin(s): <b>{{element.asOrigins}}</b>
-                  <br>Holder:
+                  <br>AS Origin(s):
+                  <ul>
+                    <li>ASn: <b>{{element.asOrigins}}</b></li>
+                    <li>Holder:</li>
+                    <li><a href="https://www.google.com/">Open</a></li>
+                  </ul>
+                  <br><a href="https://www.google.com/">Open</a>
                 </div>
                 <div class ="border2"></div>
                 <div class = "background2"></div>
@@ -209,14 +214,14 @@
                 </div>
                 <div class="buttons">
                   <div class="container">
-                    <a href="https://twitter.com/masuwa1018" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                    <a (click) = "openDialog()" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
                       <span>AS TREE WITHOUT AGGREGATOR</span>
                     </a>
                   </div>
                 </div>
                 <div class="buttons">
                   <div class="container1">
-                    <a href="https://twitter.com/masuwa1018" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                    <a (click) = "openDialog2()" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
                       <span>SEQUENCE CHART</span>
                     </a>
                   </div>

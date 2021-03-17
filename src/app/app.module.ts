@@ -16,11 +16,21 @@ import { MatExpansionModule} from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalChartComponent } from './sequences/modal-chart/modal-chart.component';
+import { ModalAsTreeComponent } from './sequences/modal-as-tree/modal-as-tree.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     AppComponent,
     SequencesComponent,
+    ModalChartComponent,
+    ModalAsTreeComponent,
+  ],
+  entryComponents: [
+    ModalChartComponent,
+    ModalAsTreeComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +47,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
     RouterModule.forRoot([
       { path: '', component: SequencesComponent },
     ]),

@@ -1,0 +1,30 @@
+.task-header {
+    background-color: rgb(54,71,225);
+    padding: 0 5px;
+	 height: 80px;
+	 margin:-24px;
+	 width:auto;
+}
+
+.titolo{
+	position:relative;
+	left:4%;
+	color: white;
+	font-weight: 200;
+	letter-spacing: 1px;
+}
+
+.icona{
+	position:relative;
+	left:78%;
+	background-color: rgb(54,71,225);
+	color:white;
+	border: none;
+}
+
+mat-dialog-content{
+	position: relative;
+	top:20px;
+	left:3%;
+
+}

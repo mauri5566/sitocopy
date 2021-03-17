@@ -3,6 +3,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {SequencesService} from '../sequences.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
+import{ MatDialog } from '@angular/material/dialog';
+import { ModalChartComponent } from './modal-chart/modal-chart.component';
+import { ModalAsTreeComponent } from './modal-as-tree/modal-as-tree.component';
 
 @Component({
   selector: 'app-sequences',
@@ -17,6 +20,9 @@ import {MatPaginator} from '@angular/material/paginator';
   ],
 })
 export class SequencesComponent implements AfterViewInit{
+
+  constructor(public dialog: MatDialog){}
+
   columnsToDisplay: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time'];
   dataSource = new MatTableDataSource<Sequences>(ELEMENT_DATA);
   expandedElement: Sequences [] = [];
@@ -27,6 +33,22 @@ export class SequencesComponent implements AfterViewInit{
   // tslint:disable-next-line: typedef
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  // tslint:disable-next-line: typedef
+  openDialog(){
+    this.dialog.open(ModalAsTreeComponent, {
+      width: '90%',
+      height: '640px'
+    });
+  }
+
+  // tslint:disable-next-line: typedef
+  openDialog2(){
+    this.dialog.open(ModalChartComponent, {
+      width: '90%',
+      height: '640px'
+    });
   }
 
 
