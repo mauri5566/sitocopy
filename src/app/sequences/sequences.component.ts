@@ -6,6 +6,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import{ MatDialog } from '@angular/material/dialog';
 import { ModalChartComponent } from './modal-chart/modal-chart.component';
 import { ModalAsTreeComponent } from './modal-as-tree/modal-as-tree.component';
+import { SequencesDataSource } from '../sequences.datasource';
+import {Sequences} from '../model/sequences';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sequences',
@@ -21,18 +24,26 @@ import { ModalAsTreeComponent } from './modal-as-tree/modal-as-tree.component';
 })
 export class SequencesComponent implements AfterViewInit{
 
-  constructor(public dialog: MatDialog){}
+
+  constructor(public dialog: MatDialog,
+              public sequencesService: SequencesService){}
 
   columnsToDisplay: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time'];
-  dataSource = new MatTableDataSource<Sequences>(ELEMENT_DATA);
+  dataSource = new SequencesDataSource(this.sequencesService);
   expandedElement: Sequences [] = [];
   panelOpenState = false;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+@ViewChild(MatPaginator) paginator!: MatPaginator;
 
   // tslint:disable-next-line: typedef
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.paginator.page.subscribe(x => this.loadSequences());
+    this.loadSequences();
+    this.dataSource.length.subscribe(x => this.paginator.length = x);
+  }
+
+  loadSequences(){
+    this.dataSource.loadSequences(this.paginator.pageIndex + 1, this.paginator.pageSize, '00');
   }
 
   // tslint:disable-next-line: typedef
@@ -52,10 +63,10 @@ export class SequencesComponent implements AfterViewInit{
   }
 
 
-// tslint:disable-next-line: typedef
+/*// tslint:disable-next-line: typedef
 applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  }*/
 
   checkExpanded(element: Sequences): boolean {
     let flag = false;
@@ -84,27 +95,7 @@ applyFilter(filterValue: string) {
     this.panelOpenState = !this.panelOpenState;
 }
 }
-const ELEMENT_DATA: Sequences[] = [
-  {
-      id: '5ee56984a62b68061ce5b638',
-      prefix: '2a0d:8d80::/32',
-      rRC: 0,
-      collectorPeer: {
-        peerBGPId: 0,
-        peerIPAddress: '2a07:a40::',
-        peerAS: 48821
-      },
-      start: '2019-01-01T00:00:00Z',
-      end: '2019-03-26T22:53:52Z',
-      runID: 'RRC00-v6',
-      longestCommonAsPathSuffix: 1,
-      asPathNumber: 12,
-      asOrigins: [31424],
-      hasAggregator: false,
-      containsLoops: false,
-      containsAsPathLoops: true,
-      mostFrequentUpdateFrequency: 176682,
-      mostFrequentUpdateFrequencyInMin: 1.4442607334681918,
+/*
       hasAsPathsNotValid: false,
       announces: 732493,
       withdraws: 0,
@@ -411,7 +402,7 @@ export interface Sequences{
   updates: number,
   duration: string,
   frequency: number
-}
+}*/
 
 
 

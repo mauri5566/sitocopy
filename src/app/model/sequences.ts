@@ -1,9 +1,7 @@
-import { NumberValueAccessor } from '@angular/forms';
-
 export interface Sequences{
 	id: string,
   prefix: string,
-  rRC: 0,
+  rRC: number,
   collectorPeer: {
     peerBGPId: number,
     peerIPAddress: string,
@@ -23,9 +21,9 @@ export interface Sequences{
   mostFrequentUpdateFrequency: number,
   mostFrequentUpdateFrequencyInMin: number,
   hasAsPathsNotValid: boolean,
-  "announces": 732493,
-  "withdraws": 0,
-  "updates": 732493,
-  "duration": "84.22:53:52",
-  "frequency": 0.09979425157819476
+  announces: number,
+  withdraws: number,
+  updates: number,
+  duration: string,
+  frequency: number
 }
