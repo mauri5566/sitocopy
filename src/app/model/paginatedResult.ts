@@ -1,5 +1,5 @@
-import {Sequences} from './sequences';
+import {Sequence} from './sequence';
 export interface PaginatedResult{
-	readonly items : Sequences[];
-	readonly total : number;
+  readonly items: Sequence[];
+  readonly total: number;
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { SequencesComponent } from './sequences/sequences.component';
+import { SequencesComponent } from './components/sequences/sequences.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import {HttpClientModule} from '@angular/common/http';
@@ -17,8 +17,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ModalChartComponent } from './sequences/modal-chart/modal-chart.component';
-import { ModalAsTreeComponent } from './sequences/modal-as-tree/modal-as-tree.component';
+import { ModalChartComponent } from './components/sequences/modal-chart/modal-chart.component';
+import { ModalAsTreeComponent } from './components/sequences/modal-as-tree/modal-as-tree.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({

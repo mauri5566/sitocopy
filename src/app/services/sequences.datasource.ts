@@ -1,18 +1,18 @@
 
 
 
-import {CollectionViewer, DataSource} from "@angular/cdk/collections";
-import {Observable, BehaviorSubject, of, from} from "rxjs";
-import {Sequences} from './model/sequences';
-import {SequencesService} from "./sequences.service";
-import {catchError, finalize} from "rxjs/operators";
-import {PaginatedResult} from './model/paginatedResult';
+import {CollectionViewer, DataSource} from '@angular/cdk/collections';
+import {Observable, BehaviorSubject, of, from} from 'rxjs';
+import {Sequence} from '../model/sequence';
+import {SequencesService} from './sequences.service';
+import {finalize} from 'rxjs/operators';
+import {PaginatedResult} from '../model/paginatedResult';
 import {tap} from 'rxjs/operators';
 
 
-export class SequencesDataSource implements DataSource<Sequences> {
+export class SequencesDataSource implements DataSource<Sequence> {
 
-    private sequencesSubject = new BehaviorSubject<Sequences[]>([]);
+    private sequencesSubject = new BehaviorSubject<Sequence[]>([]);
 
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
@@ -25,8 +25,8 @@ export class SequencesDataSource implements DataSource<Sequences> {
     }
 
     loadSequences(pageIndex: number,
-        pageSize: number,
-        rrc: string) {
+                  pageSize: number,
+                  rrc: string) {
 
         this.loadingSubject.next(true);
 
@@ -35,12 +35,12 @@ export class SequencesDataSource implements DataSource<Sequences> {
                 finalize(() => this.loadingSubject.next(false)),
                 tap(x => this.length.next(x.total))
             )
-            .subscribe((sequences : PaginatedResult) => this.sequencesSubject.next(sequences.items));
+            .subscribe((sequences: PaginatedResult) => this.sequencesSubject.next(sequences.items));
 
     }
 
-    connect(collectionViewer: CollectionViewer): Observable<Sequences[]> {
-        console.log("Connecting data source");
+    connect(collectionViewer: CollectionViewer): Observable<Sequence[]> {
+        console.log('Connecting data source');
         return this.sequencesSubject.asObservable();
     }
 

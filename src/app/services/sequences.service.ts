@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Sequences } from './model/sequences';
+import { Sequence } from '../model/sequence';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
-import { PaginatedResult } from './model/paginatedResult';
+import { PaginatedResult } from '../model/paginatedResult';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class SequencesService {
     }
 
 
-  getSequence(id: string) : Observable<Sequences> {
-      return this.http.get<Sequences>("https://bgpie.net/api/sequence/" + id);
+  getSequence(id: string): Observable<Sequence> {
+      return this.http.get<Sequence>('https://bgpie.net/api/sequence/' + id);
     }
 }
