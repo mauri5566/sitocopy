@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalChartComponent } from './components/sequences/modal-chart/modal-chart.component';
 import { ModalAsTreeComponent } from './components/sequences/modal-as-tree/modal-as-tree.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatNativeDateModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     RouterModule.forRoot([
       { path: '', component: SequencesComponent },
     ]),
