@@ -607,28 +607,33 @@ tr.example-detail-row {
   width:100%;
 }
 
-.prefix{
-  padding-right: 160px;
+
+.mat-cell {
+  padding-right: 15%;
 }
 
+/*.prefix{
+  padding-right: 20%;
+}*/
+
 .collectorPeer{
-  padding-right:210px;
+  /*padding-right:210px;*/
   white-space: nowrap;
 }
 
-.rrc{
+/*.rrc{
   padding-right:80px;
-}
+}*/
 
 .startTime{
-  padding-right:100px;
+  /*padding-right:100px;*/
   white-space: nowrap;
 }
 
 .endTime{
-  padding-right:200px;
+  padding-right:100px;
   white-space:nowrap;
-}
+}*/
 
 .spinner-container {
     position: absolute;

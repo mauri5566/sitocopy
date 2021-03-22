@@ -8,11 +8,14 @@ import {SequencesService} from './sequences.service';
 import {finalize} from 'rxjs/operators';
 import {PaginatedResult} from '../model/paginatedResult';
 import {tap} from 'rxjs/operators';
-
+import {RipeService} from './ripe.service';
+import { Ripe } from '../model/ripe';
 
 export class SequencesDataSource implements DataSource<Sequence> {
 
     private sequencesSubject = new BehaviorSubject<Sequence[]>([]);
+
+    private ripeSubject = new BehaviorSubject<Ripe[]>([]);
 
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
@@ -20,7 +23,8 @@ export class SequencesDataSource implements DataSource<Sequence> {
 
     public length = new BehaviorSubject<number>(0);
 
-    constructor(private sequencesService: SequencesService) {
+    constructor(private sequencesService: SequencesService/*,
+                private ripeService: RipeService*/) {
 
     }
 
@@ -36,7 +40,24 @@ export class SequencesDataSource implements DataSource<Sequence> {
                 tap(x => this.length.next(x.total))
             )
             .subscribe((sequences: PaginatedResult) => this.sequencesSubject.next(sequences.items));
+    }
 
+   loadSequencesById(id: string){
+        this.loadingSubject.next(true);
+
+        this.sequencesService.getSequence(id).pipe(
+            finalize(() => this.loadingSubject.next(false)),
+        )
+        .subscribe((sequences: PaginatedResult) => this.sequencesSubject.next(sequences.items));
+    }
+
+    loadRipe(resource: string){
+        this.loadingSubject.next(true);
+
+        this.ripeService.getRipe(resource).pipe(
+            finalize(() => this.loadingSubject.next(false)),
+        )
+        .subscribe((sequence: PaginatedResult) => this.ripeSubject.next(sequence.ripe));
     }
 
     connect(collectionViewer: CollectionViewer): Observable<Sequence[]> {

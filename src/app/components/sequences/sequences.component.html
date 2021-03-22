@@ -18,7 +18,7 @@
     <div class = "borderIDFilter"></div>
     <mat-form-field appearance="fill" class="IDFilter">
       <mat-label>Sequence ID:</mat-label>
-        <input matInput>
+        <input matInput #input>
     </mat-form-field>
     <div class = "backgroundPrefix"></div>
     <div class = "borderPrefix"></div>
@@ -161,7 +161,7 @@
 
           <ng-container matColumnDef="Start Time">
             <th mat-header-cell *matHeaderCellDef class = "startTime"> Start Time </th>
-            <td mat-cell *matCellDef="let element"> {{element.start | date:'short' }} </td>
+            <td mat-cell *matCellDef="let element" class = "startTime"> {{element.start | date:'short' }} </td>
           </ng-container>
 
           <ng-container matColumnDef="End Time">

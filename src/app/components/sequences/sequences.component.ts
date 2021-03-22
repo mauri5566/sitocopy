@@ -7,6 +7,11 @@ import { ModalChartComponent } from './modal-chart/modal-chart.component';
 import { ModalAsTreeComponent } from './modal-as-tree/modal-as-tree.component';
 import { SequencesDataSource } from '../../services/sequences.datasource';
 import { Sequence } from '../../model/sequence';
+import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ElementRef} from '@angular/core';
+import { fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import {ErrorStateMatcher} from '@angular/material/core';
 
 @Component({
   selector: 'app-sequences',
@@ -32,12 +37,23 @@ export class SequencesComponent implements AfterViewInit{
   panelOpenState = false;
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
+@ViewChild('input') input!: ElementRef;
 
   // tslint:disable-next-line: typedef
   ngAfterViewInit() {
     this.paginator.page.subscribe(x => this.loadSequences());
     this.loadSequences();
     this.dataSource.length.subscribe(x => this.paginator.length = x);
+    fromEvent(this.input.nativeElement, 'keyup')
+    .pipe(
+        debounceTime(150),
+        distinctUntilChanged(),
+        tap(() => {
+            this.paginator.pageIndex = 0;
+            this.loadSequences();
+        })
+    )
+    .subscribe();
   }
 
   loadSequences(): void{

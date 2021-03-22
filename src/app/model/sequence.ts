@@ -1,3 +1,4 @@
+import {Ripe} from './ripe';
 export interface Sequence{
   id: string;
   prefix: string;
@@ -12,9 +13,7 @@ export interface Sequence{
   runID: string;
   longestCommonAsPathSuffix: number;
   asPathNumber: number;
-  asOrigins: [
-    number
-  ];
+  asOrigins: [number];
   hasAggregator: boolean;
   containsLoops: boolean;
   containsAsPathLoops: boolean;
@@ -26,4 +25,5 @@ export interface Sequence{
   updates: number;
   duration: string;
   frequency: number;
+  readonly ripe: Ripe[];
 }
