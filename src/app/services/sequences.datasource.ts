@@ -51,14 +51,14 @@ export class SequencesDataSource implements DataSource<Sequence> {
         .subscribe((sequences: PaginatedResult) => this.sequencesSubject.next(sequences.items));
     }
 
-    loadRipe(resource: string){
+ /*   loadRipe(resource: string){
         this.loadingSubject.next(true);
 
         this.ripeService.getRipe(resource).pipe(
             finalize(() => this.loadingSubject.next(false)),
         )
         .subscribe((sequence: PaginatedResult) => this.ripeSubject.next(sequence.ripe));
-    }
+    }*/
 
     connect(collectionViewer: CollectionViewer): Observable<Sequence[]> {
         console.log('Connecting data source');

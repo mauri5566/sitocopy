@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {SequencesService} from '../../services/sequences.service';
 import {MatPaginator} from '@angular/material/paginator';
@@ -25,26 +25,36 @@ import {ErrorStateMatcher} from '@angular/material/core';
     ]),
   ],
 })
-export class SequencesComponent implements AfterViewInit{
+export class SequencesComponent implements AfterViewInit, OnInit{
 
 
   constructor(public dialog: MatDialog,
-              public sequencesService: SequencesService){}
+              public sequencesService: SequencesService,
+              private formBuilder: FormBuilder){}
 
   columnsToDisplay: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time'];
   dataSource = new SequencesDataSource(this.sequencesService);
   expandedElement: Sequence [] = [];
   panelOpenState = false;
+  formGroup!: FormGroup;
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 @ViewChild('input') input!: ElementRef;
+
+  ngOnInit() {
+    this.formGroup = new FormGroup({
+      sequenceId: new FormControl(null, [Validators.pattern('[0-9a-fA-F]{24}')]),
+      prefix: new FormControl(null, [Validators.pattern('[a-z0-9:.]::/[0-9]{2}')]),
+      collectorPeerIp: new FormControl(null, [Validators.pattern('[a-z0-9]{5,}')]),
+    });
+  }
 
   // tslint:disable-next-line: typedef
   ngAfterViewInit() {
     this.paginator.page.subscribe(x => this.loadSequences());
     this.loadSequences();
     this.dataSource.length.subscribe(x => this.paginator.length = x);
-    fromEvent(this.input.nativeElement, 'keyup')
+    /*fromEvent(this.input.nativeElement, 'keyup')
     .pipe(
         debounceTime(150),
         distinctUntilChanged(),
@@ -53,7 +63,7 @@ export class SequencesComponent implements AfterViewInit{
             this.loadSequences();
         })
     )
-    .subscribe();
+    .subscribe();*/
   }
 
   loadSequences(): void{
@@ -99,6 +109,7 @@ applyFilter(filterValue: string) {
     console.log(index);
     if (index === -1) {
         this.expandedElement.push(element);
+        this.dataSource.loadSequencesById(element.id);
     } else {
       this.expandedElement.splice(index, 1);
     }

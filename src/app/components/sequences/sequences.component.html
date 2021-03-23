@@ -13,30 +13,36 @@
       <mat-icon>search</mat-icon>
     </button>
   </mat-toolbar>
-  <mat-expansion-panel [expanded]="panelOpenState">
+  <mat-expansion-panel [expanded]="panelOpenState" [formGroup] = "formGroup">
     <div class = "backgroundIDFilter"></div>
     <div class = "borderIDFilter"></div>
     <mat-form-field appearance="fill" class="IDFilter">
       <mat-label>Sequence ID:</mat-label>
-        <input matInput #input>
+        <input matInput type="text" formControlName="sequenceId">
+        <mat-error *ngIf="formGroup.controls['sequenceId'].hasError('pattern')">
+        Enter a valid sequence ID
+    </mat-error>
     </mat-form-field>
     <div class = "backgroundPrefix"></div>
     <div class = "borderPrefix"></div>
     <mat-form-field appearance="fill" class="PrefixFilter">
       <mat-label>Prefix:</mat-label>
-        <input matInput>
+        <input matInput type="text" formControlName="prefix">
+        <mat-error *ngIf="formGroup.controls['prefix'].hasError('pattern')">
+        Enter a valid Prefix
+    </mat-error>
     </mat-form-field>
     <div class = "backgroundAsOrigin"></div>
     <div class = "borderAsOrigin"></div>
     <mat-form-field appearance="fill" class="AsOriginFilter">
       <mat-label>As Origin:</mat-label>
-        <input matInput>
+        <input matInput type="number">
     </mat-form-field>
     <div class = "backgroundSuffix"></div>
     <div class = "borderSuffix"></div>
     <mat-form-field appearance="fill" class="SuffixFilter">
       <mat-label>Minimum suffix length:</mat-label>
-        <input matInput>
+        <input matInput type="number">
     </mat-form-field>
     <div class = "backgroundCollectorPeerInformation"></div>
     <div class = "borderCollectorPeerInformation"></div>
@@ -47,11 +53,14 @@
       <span>You can filter by ASN or IP of the collector peer.</span>
       <mat-form-field appearance="fill" class="collectorPeerIPFilter">
         <mat-label>Collector Peer IP:</mat-label>
-        <input matInput>
+        <input matInput formControlName="collectorPeerIp">
+        <mat-error *ngIf="formGroup.controls['collectorPeerIp'].hasError('pattern')">
+        Enter a valid CollectorPeerIp
+    </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill" class="collectorPeerASnFilter">
         <mat-label>Collector Peer ASn:</mat-label>
-        <input matInput>
+        <input matInput type="number">
       </mat-form-field>
     </div>
     <div class = "backgroundDuration"></div>
@@ -63,11 +72,11 @@
       <span>You can choose the maximum and minimum duration for the sequences.</span>
       <mat-form-field appearance="fill" class="durationGreaterFilter">
         <mat-label>Duration greater or equal than (days):</mat-label>
-        <input matInput>
+        <input matInput type="number">
       </mat-form-field>
       <mat-form-field appearance="fill" class="durationSmallerFilter">
         <mat-label>Duration smaller or equal than (days):</mat-label>
-        <input matInput>
+        <input matInput type="number">
       </mat-form-field>
     </div>
     <div class = "backgroundDates"></div>
@@ -118,15 +127,15 @@
       <span>You can choose the maximum and minimum duration for the sequences.</span>
       <mat-form-field appearance="fill" class="updatesFilter">
         <mat-label>Updates:</mat-label>
-        <input matInput>
+        <input matInput type="number">
       </mat-form-field>
       <mat-form-field appearance="fill" class="withdrawsFilter">
         <mat-label>Withdraws:</mat-label>
-        <input matInput>
+        <input matInput type="number">
       </mat-form-field>
       <mat-form-field appearance="fill" class="announcesFilter">
         <mat-label>Announces:</mat-label>
-        <input matInput>
+        <input matInput type="number">
       </mat-form-field>
     </div>
    
