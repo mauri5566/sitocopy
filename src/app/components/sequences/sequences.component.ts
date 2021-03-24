@@ -32,7 +32,7 @@ export class SequencesComponent implements AfterViewInit, OnInit{
               public sequencesService: SequencesService,
               private formBuilder: FormBuilder){}
 
-  columnsToDisplay: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time'];
+  columnsToDisplay: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time', 'Fittizio'];
   dataSource = new SequencesDataSource(this.sequencesService);
   expandedElement: Sequence [] = [];
   panelOpenState = false;
@@ -54,7 +54,7 @@ export class SequencesComponent implements AfterViewInit, OnInit{
     this.paginator.page.subscribe(x => this.loadSequences());
     this.loadSequences();
     this.dataSource.length.subscribe(x => this.paginator.length = x);
-    /*fromEvent(this.input.nativeElement, 'keyup')
+    fromEvent(this.input.nativeElement, 'keyup')
     .pipe(
         debounceTime(150),
         distinctUntilChanged(),
@@ -63,7 +63,7 @@ export class SequencesComponent implements AfterViewInit, OnInit{
             this.loadSequences();
         })
     )
-    .subscribe();*/
+    .subscribe();
   }
 
   loadSequences(): void{
@@ -109,7 +109,7 @@ applyFilter(filterValue: string) {
     console.log(index);
     if (index === -1) {
         this.expandedElement.push(element);
-        this.dataSource.loadSequencesById(element.id);
+        /*this.dataSource.loadSequencesById(element.id);*/
     } else {
       this.expandedElement.splice(index, 1);
     }

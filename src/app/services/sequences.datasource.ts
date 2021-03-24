@@ -42,14 +42,14 @@ export class SequencesDataSource implements DataSource<Sequence> {
             .subscribe((sequences: PaginatedResult) => this.sequencesSubject.next(sequences.items));
     }
 
-   loadSequencesById(id: string){
+   /*loadSequencesById(id: string){
         this.loadingSubject.next(true);
 
         this.sequencesService.getSequence(id).pipe(
             finalize(() => this.loadingSubject.next(false)),
         )
-        .subscribe((sequences: PaginatedResult) => this.sequencesSubject.next(sequences.items));
-    }
+        .subscribe((sequences: ) => this.sequencesSubject.next(sequences.items));
+    }*/
 
  /*   loadRipe(resource: string){
         this.loadingSubject.next(true);

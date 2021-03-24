@@ -22,7 +22,7 @@ import { ModalAsTreeComponent } from './components/sequences/modal-as-tree/modal
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import {FlexLayoutModule} from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +54,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatProgressBarModule,
     FormsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     RouterModule.forRoot([
       { path: '', component: SequencesComponent },
     ]),

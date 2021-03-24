@@ -23,7 +23,7 @@ export class SequencesService {
 
 
 
-  getSequence(id: string): Observable<PaginatedResult> {
-      return this.http.get<PaginatedResult>('https://bgpie.net/api/sequence/' + id)
+  getSequence(id: string): Observable<Sequence> {
+      return this.http.get<Sequence>('https://bgpie.net/api/sequence/' + id);
     }
 }
