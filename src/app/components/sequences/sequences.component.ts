@@ -44,7 +44,7 @@ export class SequencesComponent implements AfterViewInit, OnInit{
   ngOnInit() {
     this.formGroup = new FormGroup({
       sequenceId: new FormControl(null, [Validators.pattern('[0-9a-fA-F]{24}')]),
-      prefix: new FormControl(null, [Validators.pattern('[a-z0-9:.]::/[0-9]{2}')]),
+      prefix: new FormControl(null, [Validators.pattern('[a-z0-9.:]{,20}((::)|.)/[0-9]{2}')]),
       collectorPeerIp: new FormControl(null, [Validators.pattern('[a-z0-9]{5,}')]),
     });
   }

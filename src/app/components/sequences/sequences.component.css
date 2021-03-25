@@ -23,11 +23,11 @@ background-color: whitesmoke;
 }
 
 .mat-toolbar button{
-  position: relative;
-  left:700px;
+  position:relative;
+  left:60vw;
   background-color: #009879;
   border: solid 0px;
-  color:white
+  color:white;
 }
 
 .tabella{
@@ -48,7 +48,7 @@ th {
   color: #ffffff;
   text-align: left;
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: calc(1em + 1vh);
 }
 .annotazione{
   position:absolute;
@@ -105,6 +105,7 @@ th {
 
 td {
     width:100%;
+    font-size: calc(0.6em + 0.5vw);
 }
 
 
@@ -324,14 +325,15 @@ tr:hover{
   padding-left: 3%;
   padding-top:0px;
   letter-spacing: 0.05em;
-  font-size: 1.5em;
+  font-size: 1.5vw;
+  white-space:nowrap;
 }
 
 .collectorPeerInformation span {
   padding-left:3%;
   padding-top:0px;
   letter-spacing: 0.05em;
-  font-size: 0.9em;
+  font-size: 0.9vw;
   white-space: nowrap;
 
 }
@@ -400,14 +402,14 @@ tr:hover{
   padding-left:3%;
   padding-top:0px;
   letter-spacing: 0.05em;
-  font-size: 1.5em;
+  font-size: 1.5vw;
 }
 
 .duration span {
   padding-left:3%;
   padding-top:0px;
   letter-spacing: 0.05em;
-  font-size: 0.9em;
+  font-size: 0.9vw;
 }
 
 .durationGreaterFilter{
@@ -474,14 +476,14 @@ tr:hover{
   padding-left:3%;
   padding-top:0px;
   letter-spacing: 0.05em;
-  font-size: 1.5em;
+  font-size: 1.5vw;
 }
 
 .dates span {
   padding-left:3%;
   padding-top:0px;
   letter-spacing: 0.05em;
-  font-size: 0.9em;
+  font-size: 0.9vw;
   white-space: nowrap;
 }
 
@@ -520,7 +522,106 @@ padding-top:10px;
     flex-direction: row;
   }
 
-@media (max-width:600px) {
+  .minimum{
+ /* position:absolute;
+  top:420px;
+  left:23.06%;*/
+  width:54%;
+  background-color: rgba(0, 152, 121, 0.25);;
+  border-radius: 5px 5px 5px 5px;
+  border-left: solid 3px #009879;
+}
+
+.borderMinimum{
+  position:absolute;
+  top:420px;
+  left:21.83%;
+  height:130px;
+  width:0.41%;
+  background-color:#009879;
+  border-radius: 5px 0 0 5px;
+}
+
+.backgroundMinimum{
+  position:absolute;
+  top:420px;
+  left:22.24%;
+  height:130px;
+  width:53.54%;
+  background-color: rgba(0, 152, 121, 0.25);;
+  border-radius: 0 5px 5px 0;
+}
+
+.minimum h1 {
+  padding-left: 3%;
+  padding-top:0px;
+  letter-spacing: 0.05em;
+  font-size: 1.5vw;
+}
+
+.minimum span {
+  padding-left:3%;
+  padding-top:0px;
+  letter-spacing: 0.05em;
+  font-size: 0.9vw;
+}
+
+.updatesFilter{
+  width:28%;
+}
+
+/*.backgroundUpdatesFilter{
+  position:absolute;
+  top:70px;
+  width:28%;
+  height:51px;
+  background-color: whitesmoke;
+  border-radius: 5px 5px 0 0;
+}*/
+
+.withdrawsFilter{
+  width:28%;
+}
+
+/*.backgroundWithdrawsFilter{
+  position:absolute;
+  top:70px;
+  width:28.23%;
+  height:51px;
+  left:34.5%;
+  background-color: whitesmoke;
+  border-radius: 5px 5px 0 0;
+}*/
+
+.announcesFilter{
+  width:28.23%;
+}
+
+/*.backgroundAnnouncesFilter{
+  position:absolute;
+  top:70px;
+  width:28.23%;
+  height:51px;
+  left:69%;
+  background-color: whitesmoke;
+  border-radius: 5px 5px 0 0;
+}*/
+
+  .flexContainer4{
+    padding-top:20px;
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+  .flexContainer5{
+    padding-top:10px;
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+@media (max-width:800px) {
   .flexContainer1{
     padding-top:20px;
     display:flex;
@@ -537,6 +638,13 @@ padding-top:10px;
 
   .flexContainer3{
     padding-top:20px;
+    display:flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .flexContainer4{
+    padding-top:10px;
     display:flex;
     justify-content: space-around;
     flex-direction: column;
@@ -570,9 +678,42 @@ padding-top:10px;
     width:90%;
   }
 
+  .collectorPeerInformation h1 {
+  padding-left: 3%;
+  padding-top:0px;
+  letter-spacing: 0.05em;
+  font-size: 1.5em;
+  white-space:nowrap;
+}
+
+.collectorPeerInformation span {
+  padding-left:3%;
+  padding-top:0px;
+  letter-spacing: 0.05em;
+  font-size: 0.9em;
+  white-space: nowrap;
+
+}
+
   .duration{
     margin-top:10px;
     width:90%;
+  }
+
+  .duration h1 {
+  padding-left: 3%;
+  padding-top:0px;
+  letter-spacing: 0.05em;
+  font-size: 1.5em;
+  white-space:nowrap;
+}
+
+  .duration span {
+  padding-left:3%;
+  padding-top:0px;
+  letter-spacing: 0.05em;
+  font-size: 0.9em;
+  white-space: nowrap;
   }
 
   .dates{
@@ -580,97 +721,43 @@ padding-top:10px;
     width:90%;
   }
 
-}
-
-
-.minimum{
-  position:absolute;
-  top:420px;
-  left:23.06%;
-  width:52.71%;
-}
-
-.borderMinimum{
-  position:absolute;
-  top:420px;
-  left:21.83%;
-  height:130px;
-  width:0.41%;
-  background-color:#009879;
-  border-radius: 5px 0 0 5px;
-}
-
-.backgroundMinimum{
-  position:absolute;
-  top:420px;
-  left:22.24%;
-  height:130px;
-  width:53.54%;
-  background-color: rgba(0, 152, 121, 0.25);;
-  border-radius: 0 5px 5px 0;
-}
-
-.minimum h1 {
-  position:absolute;
-  top:0px;
+  .dates h1 {
+  padding-left: 3%;
+  padding-top:0px;
   letter-spacing: 0.05em;
   font-size: 1.5em;
+  white-space:nowrap;
 }
 
-.minimum span {
-  position:absolute;
-  top:35px;
+  .dates span {
+  padding-left:3%;
+  padding-top:0px;
   letter-spacing: 0.05em;
   font-size: 0.9em;
+  white-space: nowrap;
+  }
+
+  .minimum{
+    margin-top:10px;
+    width:90%;
+  }
+
+  .minimum h1 {
+  padding-left: 3%;
+  padding-top:0px;
+  letter-spacing: 0.05em;
+  font-size: 1.5em;
+  white-space:nowrap;
 }
 
-.updatesFilter{
-  position:absolute;
-  top:70px;
-  width:28%;
-}
+  .minimum span {
+  padding-left:3%;
+  padding-top:0px;
+  letter-spacing: 0.05em;
+  font-size: 0.9em;
+  white-space: nowrap;
+  }
 
-.backgroundUpdatesFilter{
-  position:absolute;
-  top:70px;
-  width:28%;
-  height:51px;
-  background-color: whitesmoke;
-  border-radius: 5px 5px 0 0;
-}
-
-.withdrawsFilter{
-  position:absolute;
-  top:70px;
-  width:28%;
-  left:34.5%;
-}
-
-.backgroundWithdrawsFilter{
-  position:absolute;
-  top:70px;
-  width:28.23%;
-  height:51px;
-  left:34.5%;
-  background-color: whitesmoke;
-  border-radius: 5px 5px 0 0;
-}
-
-.announcesFilter{
-  position:absolute;
-  top:70px;
-  width:28.23%;
-  left:69%;
-}
-
-.backgroundAnnouncesFilter{
-  position:absolute;
-  top:70px;
-  width:28.23%;
-  height:51px;
-  left:69%;
-  background-color: whitesmoke;
-  border-radius: 5px 5px 0 0;
 }
 
 
@@ -708,6 +795,10 @@ tr.example-detail-row {
 /*.mat-header-cell {
   padding-right: 7vw;
 }*/
+
+.sequenceId{
+  white-space: nowrap;
+}
 
 .prefix{
   padding-right: 12vw;

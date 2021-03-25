@@ -125,12 +125,14 @@
   </div>
     <!--<div class = "backgroundMinimum"></div>
     <div class = "borderMinimum"></div>-->
+    <div class = "flexContainer4">
     <div class = "minimum">
       <div class = "backgroundUpdatesFilter"></div>
       <div class = "backgroundWithdrawsFilter"></div>
       <div class = "backgroundAnnouncesFilter"></div>
       <h1>Minimum numbers:</h1>
       <span>You can choose the maximum and minimum duration for the sequences.</span>
+      <div class = "flexContainer5">
       <mat-form-field appearance="fill" class="updatesFilter">
         <mat-label>Updates:</mat-label>
         <input matInput type="number">
@@ -143,9 +145,9 @@
         <mat-label>Announces:</mat-label>
         <input matInput type="number">
       </mat-form-field>
+      </div>
     </div>
-   
-    <div class="invisibile2">ao</div>
+    </div>
 
   </mat-expansion-panel>
  <div *ngIf="dataSource.loading$ | async">
@@ -155,7 +157,7 @@
               [dataSource]="dataSource" multiTemplateDataRows>
         <tr>
             <ng-container  matColumnDef="Sequence ID">
-              <th mat-header-cell *matHeaderCellDef> Sequence ID </th>  
+              <th mat-header-cell *matHeaderCellDef class = "sequenceId"> Sequence ID </th>  
               <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container>
 
