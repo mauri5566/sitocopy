@@ -23,12 +23,15 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { HomeComponent } from './components/home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     SequencesComponent,
     ModalChartComponent,
     ModalAsTreeComponent,
+    HomeComponent,
   ],
   entryComponents: [
     ModalChartComponent,
@@ -56,7 +59,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     ReactiveFormsModule,
     FlexLayoutModule,
     RouterModule.forRoot([
-      { path: '', component: SequencesComponent },
+      { path: '', component: HomeComponent },
+      { path: 'sequences', component: SequencesComponent}
     ]),
     BrowserAnimationsModule
   ],

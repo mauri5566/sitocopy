@@ -42,14 +42,17 @@ export class SequencesDataSource implements DataSource<Sequence> {
             .subscribe((sequences: PaginatedResult) => this.sequencesSubject.next(sequences.items));
     }
 
-   /*loadSequencesById(id: string){
+/*    loadSequencesById(id: string){
         this.loadingSubject.next(true);
 
         this.sequencesService.getSequence(id).pipe(
             finalize(() => this.loadingSubject.next(false)),
         )
-        .subscribe((sequences: ) => this.sequencesSubject.next(sequences.items));
-    }*/
+        .subscribe((sequence: Sequence) => {
+            const id = sequence.id;
+            const index = this.sequencesSubject.findIndex(seq => seq.id === id)})
+        );
+    }
 
  /*   loadRipe(resource: string){
         this.loadingSubject.next(true);
