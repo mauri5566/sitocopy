@@ -24,6 +24,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { HomeComponent } from './components/home/home.component';
+import {MatListModule} from '@angular/material/list';
+import { ListViewModule } from '@syncfusion/ej2-angular-lists';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    MatListModule,
+    ListViewModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'sequences', component: SequencesComponent}

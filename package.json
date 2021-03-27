@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.3",
-    "@angular/cdk": "^11.2.5",
+    "@angular/cdk": "^11.2.6",
     "@angular/common": "~11.2.3",
     "@angular/compiler": "~11.2.3",
     "@angular/core": "~11.2.3",
@@ -22,6 +22,7 @@
     "@angular/platform-browser": "~11.2.3",
     "@angular/platform-browser-dynamic": "~11.2.3",
     "@angular/router": "~11.2.3",
+    "@syncfusion/ej2-angular-lists": "^18.4.39",
     "angular-in-memory-web-api": "^0.11.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
