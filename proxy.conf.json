@@ -1,0 +1,10 @@
+{
+    " http://localhost:4200/api": {
+        "target": "https://bgpie.net/api/rrc/00",
+       "secure": true,
+       "changeOrigin": true,
+       "pathRewrite": {
+        "^/api": ""
+	}
+}
+}

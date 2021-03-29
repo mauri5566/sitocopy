@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeData } from '../../model/homeData';
+import { HttpClient } from '@angular/common/http';
+import { HomeService } from 'src/app/services/home.service';
 
 const  elements: HomeData[] = [{
     aSes: 25494,
@@ -17,8 +19,8 @@ const  elements: HomeData[] = [{
     prefixv6: 174522,
     sequences: 434790,
     withdraws: 368546514,
-  }
-];
+  }]
+;
 
 @Component({
   selector: 'app-home',
@@ -26,10 +28,13 @@ const  elements: HomeData[] = [{
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  elements: HomeData[] = elements;
-  constructor() { }
+  /*elements!: HomeData;*/
+  elements = elements;
+  constructor(private homeService: HomeService) {
+   }
 
   ngOnInit(): void {
+    /*this.homeService.getData().subscribe((data: HomeData) => {this.elements = data; });*/
   }
 
 

@@ -20,21 +20,45 @@
       <a href="https://twitter.com/masuwa1018" class="btn effect01" target="_blank"><span>List of the involved cps</span></a>
   </div>
 </div>
-
-<ul>
-  <li *ngFor = "let element of elements">
-    Total number of Sequences: <b>{{element.sequences}}</b>
-    <br>Distinct Prefixes involved in Sequences: <b>{{element.prefixes}}</b>
-    <br>BGP Updates involved in Sequences: /// (Announces: <b>{{element.announces}}</b>, Withdrawals: <b>{{element.withdraws}}</b>)
-    <br>Total number of BGP Updates collected by RRC00 in 2019: /// (Announces: ///, Withdraws: ///)
-    <br>Percentage of BGP Updates belonging to Sequences: /// (Announces: ///, Withdrawals: ///)
-    <br>Distinct Collctor Peers (CPs) that observed at least a Sequences: <b>{{element.cPs}}</b>
-    <br>Distinct ASes originating the prefexes involved in the Sequences: <b>{{element.aSes}}</b>
-    <br>Number of AB-BA Sequences (whose AS-path contains pattern xAyBz and x'By'Az'): <b>{{element.containsLoops}}</b>
-    <br>Sequences that are originated by an IPv4 Prefix: <b>{{element.prefixv4}}</b>
-    <br>Sequences that are originated by an IPv6 Prefix: <b>{{element.prefixv6}}</b>
-  </li>
+<div class="backgroundLista"></div>
+<div class="lista">
+<ul *ngFor = "let element of elements">
+  <li>Total number of Sequences: <b>{{element.sequences}}</b></li>
+    <li><a href="#"></a>Distinct Prefixes involved in Sequences: <b>{{element.prefixes}}</b></li>
+    <li><a href="#"></a>BGP Updates involved in Sequences: /// (Announces: <b>{{element.announces}}</b>, Withdrawals: <b>{{element.withdraws}}</b>)</li>
+    <li><a href="#"></a>Total number of BGP Updates collected by RRC00 in 2019: /// (Announces: ///, Withdraws: ///)</li>
+    <li><a href="#"></a>Percentage of BGP Updates belonging to Sequences: /// (Announces: ///, Withdrawals: ///)</li>
+    <li><a href="#"></a>Distinct Collctor Peers (CPs) that observed at least a Sequences: <b>{{element.cPs}}</b></li>
+    <li><a href="#"></a>Distinct ASes originating the prefexes involved in the Sequences: <b>{{element.aSes}}</b></li>
+    <li><a href="#"></a>Number of AB-BA Sequences (whose AS-path contains pattern xAyBz and x'By'Az'): <b>{{element.containingLoops}}</b></li>
+    <li><a href="#"></a>Sequences that are originated by an IPv4 Prefix: <b>{{element.prefixv4}}</b></li>
+    <li><a href="#"></a>Sequences that are originated by an IPv6 Prefix: <b>{{element.prefixv6}}</b></li>
+    <li><a href="#"></a>Sequences whose prefix is announced by more than one AS: <b>{{element.moreThanOneAsOrigin}}</b></li>
+    <li><a href="#"></a>Sequences that contain at least one announcement with the BGP Path Attribute Aggregator set: <b>{{element.containsAggregator}}</b></li>
+    <li><a href="#"></a>Sequences that contain at least two announcement with different values of the BGP Path Attribute Aggregator: <b>{{element.aggregatorChanges}}</b></li>
+    <li><a href="#"></a>Sequences originated by a known beacon prefix: <b>{{element.beaconSequences}}</b></li>
+    <li><a href="#"></a>BGP Updates originated by a known beacon prefix: <b>{{element.beaconAnnouncements + element.beaconWithdrawals}}</b> (Announcements: {{element.beaconAnnouncements}}, Withdrawals: {{element.beaconWithdrawals}})</li>
+    <li><a href="#"></a>Percentage of BGP Updates originated by a known beacon prefix: /// (Announcements: ///, Withdrawals: ///)</li>
 </ul>
-
-
+</div>
+<div class = "buttons2">
+  <div class="container2">
+      <a href="https://twitter.com/masuwa1018" class="btn effect02" target="_blank"><span>Duration cdf</span></a>
+  </div>
+  <div class="container3">
+      <a href="https://twitter.com/masuwa1018" class="btn effect02" target="_blank"><span>As path number cdf</span></a>
+  </div>
+  <div class="container4">
+      <a href="https://twitter.com/masuwa1018" class="btn effect02" target="_blank"><span>Prefix distribution cdf</span></a>
+  </div>
+  <div class="container5">
+      <a href="https://twitter.com/masuwa1018" class="btn effect02" target="_blank"><span>Updates per sequence cdf</span></a>
+  </div>
+  <div class="container6">
+      <a href="https://twitter.com/masuwa1018" class="btn effect02" target="_blank"><span>Number of updates per cp</span></a>
+  </div>
+  <div class="container7">
+      <a href="https://twitter.com/masuwa1018" class="btn effect02" target="_blank"><span>Number of sequences per cp</span></a>
+  </div>
+</div>
 
