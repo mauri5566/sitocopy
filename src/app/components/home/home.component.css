@@ -1,5 +1,6 @@
 html {
   background-image: url(../../../assets/images/bianco.jpg);
+  position:relative;
   overflow: hidden;
   background-size: cover;
   width: 100%;
@@ -34,8 +35,8 @@ html {
 .backgroundLista{
   position:absolute;
   top:260px;
-  left:4vw;
-  width:65vw;
+  left:2vw;
+  width:70vw;
   height:465px;
   background-color: rgba(0, 152, 121, 0.25);;
   filter:blur(30px);
@@ -44,8 +45,8 @@ html {
 .lista{
   position:absolute;
   top:270px;
-  left:5vw;
-  width: 64vw;
+  left:2vw;
+  width: 70vw;
 
 }
 
@@ -109,7 +110,7 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 17vw;
+  width: 19vw;
 }
 
 .container3 {
@@ -123,7 +124,7 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 17vw;
+  width: 19vw;
 }
 
 .container4 {
@@ -137,7 +138,7 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 17vw;
+  width: 19vw;
 }
 
 .container5 {
@@ -151,7 +152,7 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 17vw;
+  width: 19vw;
 }
 
 .container6 {
@@ -165,7 +166,7 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 17vw;
+  width: 19vw;
 }
 
 .container7 {
@@ -179,11 +180,69 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 17vw;
+  width: 19vw;
+}
+
+.buttons3{
+  position:absolute;
+  top:760px;
+  width:100vw;
+}
+
+.container8 {
+  position:absolute;
+  left:2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  vertical-align:center;
+  background-color: #FFF;
+  height:45px;
+  width: 22vw;
+}
+
+.container9 {
+  position:absolute;
+  left:25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  vertical-align:center;
+  background-color: #FFF;
+  height:45px;
+  width: 22vw;
+}
+
+.container10 {
+  position:absolute;
+  left:71%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  vertical-align:center;
+  background-color: #FFF;
+  height:45px;
+  width: 26vw;
+}
+
+.container11 {
+  position:absolute;
+  left:48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  vertical-align:center;
+  background-color: #FFF;
+  height:45px;
+  width: 22vw;
 }
   .effect02 {
   color: white;
-  border: 1px solid #000;
+  border: 0px solid #000;
   border-radius: 5px 5px 5px 5px;
   box-shadow:0px 0px 0px 1px #000 inset;
   overflow:hidden;
@@ -246,31 +305,44 @@ transition: all 0.3s ease-in-out;
   .container2{
     position: absolute;
     left:2vw;
-    top:50px
+    top:50px;
+    width:20vw;
   }
 
   .container3{
     position:absolute;
-    left:21vw;
+    left:26vw;
     top:50px;
+    width:20vw;
   }
 
   .container4{
     position:absolute;
     left:40vw;
     top:50px;
+    width:20vw;
+    left:50vw;
   }
 
   .container5{
     position:absolute;
-    left:59vw;
+    left:74vw;
     top:50px;
+    width:20vw;
   }
 
   .container6{
     position:absolute;
-    left:78vw;
-    top:50px;
+    left:2vw;
+    top:110px;
+    width:20vw;
+  }
+
+  .container7{
+    position:absolute;
+    left:26vw;
+    top:110px;
+    width:20vw;
   }
 
   .lista{
@@ -278,6 +350,12 @@ transition: all 0.3s ease-in-out;
   top:300px;
   left:5vw;
   width: 90vw;
+  }
+
+  .buttons3{
+    position:absolute;
+    top:820px;
+    width:100%;
   }
 
   .backgroundLista{
@@ -358,7 +436,7 @@ p {
 /*btn_background*/
 .effect01 {
   color: white;
-  border: 1px solid #000;
+  border: 0px solid #000;
   border-radius: 5px 5px 5px 5px;
   box-shadow:0px 0px 0px 1px #000 inset;
   background: linear-gradient(56deg, rgba(254, 254, 254, 0.05) 0%, rgba(254, 254, 254, 0.05) 69%,rgba(160, 160, 160, 0.05) 69%, rgba(160, 160, 160, 0.05) 100%),linear-gradient(194deg, rgba(102, 102, 102, 0.02) 0%, rgba(102, 102, 102, 0.02) 60%,rgba(67, 67, 67, 0.02) 60%, rgba(67, 67, 67, 0.02) 100%),linear-gradient(76deg, rgba(169, 169, 169, 0.06) 0%, rgba(169, 169, 169, 0.06) 89%,rgba(189, 189, 189, 0.06) 89%, rgba(189, 189, 189, 0.06) 100%),linear-gradient(326deg, rgba(213, 213, 213, 0.04) 0%, rgba(213, 213, 213, 0.04) 45%,rgba(66, 66, 66, 0.04) 45%, rgba(66, 66, 66, 0.04) 100%),linear-gradient(183deg, rgba(223, 223, 223, 0.01) 0%, rgba(223, 223, 223, 0.01) 82%,rgba(28, 28, 28, 0.01) 82%, rgba(28, 28, 28, 0.01) 100%),linear-gradient(3deg, rgba(20, 20, 20, 0.06) 0%, rgba(20, 20, 20, 0.06) 62%,rgba(136, 136, 136, 0.06) 62%, rgba(136, 136, 136, 0.06) 100%),linear-gradient(200deg, rgba(206, 206, 206, 0.09) 0%, rgba(206, 206, 206, 0.09) 58%,rgba(6, 6, 6, 0.09) 58%, rgba(6, 6, 6, 0.09) 100%),linear-gradient(304deg, rgba(162, 162, 162, 0.07) 0%, rgba(162, 162, 162, 0.07) 27%,rgba(24, 24, 24, 0.07) 27%, rgba(24, 24, 24, 0.07) 100%),linear-gradient(186deg, rgba(166, 166, 166, 0.04) 0%, rgba(166, 166, 166, 0.04) 5%,rgba(210, 210, 210, 0.04) 5%, rgba(210, 210, 210, 0.04) 100%),linear-gradient(90deg, rgb(26, 118, 64),rgb(32, 207, 121),rgb(78, 196, 128));
