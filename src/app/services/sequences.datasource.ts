@@ -10,6 +10,7 @@ import {PaginatedResult} from '../model/paginatedResult';
 import {tap} from 'rxjs/operators';
 import {RipeService} from './ripe.service';
 import { Ripe } from '../model/ripe';
+import { sequence } from '@angular/animations';
 
 export class SequencesDataSource implements DataSource<Sequence> {
 
@@ -39,22 +40,40 @@ export class SequencesDataSource implements DataSource<Sequence> {
                 finalize(() => this.loadingSubject.next(false)),
                 tap(x => this.length.next(x.total))
             )
-            .subscribe((sequences: PaginatedResult) => this.sequencesSubject.next(sequences.items));
+            .subscribe((sequences: PaginatedResult) => {
+            /*for (var sequence of sequences.items) {
+                sequence.ripe.data.announced = false;
+            }*/
+            this.sequencesSubject.next(sequences.items);
+        });
     }
 
-/*    loadSequencesById(id: string){
+    loadSequencesById(oldSequence: Sequence){
         this.loadingSubject.next(true);
 
-        this.sequencesService.getSequence(id).pipe(
+        this.sequencesService.getSequence(oldSequence.id).pipe(
             finalize(() => this.loadingSubject.next(false)),
         )
-        .subscribe((sequence: Sequence) => {
-            const id = sequence.id;
-            const index = this.sequencesSubject.findIndex(seq => seq.id === id)})
-        );
-    }
+        .subscribe((newSequence: Sequence) => {
+            oldSequence.updates = newSequence.updates;
+            oldSequence.announces = newSequence.announces;
+            oldSequence.withdraws = newSequence.withdraws;
+            oldSequence.asOrigins = newSequence.asOrigins;
+            oldSequence.asPathNumber = newSequence.asPathNumber;
+            oldSequence.longestCommonAsPathSuffix = newSequence.longestCommonAsPathSuffix;
+            oldSequence.hasAggregator = newSequence.hasAggregator;
+            oldSequence.mostFrequentUpdateFrequency = newSequence.mostFrequentUpdateFrequency;
+            oldSequence.mostFrequentUpdateFrequencyInMin = newSequence.mostFrequentUpdateFrequencyInMin;
+            oldSequence.duration = newSequence.duration;
+            oldSequence.frequency = newSequence.frequency;
+            oldSequence.runID = newSequence.runID;
+    });
+        this.sequencesService.getRipe(oldSequence.prefix).subscribe((newSequence: Sequence) => {
+        oldSequence.ripe.data.announced = newSequence.ripe.data.announced;
+    });
+}
 
- /*   loadRipe(resource: string){
+ /*   loadRipe(resour){
         this.loadingSubject.next(true);
 
         this.ripeService.getRipe(resource).pipe(

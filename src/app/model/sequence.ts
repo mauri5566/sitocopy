@@ -25,5 +25,5 @@ export interface Sequence{
   updates: number;
   duration: string;
   frequency: number;
-  readonly ripe: Ripe[];
+  readonly ripe: Ripe;
 }

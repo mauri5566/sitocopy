@@ -26,6 +26,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { HomeComponent } from './components/home/home.component';
 import {MatListModule} from '@angular/material/list';
 import { ListViewModule } from '@syncfusion/ej2-angular-lists';
+import { FormComponent } from './components/sequences/form/form.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { ListViewModule } from '@syncfusion/ej2-angular-lists';
     ModalChartComponent,
     ModalAsTreeComponent,
     HomeComponent,
+    FormComponent,
   ],
   entryComponents: [
     ModalChartComponent,

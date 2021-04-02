@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, state, style, transition, trigger, sequence} from '@angular/animations';
 import {SequencesService} from '../../services/sequences.service';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
@@ -108,17 +108,13 @@ applyFilter(filterValue: string) {
     const index = this.expandedElement.indexOf(element);
     console.log(index);
     if (index === -1) {
-        this.expandedElement.push(element);
-        /*this.dataSource.loadSequencesById(element.id);*/
+      this.dataSource.loadSequencesById(element);
+      this.expandedElement.push(element);
     } else {
       this.expandedElement.splice(index, 1);
     }
   }
 
-  // tslint:disable-next-line: typedef
-  togglePanel() {
-    this.panelOpenState = !this.panelOpenState;
-}
 }
 
 
