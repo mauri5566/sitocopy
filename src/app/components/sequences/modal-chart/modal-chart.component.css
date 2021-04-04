@@ -15,8 +15,8 @@
 }
 
 .icona{
-	position:relative;
-	left:78%;
+	position:absolute;
+	left:82%;
 	background-color: rgb(54,71,225);
 	color:white;
 	border: none;

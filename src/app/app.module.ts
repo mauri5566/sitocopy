@@ -27,6 +27,16 @@ import { HomeComponent } from './components/home/home.component';
 import {MatListModule} from '@angular/material/list';
 import { ListViewModule } from '@syncfusion/ej2-angular-lists';
 import { FormComponent } from './components/sequences/form/form.component';
+import { ModalDurationCdfComponent } from './components/home/modal-duration-cdf/modal-duration-cdf.component';
+import { ModalAsPathNumberCdfComponent } from './components/home/modal-as-path-number-cdf/modal-as-path-number-cdf.component';
+import { ModalPrefixDistributionCdfComponent } from './components/home/modal-prefix-distribution-cdf/modal-prefix-distribution-cdf.component';
+import { ModalUpdatesPerSequenceCdfComponent } from './components/home/modal-updates-per-sequence-cdf/modal-updates-per-sequence-cdf.component';
+import { ModalNumberUpdatesCpComponent } from './components/home/modal-number-updates-cp/modal-number-updates-cp.component';
+import { ModalNumberSequencesCpComponent } from './components/home/modal-number-sequences-cp/modal-number-sequences-cp.component';
+import { ModalMostFrequentUpdateComponent } from './components/home/modal-most-frequent-update/modal-most-frequent-update.component';
+import { ModalLongestSuffixComponent } from './components/home/modal-longest-suffix/modal-longest-suffix.component';
+import { ModalFrequencyUpdateComponent } from './components/home/modal-frequency-update/modal-frequency-update.component';
+import { ModalPercentageUnstablePrefixesComponent } from './components/home/modal-percentage-unstable-prefixes/modal-percentage-unstable-prefixes.component';
 
 
 @NgModule({
@@ -35,12 +45,33 @@ import { FormComponent } from './components/sequences/form/form.component';
     SequencesComponent,
     ModalChartComponent,
     ModalAsTreeComponent,
+    ModalDurationCdfComponent,
     HomeComponent,
     FormComponent,
+    ModalDurationCdfComponent,
+    ModalAsPathNumberCdfComponent,
+    ModalPrefixDistributionCdfComponent,
+    ModalUpdatesPerSequenceCdfComponent,
+    ModalNumberUpdatesCpComponent,
+    ModalNumberSequencesCpComponent,
+    ModalMostFrequentUpdateComponent,
+    ModalLongestSuffixComponent,
+    ModalFrequencyUpdateComponent,
+    ModalPercentageUnstablePrefixesComponent,
   ],
   entryComponents: [
     ModalChartComponent,
     ModalAsTreeComponent,
+    ModalDurationCdfComponent,
+    ModalAsPathNumberCdfComponent,
+    ModalPrefixDistributionCdfComponent,
+    ModalUpdatesPerSequenceCdfComponent,
+    ModalNumberUpdatesCpComponent,
+    ModalNumberSequencesCpComponent,
+    ModalMostFrequentUpdateComponent,
+    ModalLongestSuffixComponent,
+    ModalFrequencyUpdateComponent,
+    ModalPercentageUnstablePrefixesComponent
   ],
   imports: [
     BrowserModule,

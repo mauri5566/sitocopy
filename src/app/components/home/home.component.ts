@@ -2,6 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { HomeData } from '../../model/homeData';
 import { HttpClient } from '@angular/common/http';
 import { HomeService } from 'src/app/services/home.service';
+import { ModalDurationCdfComponent } from './modal-duration-cdf/modal-duration-cdf.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalAsPathNumberCdfComponent } from './modal-as-path-number-cdf/modal-as-path-number-cdf.component';
+import { ModalPrefixDistributionCdfComponent } from './modal-prefix-distribution-cdf/modal-prefix-distribution-cdf.component';
+import { ModalUpdatesPerSequenceCdfComponent } from './modal-updates-per-sequence-cdf/modal-updates-per-sequence-cdf.component';
+import { ModalNumberUpdatesCpComponent } from './modal-number-updates-cp/modal-number-updates-cp.component';
+import { ModalNumberSequencesCpComponent } from './modal-number-sequences-cp/modal-number-sequences-cp.component';
+import { ModalMostFrequentUpdateComponent } from './modal-most-frequent-update/modal-most-frequent-update.component';
+import { ModalLongestSuffixComponent } from './modal-longest-suffix/modal-longest-suffix.component';
+import { ModalFrequencyUpdateComponent } from './modal-frequency-update/modal-frequency-update.component';
+import { ModalPercentageUnstablePrefixesComponent } from './modal-percentage-unstable-prefixes/modal-percentage-unstable-prefixes.component';
 
 const  elements: HomeData[] = [{
     aSes: 25494,
@@ -30,7 +41,8 @@ const  elements: HomeData[] = [{
 export class HomeComponent implements OnInit {
   /*elements!: HomeData;*/
   elements = elements;
-  constructor(private homeService: HomeService) {
+  constructor(private homeService: HomeService,
+              public dialog: MatDialog) {
    }
 
   ngOnInit(): void {
@@ -38,5 +50,73 @@ export class HomeComponent implements OnInit {
   }
 
 
+  openDialog(){
+    this.dialog.open(ModalDurationCdfComponent, {
+      width: '100%',
+      height: '640px'
+    });
+  }
 
+  openDialog2(){
+    this.dialog.open(ModalAsPathNumberCdfComponent, {
+      width: '100%',
+      height: '640px'
+    });
+  }
+
+  openDialog3(){
+    this.dialog.open(ModalPrefixDistributionCdfComponent, {
+      width: '100%',
+      height: '640px'
+    });
+  }
+
+  openDialog4(){
+    this.dialog.open(ModalUpdatesPerSequenceCdfComponent, {
+      width: '100%',
+      height: '640px'
+    });
+  }
+
+  openDialog5(){
+    this.dialog.open(ModalNumberUpdatesCpComponent, {
+      width: '100%',
+      height: '640px'
+    });
+  }
+
+  openDialog6(){
+    this.dialog.open(ModalNumberSequencesCpComponent, {
+      width: '100%',
+      height: '640px'
+    });
+  }
+
+  openDialog7(){
+    this.dialog.open(ModalMostFrequentUpdateComponent, {
+      width: '100%',
+      height: '640px'
+    });
+  }
+
+  openDialog8(){
+    this.dialog.open(ModalLongestSuffixComponent, {
+      width: '100%',
+      height: '640px'
+    });
+  }
+
+  openDialog9(){
+    this.dialog.open(ModalFrequencyUpdateComponent, {
+      width: '100%',
+      height: '640px'
+    });
+  }
+
+  openDialog10(){
+    this.dialog.open(ModalPercentageUnstablePrefixesComponent, {
+      width: '100%',
+      height: '640px'
+    });
+  }
 }

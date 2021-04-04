@@ -43,8 +43,8 @@ html {
 
 }
 .lista{
-  position:absolute;
-  top:270px;
+  position:relative;
+  top:50px;
   left:2vw;
   width: 70vw;
 
@@ -60,7 +60,7 @@ ul {
 li {
   font: Helvetica, Verdana, sans-serif;
   line-height: 1.5;
-  font-size: calc(1em +0.2vw);
+  font-size: calc(1em + 0.2vw);
   font-weight: 200;
   border-bottom: 1px solid #ccc;
   transition: font-size 0.5s;
@@ -88,7 +88,7 @@ li a:hover {
 }*/
 
 li:hover{
-  font-size: 1.4em
+  font-size: calc(0.9em + 0.35vw);
 }
 
 .buttons2{
@@ -109,7 +109,7 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 19vw;
+  width: 22vw;
 }
 
 .container3 {
@@ -123,7 +123,7 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 19vw;
+  width: 22vw;
 }
 
 .container4 {
@@ -137,7 +137,7 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 19vw;
+  width: 22vw;
 }
 
 .container5 {
@@ -151,7 +151,7 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 19vw;
+  width: 22vw;
 }
 
 .container6 {
@@ -165,7 +165,7 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 19vw;
+  width: 22vw;
 }
 
 .container7 {
@@ -179,12 +179,12 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 19vw;
+  width: 22vw;
 }
 
 .buttons3{
-  position:absolute;
-  top:760px;
+  position: relative;
+  top:120px;
   width:100vw;
   height:100px;
 }
@@ -199,12 +199,13 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 22vw;
+  width: 46vw;
+  top:0px;
 }
 
 .container9 {
   position:absolute;
-  left:25%;
+  left:52vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -212,12 +213,12 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 22vw;
+  width: 46vw;
 }
 
 .container10 {
   position:absolute;
-  left:71%;
+  left:2vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -225,12 +226,13 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 26vw;
+  width: 46vw;
+  top:60px;
 }
 
 .container11 {
   position:absolute;
-  left:48%;
+  left:52vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -238,7 +240,8 @@ li:hover{
   vertical-align:center;
   background-color: #FFF;
   height:45px;
-  width: 22vw;
+  width: 46vw;
+  top:60px
 }
   .effect02 {
   color: white;
@@ -340,8 +343,7 @@ transition: all 0.3s ease-in-out;
 
 
 
-
-@media(max-width:800px){
+@media(max-width:1100px){
   
   .buttons {
     position:relative;
@@ -492,7 +494,7 @@ p {
 .btn {
   letter-spacing: 0.1em;
   cursor: pointer;
-  font-size: calc(0.2em + 0.8vw);
+  font-size: calc(0.8em + 0.2vw);
   font-weight: 500;
   line-height: 45px;
   max-width: 100vw;
@@ -501,6 +503,8 @@ p {
   text-transform: uppercase;
   width: 100%;
   height:100%;
+  white-space: normal;
+
 }
 .btn:hover {
   text-decoration: none;
@@ -557,4 +561,10 @@ p {
   -webkit-transform: rotate(40deg);
           transform: rotate(40deg);
 }*/
+
+.invisibile{
+  width:0px;
+  height:0px;
+  padding-top:200px;
+}
 
