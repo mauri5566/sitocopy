@@ -23,8 +23,8 @@ background-color: whitesmoke;
 }
 
 .mat-toolbar button{
-  position:relative;
-  left:60vw;
+  position:absolute;
+  left:87vw;
   background-color: #009879;
   border: solid 0px;
   color:white;
@@ -105,7 +105,7 @@ th {
 
 td {
     width:100%;
-    font-size: calc(0.6em + 0.5vw);
+    font-size: calc(0.9em + 0.2vw);
 }
 
 

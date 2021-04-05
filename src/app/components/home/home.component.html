@@ -22,11 +22,11 @@
 </div>
 <div class="backgroundLista"></div>
 <div class="lista">
-<ul *ngFor = "let element of elements">
+<ul>
   <li>Total number of Sequences: <b>{{element.sequences}}</b></li>
     <li><a href="#"></a>Distinct Prefixes involved in Sequences: <b>{{element.prefixes}}</b></li>
     <li><a href="#"></a>BGP Updates involved in Sequences: /// (Announces: <b>{{element.announces}}</b>, Withdrawals: <b>{{element.withdraws}}</b>)</li>
-    <li><a href="#"></a>Total number of BGP Updates collected by RRC00 in 2019: /// (Announces: ///, Withdraws: ///)</li>
+    <li><a href="#"></a>Total number of BGP Updates collected by RRC00 in 2019: <b>{{element2.updates}}</b> (Announces: <b>{{element2.announces}}</b>, Withdraws: <b>{{element2.withdraws}}</b>)</li>
     <li><a href="#"></a>Percentage of BGP Updates belonging to Sequences: /// (Announces: ///, Withdrawals: ///)</li>
     <li><a href="#"></a>Distinct Collector Peers (CPs) that observed at least a Sequences: <b>{{element.cPs}}</b></li>
     <li><a href="#"></a>Distinct ASes originating the prefixes involved in the Sequences: <b>{{element.aSes}}</b></li>

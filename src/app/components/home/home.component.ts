@@ -13,6 +13,7 @@ import { ModalMostFrequentUpdateComponent } from './modal-most-frequent-update/m
 import { ModalLongestSuffixComponent } from './modal-longest-suffix/modal-longest-suffix.component';
 import { ModalFrequencyUpdateComponent } from './modal-frequency-update/modal-frequency-update.component';
 import { ModalPercentageUnstablePrefixesComponent } from './modal-percentage-unstable-prefixes/modal-percentage-unstable-prefixes.component';
+import { HomeData2 } from 'src/app/model/homedata2';
 
 const  elements: HomeData[] = [{
     aSes: 25494,
@@ -39,14 +40,16 @@ const  elements: HomeData[] = [{
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  /*elements!: HomeData;*/
-  elements = elements;
+  element!: HomeData;
+  element2!: HomeData2;
+  /*elements = elements;*/
   constructor(private homeService: HomeService,
               public dialog: MatDialog) {
    }
 
   ngOnInit(): void {
-    /*this.homeService.getData().subscribe((data: HomeData) => {this.elements = data; });*/
+    this.homeService.getData().subscribe((data: HomeData) => {this.element = data; });
+    this.homeService.getData2().subscribe((data2: HomeData2) => {this.element2 = data2; });
   }
 
 
