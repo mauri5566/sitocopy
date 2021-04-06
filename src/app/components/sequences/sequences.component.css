@@ -874,12 +874,14 @@ tr:last-of-type{
   position: absolute;
   top: 68px;
   left: 1%;
-  padding-bottom: 20px
+  padding-bottom: 20px;
+  width:25vw;
 }
 
 .primoBlocco ul{
   padding-left: 13%;
 }
+
 
 .secondoBlocco{
   position:absolute;

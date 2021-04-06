@@ -30,7 +30,7 @@ export class SequencesService {
       return this.http.get<Sequence>('https://bgpie.net/api/sequence/' + id);
     }
 
-  getRipe(prefix: string): Observable<Sequence> {
-    return this.http.get<Sequence>('https://stat.ripe.net/data/prefix-overview/data.json?resource=' + prefix);
+  getRipe(prefix: string): Observable<Ripe> {
+    return this.http.get<Ripe>('https://stat.ripe.net/data/prefix-overview/data.json?resource=' + prefix);
   }
 }

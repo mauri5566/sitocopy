@@ -12,6 +12,7 @@ import {ElementRef} from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { Ripe } from 'src/app/model/ripe';
 
 @Component({
   selector: 'app-sequences',
@@ -37,6 +38,36 @@ export class SequencesComponent implements AfterViewInit, OnInit{
   expandedElement: Sequence [] = [];
   panelOpenState = false;
   formGroup!: FormGroup;
+  elementRipe: Ripe[] = [{
+    version: '',
+    data_call_status: '',
+    cached: true,
+	  data: {
+		  is_less_specific: true,
+		  announced: false,
+		  asns: [{
+        asn: 1,
+				holder: 'ao'}],
+		  related_prefixes: [],
+		  resource: '',
+		  type: '',
+		  block: {
+			  resource: '',
+			  desc: '',
+			  name: '',
+		},
+		actual_num_related: 1,
+		query_time: '',
+		num_filtered_out: 1,
+	},
+	  query_id: '',
+    process_time: 1,
+    server_id: '',
+    build_version: '',
+    status: '',
+    status_code: 1,
+    time: '',
+}];
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 @ViewChild('input') input!: ElementRef;
@@ -54,7 +85,7 @@ export class SequencesComponent implements AfterViewInit, OnInit{
     this.paginator.page.subscribe(x => this.loadSequences());
     this.loadSequences();
     this.dataSource.length.subscribe(x => this.paginator.length = x);
-    fromEvent(this.input.nativeElement, 'keyup')
+    /*fromEvent(this.input.nativeElement, 'keyup')
     .pipe(
         debounceTime(150),
         distinctUntilChanged(),
@@ -63,7 +94,7 @@ export class SequencesComponent implements AfterViewInit, OnInit{
             this.loadSequences();
         })
     )
-    .subscribe();
+    .subscribe();*/
   }
 
   loadSequences(): void{
@@ -109,6 +140,7 @@ applyFilter(filterValue: string) {
     console.log(index);
     if (index === -1) {
       this.dataSource.loadSequencesById(element);
+      this.sequencesService.getRipe(element.prefix).subscribe((ripe: Ripe) => this.elementRipe[element.asOrigins] = ripe);
       this.expandedElement.push(element);
     } else {
       this.expandedElement.splice(index, 1);

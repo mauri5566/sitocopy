@@ -30,6 +30,13 @@ html {
   padding: 0;
 }
 
+.box{
+  width:96vw;
+  padding-left:2vw;
+  padding-right: 2vw;
+  font-size:1.15em;
+}
+
 @import "compass/css3";
 
 .backgroundLista{
@@ -345,6 +352,19 @@ transition: all 0.3s ease-in-out;
 
 @media(max-width:1100px){
   
+  li {
+  font: Helvetica, Verdana, sans-serif;
+  line-height: 1.5;
+  font-size: 1.2em;
+  font-weight: 200;
+  border-bottom: 1px solid #ccc;
+  transition: font-size 0.5s;
+}
+
+li:hover{
+  font-size: 1.25em;
+}
+
   .buttons {
     position:relative;
     top:30px;

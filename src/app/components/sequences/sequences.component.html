@@ -55,11 +55,11 @@
                 <div class = "background1"></div>
                 <div class = "primoBlocco">
                   Resource: <b>{{element.id}}</b>
-                  <br>Announced: <b></b>
+                  <br>Announced: <b>{{elementRipe[element.asOrigins]?.data.announced}}</b>
                   <br>AS Origin(s):
                   <ul>
                     <li>ASn: <b>{{element.asOrigins}}</b></li>
-                    <li>Holder:</li>
+                    <li class="boxHolder">Holder: <b>{{elementRipe[element.asOrigins]?.data.asns[0]?.holder}}</b></li>
                     <li><a href="https://www.google.com/">Open</a></li>
                   </ul>
                   <br><a href="https://www.google.com/">Open</a>

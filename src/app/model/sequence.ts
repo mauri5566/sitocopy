@@ -13,7 +13,7 @@ export interface Sequence{
   runID: string;
   longestCommonAsPathSuffix: number;
   asPathNumber: number;
-  asOrigins: [number];
+  asOrigins: number;
   hasAggregator: boolean;
   containsLoops: boolean;
   containsAsPathLoops: boolean;
