@@ -14,8 +14,9 @@ import { ModalLongestSuffixComponent } from './modal-longest-suffix/modal-longes
 import { ModalFrequencyUpdateComponent } from './modal-frequency-update/modal-frequency-update.component';
 import { ModalPercentageUnstablePrefixesComponent } from './modal-percentage-unstable-prefixes/modal-percentage-unstable-prefixes.component';
 import { HomeData2 } from 'src/app/model/homedata2';
+import { RouteConfigLoadEnd } from '@angular/router';
 
-const  elements: HomeData[] = [{
+/*const  elements: HomeData[] = [{
     aSes: 25494,
     aggregatorChanges: 23739,
     announces: 7946086559,
@@ -32,7 +33,7 @@ const  elements: HomeData[] = [{
     sequences: 434790,
     withdraws: 368546514,
   }]
-;
+;*/
 
 @Component({
   selector: 'app-home',
@@ -52,6 +53,14 @@ export class HomeComponent implements OnInit {
     this.homeService.getData2().subscribe((data2: HomeData2) => {this.element2 = data2; });
   }
 
+  sum(n1: number, n2: number): number{
+    return n1 + n2;
+  }
+
+  percentage(total: number, element: number){
+    let result = (element/total)*100;
+    return result.toFixed(2);
+  }
 
   openDialog(){
     this.dialog.open(ModalDurationCdfComponent, {

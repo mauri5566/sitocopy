@@ -105,7 +105,7 @@ th {
 
 td {
     width:100%;
-    font-size: calc(0.9em + 0.2vw);
+    font-size: 1.1em;
 }
 
 
@@ -747,7 +747,6 @@ padding-top:10px;
   padding-top:0px;
   letter-spacing: 0.05em;
   font-size: 1.5em;
-  white-space:nowrap;
 }
 
   .minimum span {
@@ -755,7 +754,6 @@ padding-top:10px;
   padding-top:0px;
   letter-spacing: 0.05em;
   font-size: 0.9em;
-  white-space: nowrap;
   }
 
 }
@@ -829,6 +827,67 @@ tr.example-detail-row {
 .endTime2{
   white-space:nowrap;
 }
+
+@media(max-width:1200px){
+  .startTime{
+    padding-right: 0vw;
+    font-size: 0px;
+  }
+
+  .startTime2{
+    font-size:0px;
+  }
+
+  .endTime{
+    padding-right:0vw;
+    font-size:0px;
+  }
+
+  .endTime2{
+    font-size:0px;
+  }
+
+  .rrc{
+    padding-right:1vw;
+  }
+  .prefix{
+    padding-right:20vw;
+  }
+}
+
+@media(max-width:1100px){
+  .rrc{
+    padding-right:0vw;
+    font-size:0px;
+  }
+
+  .rrcText{
+    font-size:0px;
+  }
+}
+
+@media(max-width:820px){
+  .prefix{
+    padding-right:12vw;
+  }
+}
+
+@media(max-width:780px){
+  .collectorPeer{
+    padding-right:0vw;
+    font-size:0px;
+  }
+
+  .collectorPeerText{
+    font-size:0px;
+  }
+
+  .prefix{
+    padding-right:20vw;
+  }
+}
+
+
 
 .fittizio{
   width:1px;

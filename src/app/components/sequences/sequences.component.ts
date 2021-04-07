@@ -47,7 +47,7 @@ export class SequencesComponent implements AfterViewInit, OnInit{
 		  announced: false,
 		  asns: [{
         asn: 1,
-				holder: 'ao'}],
+				holder: 'holder'}],
 		  related_prefixes: [],
 		  resource: '',
 		  type: '',
@@ -146,6 +146,10 @@ applyFilter(filterValue: string) {
       this.expandedElement.splice(index, 1);
     }
   }
+
+  prefixRef(prefix: string){
+    window.location.href = "https://stat.ripe.net/ + prefix + #tabId=at-a-glance";
+}
 
 }
 
