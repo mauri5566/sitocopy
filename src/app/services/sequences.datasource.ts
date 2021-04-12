@@ -11,6 +11,7 @@ import {tap} from 'rxjs/operators';
 import {RipeService} from './ripe.service';
 import { Ripe } from '../model/ripe';
 import { sequence } from '@angular/animations';
+import { FormComponent } from '../components/sequences/form/form.component';
 
 export class SequencesDataSource implements DataSource<Sequence> {
 
@@ -31,19 +32,16 @@ export class SequencesDataSource implements DataSource<Sequence> {
 
     loadSequences(pageIndex: number,
                   pageSize: number,
-                  rrc: string) {
+                  rrc: string,
+                  datiForm: FormComponent) {
 
         this.loadingSubject.next(true);
 
-        this.sequencesService.findSequences(pageIndex, pageSize, rrc).pipe(
-                /*catchError(() => of([]))*/
+        this.sequencesService.findSequences(pageIndex, pageSize, rrc, datiForm).pipe(
                 finalize(() => this.loadingSubject.next(false)),
                 tap(x => this.length.next(x.total))
             )
             .subscribe((sequences: PaginatedResult) => {
-            /*for (var sequence of sequences.items) {
-                sequence.ripe.data.announced = false;
-            }*/
             this.sequencesSubject.next(sequences.items);
         });
     }

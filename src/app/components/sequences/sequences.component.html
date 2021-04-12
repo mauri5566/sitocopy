@@ -48,21 +48,27 @@
             <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
               <div class="example-element-detail"
                   [@detailExpand]="checkExpanded(element) ? 'expanded' : 'collapsed'">
-                <div class = "annotazione">Info on the involved prefix retrieved from third-party data sources.
-                  <br>This info describes the prefix in its actual state that may be different from the one
-                  <br> in the time frame of the sequence.</div>
-                <div class = "border"></div>
-                <div class = "background1"></div>
-                <div class = "primoBlocco">
-                  Resource: <b>{{element.id}}</b>
-                  <br>Announced: <b>{{elementRipe[element.asOrigins]?.data.announced}}</b>
-                  <br>AS Origin(s):
-                  <ul>
-                    <li>ASn: <b>{{element.asOrigins}}</b></li>
-                    <li class="boxHolder">Holder: <b>{{elementRipe[element.asOrigins]?.data.asns[0]?.holder}}</b></li>
-                    <li><a href="https://www.google.com/">Open</a></li>
-                  </ul>
-                  <a onclick = "prefixRef(element.prefix);">Open RIPEstat</a>
+                <div class = "flex1">
+                  <div class="titoletto">
+                    <h1>Sequence analysis</h1>
+                  </div>
+                  <div class = "border"></div>
+                  <div class = "background1"></div>
+                  <div class = "primoBlocco">
+                    Resource: <b>{{element.id}}</b>
+                    <br>Announced: <b>{{elementRipe[element.asOrigins]?.data.announced}}</b>
+                    <br>AS Origin(s):
+                    <ul>
+                      <li>ASn: <b>{{element.asOrigins}}</b></li>
+                      <li class="boxHolder">Holder: <b>{{elementRipe[element.asOrigins]?.data.asns[0]?.holder}}</b></li>
+                      <li><a href="https://www.google.com/">Open</a></li>
+                    </ul>
+                    <a onclick = "prefixRef(element.prefix);">Open RIPEstat</a>
+                  </div>
+                  <div class = "annotazione">Info on the involved prefix retrieved from third-party data sources.
+                    This info describes the prefix in its actual state that may be different from the one
+                    in the time frame of the sequence.
+                  </div>
                 </div>
                 <div class ="border2"></div>
                 <div class = "background2"></div>
@@ -82,34 +88,29 @@
                   <br>Average frequency of the sequence: <b>{{element.frequency}}</b>
                   <br>Run ID: <b>{{element.runID}}</b>
                 </div>
-                <div class="titoletto">
-                  <h1>Sequence analysis</h1>
-                </div>
-                <div class="titoletto1">
-                  <h1>Widgets</h1>
-                </div>
-                <div class="buttons">
-                  <div class="container">
-                    <a (click) = "openDialog()" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
-                      <span>AS TREE WITHOUT AGGREGATOR</span>
-                    </a>
+                <div class = "flex2">
+                  <div class="titoletto1">
+                    <h1>Widgets</h1>
+                  </div>
+                  <div class="buttons">
+                    <div class="container">
+                      <a (click) = "openDialog()" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                        <span>AS TREE WITHOUT AGGREGATOR</span>
+                      </a>
+                    </div>
+                    <div class="container1">
+                      <a (click) = "openDialog2()" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                        <span>SEQUENCE CHART</span>
+                      </a>
+                    </div>
+                    <div class="container2">
+                      <a href="https://twitter.com/masuwa1018" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                        <span>RIPE STAT BGP UPDATE ACTIVITY</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <div class="buttons">
-                  <div class="container1">
-                    <a (click) = "openDialog2()" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
-                      <span>SEQUENCE CHART</span>
-                    </a>
-                  </div>
-                </div>
-                <div class="buttons">
-                  <div class="container2">
-                    <a href="https://twitter.com/masuwa1018" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
-                      <span>RIPE STAT BGP UPDATE ACTIVITY</span>
-                    </a>
-                  </div>
-                </div>
-                <div class="invisibile">ao</div>
+                <div class = "invisibile2"></div>
               </div>
             </td>
           </ng-container>

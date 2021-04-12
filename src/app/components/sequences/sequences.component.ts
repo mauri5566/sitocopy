@@ -13,6 +13,7 @@ import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { Ripe } from 'src/app/model/ripe';
+import { FormComponent } from './form/form.component';
 
 @Component({
   selector: 'app-sequences',
@@ -38,6 +39,7 @@ export class SequencesComponent implements AfterViewInit, OnInit{
   expandedElement: Sequence [] = [];
   panelOpenState = false;
   formGroup!: FormGroup;
+  datiForm!: FormComponent;
   elementRipe: Ripe[] = [{
     version: '',
     data_call_status: '',
@@ -85,7 +87,7 @@ export class SequencesComponent implements AfterViewInit, OnInit{
     this.paginator.page.subscribe(x => this.loadSequences());
     this.loadSequences();
     this.dataSource.length.subscribe(x => this.paginator.length = x);
-    /*fromEvent(this.input.nativeElement, 'keyup')
+    fromEvent(this.input.nativeElement, 'keyup')
     .pipe(
         debounceTime(150),
         distinctUntilChanged(),
@@ -94,11 +96,11 @@ export class SequencesComponent implements AfterViewInit, OnInit{
             this.loadSequences();
         })
     )
-    .subscribe();*/
+    .subscribe();
   }
 
   loadSequences(): void{
-    this.dataSource.loadSequences(this.paginator.pageIndex + 1, this.paginator.pageSize, '00');
+    this.dataSource.loadSequences(this.paginator.pageIndex + 1, this.paginator.pageSize, '00', this.datiForm);
   }
 
   // tslint:disable-next-line: typedef

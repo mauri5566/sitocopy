@@ -15,7 +15,7 @@ export class FormComponent implements OnInit {
 
   sequenceId!: string;
   asOrigin!: number;
-  prefix!: string;
+  public prefix!: string;
   suffix!: number;
   collectorIp!: string;
   collectorAsn!: string;
@@ -31,7 +31,7 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       sequenceId: new FormControl(null, [Validators.pattern('[0-9a-fA-F]{24}')]),
-      prefix: new FormControl(null, [Validators.pattern('[a-z0-9.:]{,20}((::)|.)/[0-9]{2}')]),
+      prefix: new FormControl(null/*, [Validators.pattern('[a-z0-9.:]{,20}((::)|.)/[0-9]{2}')]*/),
       collectorPeerIp: new FormControl(null, [Validators.pattern('[a-z0-9]{5,}')]),
       asOrigin: new FormControl(null),
       suffix: new FormControl(null),
