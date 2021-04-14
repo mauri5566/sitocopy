@@ -1,21 +1,24 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { inject, AfterViewInit, Component, OnInit, ElementRef, ViewChild, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { fromEvent, Subscription, timer } from 'rxjs';
+import { SequencesComponent } from '../sequences.component';
+import { debounceTime, distinctUntilChanged, tap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['../sequences.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements /*AfterViewInit,*/ OnInit {
 
-  constructor() { }
+  constructor(@Inject(SequencesComponent) private sequencesComponent: SequencesComponent) { }
 
   panelOpenState = false;
   formGroup!: FormGroup;
 
   sequenceId!: string;
   asOrigin!: number;
-  public prefix!: string;
+  prefix!: string;
   suffix!: number;
   collectorIp!: string;
   collectorAsn!: string;
@@ -26,6 +29,10 @@ export class FormComponent implements OnInit {
   updates!: number;
   withdraws!: number;
   announces!: number;
+  hasAggregator!: boolean;
+  containsASPaths!: boolean;
+
+  timerSubscription!: Subscription;
 
   @ViewChild('input') input!: ElementRef;
   ngOnInit(): void {
@@ -38,12 +45,32 @@ export class FormComponent implements OnInit {
       collectorAsn: new FormControl(null),
       durationGreater: new FormControl(null),
       durationSmaller: new FormControl(null),
-      startDate: new FormControl(null),
-      endDate: new FormControl(null),
       updates: new FormControl(null),
       withdraws: new FormControl(null),
       announces: new FormControl(null),
     });
+  }
+
+  ngAfterViewInit(): void {
+    /*this.timerSubscription = timer(0, 5000).pipe(
+      map(() => {
+        this.sequencesComponent.paginator.pageIndex = 0; // load data contains the http request
+      })
+    ).subscribe();*/
+    /*fromEvent(this.input.nativeElement, 'keyup')
+    .pipe(
+        debounceTime(150),
+        distinctUntilChanged(),
+        tap(() => {
+            this.sequencesComponent.paginator.pageIndex = 0;
+            this.sequencesComponent.loadSequences();
+        })
+    )
+    .subscribe();*/
+  }
+
+  loadSequences(): void {
+    this.sequencesComponent.loadSequences();
   }
 
 

@@ -17,7 +17,7 @@
     <div class = "borderIDFilter"></div>-->
     <mat-form-field appearance="fill" class="IDFilter">
       <mat-label>Sequence ID:</mat-label>
-        <input matInput type="text" formControlName="sequenceId" [(ngModel)] = "sequenceId">
+        <input matInput type="text" formControlName="sequenceId" [(ngModel)] = "sequenceId" (keyup)="loadSequences()">
         <mat-error *ngIf="formGroup.controls['sequenceId'].hasError('pattern')">
           Enter a valid sequence ID
       </mat-error>
@@ -26,15 +26,15 @@
     <div class = "borderAsOrigin"></div>-->
     <mat-form-field appearance="fill" class="AsOriginFilter">
       <mat-label>As Origin:</mat-label>
-        <input matInput type="number" formControlName="asOrigin" [(ngModel)] = "asOrigin">
+        <input matInput type="number" formControlName="asOrigin" [(ngModel)] = "asOrigin" (keyup)="loadSequences()">
     </mat-form-field>
     <!--<div class = "borderUpdate"></div>-->
     <mat-form-field appearance="fill" class="updateFilter">
         <mat-label>Has at least one update with the aggregator field:</mat-label>
-        <mat-select>
-          <mat-option value="one">None</mat-option>
-          <mat-option value="two">True</mat-option>
-          <mat-option value="three">False</mat-option>
+        <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)] = "hasAggregator" (selectionChange)="loadSequences()">
+          <mat-option value="">None</mat-option>
+          <mat-option value="true">True</mat-option>
+          <mat-option value="false">False</mat-option>
         </mat-select>
     </mat-form-field>
     </div>
@@ -43,7 +43,7 @@
     <div class = "borderPrefix"></div>-->
     <mat-form-field appearance="fill" class="PrefixFilter">
       <mat-label>Prefix:</mat-label>
-        <input matInput type="text" formControlName="prefix" [(ngModel)] = "prefix">
+        <input matInput type="text" formControlName="prefix" [(ngModel)] = "prefix" (keyup)="loadSequences()">
         <mat-error *ngIf="formGroup.controls['prefix'].hasError('pattern')">
         Enter a valid Prefix
     </mat-error>
@@ -52,15 +52,15 @@
     <div class = "borderSuffix"></div>-->
     <mat-form-field appearance="fill" class="SuffixFilter">
       <mat-label>Minimum suffix length:</mat-label>
-        <input matInput type="number" formControlName="suffix" [(ngModel)] = "suffix">
+        <input matInput type="number" formControlName="suffix" [(ngModel)] = "suffix" (keyup)="loadSequences()">
     </mat-form-field>
     <!--<div class = "borderUpdate2"></div>-->
     <mat-form-field appearance="fill" class="updateFilter2">
         <mat-label>Contains at least two updates with AS-Paths xAyBz and uBvAw</mat-label>
-        <mat-select>
-          <mat-option value="one">None</mat-option>
-          <mat-option value="two">True</mat-option>
-          <mat-option value="three">False</mat-option>
+        <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)] = "containsASPaths" (selectionChange)="loadSequences()">
+          <mat-option value="">None</mat-option>
+          <mat-option value="true">True</mat-option>
+          <mat-option value="false">False</mat-option>
         </mat-select>
     </mat-form-field>
     </div>
@@ -74,14 +74,14 @@
       <span>You can filter by ASN or IP of the collector peer.</span>
       <mat-form-field appearance="fill" class="collectorPeerIPFilter" color="warn">
         <mat-label>Collector Peer IP:</mat-label>
-        <input matInput formControlName="collectorPeerIp" [(ngModel)] = "collectorIp">
+        <input matInput formControlName="collectorPeerIp" [(ngModel)] = "collectorIp" (keyup)="loadSequences()">
         <mat-error *ngIf="formGroup.controls['collectorPeerIp'].hasError('pattern')">
         Enter a valid CollectorPeerIp
     </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill" class="collectorPeerASnFilter">
         <mat-label>Collector Peer ASn:</mat-label>
-        <input matInput type="number" formControlName = "collectorAsn" [(ngModel)] = "collectorAsn">
+        <input matInput type="number" formControlName = "collectorAsn" [(ngModel)] = "collectorAsn" (keyup)="loadSequences()">
       </mat-form-field>
     </div>
     <!--<div class = "backgroundDuration"></div>
@@ -93,11 +93,11 @@
       <span>You can choose the sequences' duration</span>
       <mat-form-field appearance="fill" class="durationGreaterFilter">
         <mat-label>Duration greater or equal than (days):</mat-label>
-        <input matInput type="number" formControlName = "durationGreater" [(ngModel)] = "durationGreater">
+        <input matInput type="number" formControlName = "durationGreater" [(ngModel)] = "durationGreater" (keyup)="loadSequences()">
       </mat-form-field>
       <mat-form-field appearance="fill" class="durationSmallerFilter">
         <mat-label>Duration smaller or equal than (days):</mat-label>
-        <input matInput type="number" formControlName = "durationSmaller" [(ngModel)] = "durationSmaller">
+        <input matInput type="number" formControlName = "durationSmaller" [(ngModel)] = "durationSmaller" (keyup)="loadSequences()">
       </mat-form-field>
     </div>
     <!--<div class = "backgroundDates"></div>
@@ -109,13 +109,13 @@
       <span>You can choose the time period of the sequences.</span>
       <mat-form-field appearance="fill" class = "startFilter">
         <mat-label>Starts after or on:</mat-label>
-        <input matInput [matDatepicker]="picker1" >
+        <input matInput [matDatepicker]="picker1" [ngModelOptions]="{standalone: true}" [(ngModel)] = "startDate" (dateChange)="loadSequences()">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
       <mat-form-field appearance="fill" class = "endFilter">
         <mat-label>Ends before or on:</mat-label>
-        <input matInput [matDatepicker]="picker2" >
+        <input matInput [matDatepicker]="picker2" [ngModelOptions]="{standalone: true}" [(ngModel)] = "endDate" (dateChange)="loadSequences()">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
@@ -129,19 +129,19 @@
       <div class = "backgroundWithdrawsFilter"></div>
       <div class = "backgroundAnnouncesFilter"></div>
       <h1>Minimum numbers:</h1>
-      <span>You can choose the maximum and minimum duration for the sequences.</span>
+      <span>You can choose the minimum values for different types.</span>
       <div class = "flexContainer5">
       <mat-form-field appearance="fill" class="updatesFilter">
         <mat-label>Updates:</mat-label>
-        <input matInput type="number" formControlName = "updates" [(ngModel)] = "updates">
+        <input matInput type="number" formControlName = "updates" [(ngModel)] = "updates" (keyup)="loadSequences()">
       </mat-form-field>
       <mat-form-field appearance="fill" class="withdrawsFilter">
         <mat-label>Withdraws:</mat-label>
-        <input matInput type="number" formControlName = "withdraws" [(ngModel)] = "withdraws">
+        <input matInput type="number" formControlName = "withdraws" [(ngModel)] = "withdraws" (keyup)="loadSequences()">
       </mat-form-field>
       <mat-form-field appearance="fill" class="announcesFilter">
         <mat-label>Announces:</mat-label>
-        <input matInput type="number" formControlName = "announces" [(ngModel)] = "announces">
+        <input matInput type="number" formControlName = "announces" [(ngModel)] = "announces" (keyup)="loadSequences()">
       </mat-form-field>
       </div>
     </div>

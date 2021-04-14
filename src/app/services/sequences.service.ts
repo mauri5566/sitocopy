@@ -15,17 +15,57 @@ export class SequencesService {
 
   constructor(private http: HttpClient) { }
 
-   findSequences(pageIndex: number, pageSize: number, rrc: string, datiForm: FormComponent): Observable<PaginatedResult> {
-        /*if (datiForm.prefix === '2a0d:8d80::/32'){
-          return this.http.get<PaginatedResult>('https://bgpie.net/api/rrc/00/sequence?limit=20&page=1&prefix=2a0d:8d80::%2F32');
-        }
-        else{*/
-        return this.http.get<PaginatedResult>('https://bgpie.net/api/rrc/' + rrc + '/sequence', {
-            params: new HttpParams()
-                .set('page', pageIndex.toString())
-                .set('limit', pageSize.toString())
-        });
+   findSequences(pageIndex: number, pageSize: number, rrc: string, datiForm: FormComponent): Observable<PaginatedResult>{
+      let params = new HttpParams();
+      params = params.append('page', pageIndex.toString());
+      params = params.append('limit', pageSize.toString());
+      if (datiForm.prefix != null){
+        params = params.append('prefix', datiForm.prefix);
       }
+      if (datiForm.collectorIp != null){
+        params = params.append('collectorPeerIp', datiForm.collectorIp);
+      }
+      if (datiForm.collectorAsn != null){
+        params = params.append('collectorPeerASn', datiForm.collectorAsn);
+      }
+      if (datiForm.asOrigin != null){
+        params = params.append('asOrigin', datiForm.asOrigin.toString());
+      }
+      if (datiForm.suffix != null){
+        params = params.append('minSuffixCommon', datiForm.suffix.toString());
+      }
+      if (datiForm.durationGreater != null){
+        params = params.append('minDurationDays', datiForm.durationGreater.toString());
+      }
+      if (datiForm.durationSmaller != null){
+        params = params.append('maxDurationDays', datiForm.durationSmaller.toString());
+      }
+      if (datiForm.updates != null){
+        params = params.append('minNumUpdates', datiForm.updates.toString());
+      }
+      if (datiForm.withdraws != null){
+        params = params.append('minNumWithdraws', datiForm.withdraws.toString());
+      }
+      if (datiForm.announces != null){
+        params = params.append('minNumAnnounces', datiForm.announces.toString());
+      }
+      if (datiForm.startDate != null){
+        params = params.append('minStartDate', datiForm.startDate.toString());
+      }
+      if (datiForm.endDate != null){
+        params = params.append('minStartDate', datiForm.endDate.toString());
+      }
+      if (datiForm.hasAggregator != null){
+        params = params.append('hasAggregator', datiForm.hasAggregator.toString());
+      }
+      if (datiForm.containsASPaths != null){
+        params = params.append('containsLoops', datiForm.containsASPaths.toString());
+      }
+      if (datiForm.sequenceId != null && datiForm.sequenceId !== ''){
+        return this.http.get<PaginatedResult>('https://bgpie.net/api/sequence/' + datiForm.sequenceId);
+      }
+      return this.http.get<PaginatedResult>('https://bgpie.net/api/rrc/' + rrc + '/sequence', { params});
+    }
 
 
 

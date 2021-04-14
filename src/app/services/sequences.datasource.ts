@@ -46,6 +46,15 @@ export class SequencesDataSource implements DataSource<Sequence> {
         });
     }
 
+    /*loadSequence(datiForm: FormComponent){
+        this.loadingSubject.next(true);
+
+        this.sequencesService.findSequence(datiForm).pipe(
+            finalize(() => this.loadingSubject.next(false))
+        )
+        .subscribe((sequence: Sequence))
+    }*/
+
     loadSequencesById(oldSequence: Sequence){
         this.loadingSubject.next(true);
 

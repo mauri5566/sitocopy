@@ -1415,7 +1415,7 @@ p {
   left:4%;
   padding-top: 420px;
   width:75vw;
-  margin-bottom:300px;
+  margin-bottom:200px;
   }
 
   .background2{
@@ -1446,13 +1446,13 @@ p {
   left:4%;
   padding-top: 440px;
   width:90%;
-  margin-bottom:300px;
+  margin-bottom:200px;
   }
 
   .background2{
   position: absolute;
   top:560px;
-  left:0%;
+  left:5px;
   height:35%;
   width: 100%;
   background-color:#009879;
@@ -1475,7 +1475,7 @@ p {
   left:4%;
   padding-top: 440px;
   width:90%;
-  margin-bottom:300px;
+  margin-bottom:200px;
   }
 
   .background2{

@@ -9,8 +9,8 @@ import { SequencesDataSource } from '../../services/sequences.datasource';
 import { Sequence } from '../../model/sequence';
 import {FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ElementRef} from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import { fromEvent, Subscription, timer } from 'rxjs';
+import { debounceTime, distinctUntilChanged, tap, map } from 'rxjs/operators';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { Ripe } from 'src/app/model/ripe';
 import { FormComponent } from './form/form.component';
@@ -39,7 +39,9 @@ export class SequencesComponent implements AfterViewInit, OnInit{
   expandedElement: Sequence [] = [];
   panelOpenState = false;
   formGroup!: FormGroup;
+  @ViewChild(FormComponent)
   datiForm!: FormComponent;
+  
   elementRipe: Ripe[] = [{
     version: '',
     data_call_status: '',
@@ -70,9 +72,9 @@ export class SequencesComponent implements AfterViewInit, OnInit{
     status_code: 1,
     time: '',
 }];
+timerSubscription!: Subscription;
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
-@ViewChild('input') input!: ElementRef;
 
   ngOnInit() {
     this.formGroup = new FormGroup({
@@ -87,7 +89,7 @@ export class SequencesComponent implements AfterViewInit, OnInit{
     this.paginator.page.subscribe(x => this.loadSequences());
     this.loadSequences();
     this.dataSource.length.subscribe(x => this.paginator.length = x);
-    fromEvent(this.input.nativeElement, 'keyup')
+    /*fromEvent(this.input.nativeElement, 'keyup')
     .pipe(
         debounceTime(150),
         distinctUntilChanged(),
@@ -97,6 +99,11 @@ export class SequencesComponent implements AfterViewInit, OnInit{
         })
     )
     .subscribe();
+    this.timerSubscription = timer(0, 10000).pipe(
+      map(() => {
+        this.loadSequences(); // load data contains the http request
+      })
+    ).subscribe();*/
   }
 
   loadSequences(): void{
