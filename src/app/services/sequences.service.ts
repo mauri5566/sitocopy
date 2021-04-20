@@ -15,50 +15,50 @@ export class SequencesService {
 
   constructor(private http: HttpClient) { }
 
-   findSequences(pageIndex: number, pageSize: number, rrc: string, datiForm: FormComponent): Observable<PaginatedResult>{
+    findSequences(pageIndex: number, pageSize: number, rrc: string, datiForm: FormComponent): Observable<PaginatedResult>{
       let params = new HttpParams();
       params = params.append('page', pageIndex.toString());
       params = params.append('limit', pageSize.toString());
-      if (datiForm.prefix != null){
+      if (datiForm.prefix != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('prefix', datiForm.prefix);
       }
-      if (datiForm.collectorIp != null){
+      if (datiForm.collectorIp != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('collectorPeerIp', datiForm.collectorIp);
       }
-      if (datiForm.collectorAsn != null){
+      if (datiForm.collectorAsn != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('collectorPeerASn', datiForm.collectorAsn);
       }
-      if (datiForm.asOrigin != null){
+      if (datiForm.asOrigin != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('asOrigin', datiForm.asOrigin.toString());
       }
-      if (datiForm.suffix != null){
+      if (datiForm.suffix != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('minSuffixCommon', datiForm.suffix.toString());
       }
-      if (datiForm.durationGreater != null){
+      if (datiForm.durationGreater != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('minDurationDays', datiForm.durationGreater.toString());
       }
-      if (datiForm.durationSmaller != null){
+      if (datiForm.durationSmaller != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('maxDurationDays', datiForm.durationSmaller.toString());
       }
-      if (datiForm.updates != null){
+      if (datiForm.updates != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('minNumUpdates', datiForm.updates.toString());
       }
-      if (datiForm.withdraws != null){
+      if (datiForm.withdraws != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('minNumWithdraws', datiForm.withdraws.toString());
       }
-      if (datiForm.announces != null){
+      if (datiForm.announces != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('minNumAnnounces', datiForm.announces.toString());
       }
-      if (datiForm.startDate != null){
+      if (datiForm.startDate != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('minStartDate', datiForm.startDate.toString());
       }
-      if (datiForm.endDate != null){
+      if (datiForm.endDate != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('minStartDate', datiForm.endDate.toString());
       }
-      if (datiForm.hasAggregator != null){
+      if (datiForm.hasAggregator != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('hasAggregator', datiForm.hasAggregator.toString());
       }
-      if (datiForm.containsASPaths != null){
+      if (datiForm.containsASPaths != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('containsLoops', datiForm.containsASPaths.toString());
       }
       if (datiForm.sequenceId != null && datiForm.sequenceId !== ''){
@@ -67,13 +67,13 @@ export class SequencesService {
       return this.http.get<PaginatedResult>('https://bgpie.net/api/rrc/' + rrc + '/sequence', { params});
     }
 
-
+    /*findSequence(pageIndex: number, pageSize: number, rrc: string, datiForm: FormComponent): Observable<Sequence>{
+      let params = new HttpParams();
+      params = params.append('page', pageIndex.toString());
+      params = params.append('limit', pageSize.toString());*/
+      
 
   getSequence(id: string): Observable<Sequence> {
       return this.http.get<Sequence>('https://bgpie.net/api/sequence/' + id);
     }
-
-  getRipe(prefix: string): Observable<Ripe> {
-    return this.http.get<Ripe>('https://stat.ripe.net/data/prefix-overview/data.json?resource=' + prefix);
-  }
 }

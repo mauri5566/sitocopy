@@ -37,7 +37,7 @@ import { ModalMostFrequentUpdateComponent } from './components/home/modal-most-f
 import { ModalLongestSuffixComponent } from './components/home/modal-longest-suffix/modal-longest-suffix.component';
 import { ModalFrequencyUpdateComponent } from './components/home/modal-frequency-update/modal-frequency-update.component';
 import { ModalPercentageUnstablePrefixesComponent } from './components/home/modal-percentage-unstable-prefixes/modal-percentage-unstable-prefixes.component';
-
+import { HighchartsChartModule } from "highcharts-angular";
 
 @NgModule({
   declarations: [
@@ -96,6 +96,7 @@ import { ModalPercentageUnstablePrefixesComponent } from './components/home/moda
     FlexLayoutModule,
     MatListModule,
     ListViewModule,
+    HighchartsChartModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'sequences', component: SequencesComponent}

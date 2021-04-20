@@ -32,6 +32,7 @@ export class FormComponent implements /*AfterViewInit,*/ OnInit {
   hasAggregator!: boolean;
   containsASPaths!: boolean;
 
+  show = true;
   timerSubscription!: Subscription;
 
   @ViewChild('input') input!: ElementRef;
@@ -71,7 +72,23 @@ export class FormComponent implements /*AfterViewInit,*/ OnInit {
 
   loadSequences(): void {
     this.sequencesComponent.loadSequences();
+    if (this.sequenceId == null || this.sequenceId === ''){
+      this.show = true;
+    }
+    else{
+      this.show = false;
+    }
   }
+
+  /*hideOrShow(): void{
+    if (this.sequenceId == null || this.sequenceId === ''){
+      this.show = true;
+    }
+    else{
+      this.show = false;
+    }
+
+  }*/
 
 
     // tslint:disable-next-line: typedef

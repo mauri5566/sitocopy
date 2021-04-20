@@ -14,6 +14,7 @@ import { debounceTime, distinctUntilChanged, tap, map } from 'rxjs/operators';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { Ripe } from 'src/app/model/ripe';
 import { FormComponent } from './form/form.component';
+import { RipeService } from 'src/app/services/ripe.service';
 
 @Component({
   selector: 'app-sequences',
@@ -32,7 +33,8 @@ export class SequencesComponent implements AfterViewInit, OnInit{
 
   constructor(public dialog: MatDialog,
               public sequencesService: SequencesService,
-              private formBuilder: FormBuilder){}
+              private formBuilder: FormBuilder,
+              public ripeService : RipeService){}
 
   columnsToDisplay: string[] = ['Sequence ID', 'Prefix', 'Collector Peer', 'RRC', 'Start Time', 'End Time', 'Fittizio'];
   dataSource = new SequencesDataSource(this.sequencesService);
@@ -149,7 +151,7 @@ applyFilter(filterValue: string) {
     console.log(index);
     if (index === -1) {
       this.dataSource.loadSequencesById(element);
-      this.sequencesService.getRipe(element.prefix).subscribe((ripe: Ripe) => this.elementRipe[element.asOrigins] = ripe);
+      this.ripeService.getRipe(element.prefix).subscribe((ripe: Ripe) => this.elementRipe[element.asOrigins] = ripe);
       this.expandedElement.push(element);
     } else {
       this.expandedElement.splice(index, 1);

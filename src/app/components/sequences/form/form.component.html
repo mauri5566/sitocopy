@@ -24,12 +24,12 @@
     </mat-form-field>
     <!--<div class = "backgroundIDFilter"></div>
     <div class = "borderAsOrigin"></div>-->
-    <mat-form-field appearance="fill" class="AsOriginFilter">
+    <mat-form-field appearance="fill" class="AsOriginFilter" *ngIf="show">
       <mat-label>As Origin:</mat-label>
         <input matInput type="number" formControlName="asOrigin" [(ngModel)] = "asOrigin" (keyup)="loadSequences()">
     </mat-form-field>
     <!--<div class = "borderUpdate"></div>-->
-    <mat-form-field appearance="fill" class="updateFilter">
+    <mat-form-field appearance="fill" class="updateFilter" *ngIf="show">
         <mat-label>Has at least one update with the aggregator field:</mat-label>
         <mat-select [ngModelOptions]="{standalone: true}" [(ngModel)] = "hasAggregator" (selectionChange)="loadSequences()">
           <mat-option value="">None</mat-option>
@@ -38,7 +38,7 @@
         </mat-select>
     </mat-form-field>
     </div>
-    <div class = "flexContainer2">
+    <div class = "flexContainer2" *ngIf="show">
     <!--<div class = "backgroundPrefix"></div>
     <div class = "borderPrefix"></div>-->
     <mat-form-field appearance="fill" class="PrefixFilter">
@@ -64,7 +64,7 @@
         </mat-select>
     </mat-form-field>
     </div>
-    <div class = "flexContainer3">
+    <div class = "flexContainer3" *ngIf="show">
     <!--<div class = "backgroundCollectorPeerInformation"></div>
     <div class = "borderCollectorPeerInformation"></div>-->
     <div class = "collectorPeerInformation">
@@ -123,7 +123,7 @@
   </div>
     <!--<div class = "backgroundMinimum"></div>
     <div class = "borderMinimum"></div>-->
-    <div class = "flexContainer4">
+    <div class = "flexContainer4" *ngIf="show">
     <div class = "minimum">
       <div class = "backgroundUpdatesFilter"></div>
       <div class = "backgroundWithdrawsFilter"></div>

@@ -1,5 +1,5 @@
 .task-header {
-    background-color: rgb(54,71,225);
+    background-color: #009879;
     padding: 0 5px;
 	 height: 80px;
 	 margin:-24px;
@@ -17,7 +17,7 @@
 .icona{
 	position:absolute;
 	left:82%;
-	background-color: rgb(54,71,225);
+	background-color: #009879;
 	color:white;
 	border: none;
 }
@@ -26,5 +26,12 @@ mat-dialog-content{
 	position: relative;
 	top:20px;
 	left:3%;
+	width:1000px;
+	height:100%;
+	background-color: #323232;
 
+}
+
+.highcharts-chart{
+	width: 100%;
 }
