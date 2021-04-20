@@ -26,5 +26,11 @@ mat-dialog-content{
 	position: relative;
 	top:20px;
 	left:3%;
+	width:1000px;
+	height:600px;
 
+}
+
+.highcharts-chart{
+	width: 100%;
 }
