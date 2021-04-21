@@ -15,6 +15,7 @@ import { ModalFrequencyUpdateComponent } from './modal-frequency-update/modal-fr
 import { ModalPercentageUnstablePrefixesComponent } from './modal-percentage-unstable-prefixes/modal-percentage-unstable-prefixes.component';
 import { HomeData2 } from 'src/app/model/homedata2';
 import { RouteConfigLoadEnd } from '@angular/router';
+import {Overlay} from '@angular/cdk/overlay';
 
 /*const  elements: HomeData[] = [{
     aSes: 25494,
@@ -45,7 +46,8 @@ export class HomeComponent implements OnInit {
   element2!: HomeData2;
   /*elements = elements;*/
   constructor(private homeService: HomeService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              ) {
    }
 
   ngOnInit(): void {
@@ -106,8 +108,10 @@ export class HomeComponent implements OnInit {
 
   openDialog7(){
     this.dialog.open(ModalMostFrequentUpdateComponent, {
-      width: '100%',
-      height: '640px'
+      width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
     });
   }
 
@@ -120,8 +124,10 @@ export class HomeComponent implements OnInit {
 
   openDialog9(){
     this.dialog.open(ModalFrequencyUpdateComponent, {
-      width: '100%',
-      height: '640px'
+      width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
     });
   }
 

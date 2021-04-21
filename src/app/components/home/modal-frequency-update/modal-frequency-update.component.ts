@@ -24,12 +24,12 @@ export class ModalFrequencyUpdateComponent implements OnInit {
     title: {
       text: 'CDF of the most frequent update frequency',
       style: {
-        color: 'whitesmoke'
+        color: '#323232',
       }
     },
     chart: {
       zoomType: 'x',
-      backgroundColor: {
+      backgroundColor: 'white', /*{
             linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
             stops: [
                 [0, '#2a2a2b'],
@@ -38,37 +38,56 @@ export class ModalFrequencyUpdateComponent implements OnInit {
         },
       borderColor: 'black',
       borderWidth: 2,
-
+      height: 550,*/
     },
     tooltip: {
-      backgroundColor: 'black',
-      borderColor: '#009879',
+      formatter: function () {
+            return '<b>' + this.series.name +
+            '</b><br>x: <b>' + this.x +
+                '</b><br>y: <b>' + this.y + '</b>'},
+      backgroundColor: 'whitesmoke',
+      borderColor: 'black',
       style: {
-        color: 'white'
+        color: 'black'
       }
     },
-    yAxis: {
-        gridLineColor: '#707073',
+    xAxis: {
+        gridLineColor: 'lightgrey',
         labels: {
             style: {
-                color: '#E0E0E3'
+                color: '#323232',
+                fontSize: '1.3em'
             }
         },
-        lineColor: '#707073',
-        minorGridLineColor: '#505053',
-        tickColor: '#707073',
+        lineColor: 'lightgrey',
+        minorGridLineColor: 'lightgrey',
+        tickColor: 'lightgrey',
         tickWidth: 1,
         title: {
+            text: 'Frequency of updates per sequence (Hz)',
             style: {
-                color: '#A0A0A3'
+                color: '#323232',
+                fontSize: '1.3em'
             }
         }
     },
-    xAxis: {
-        gridLineColor: '#707073',
+    yAxis: {
+        gridLineColor: 'lightgrey',
         labels: {
             style: {
-                color: '#E0E0E3'
+                color: '#323232',
+                fontSize: '1.3em'
+            }
+        },
+        lineColor: 'lightgrey',
+        minorGridLineColor: 'lightgrey',
+        tickColor: 'lightgrey',
+        tickWidth: 1,
+        title: {
+            text: 'Fraction of sequences',
+            style: {
+                color: '#323232',
+                fontSize: '1.3em'
             }
         }
     },
@@ -77,10 +96,10 @@ export class ModalFrequencyUpdateComponent implements OnInit {
     },
     series: [
       {
-        name: 'boooomba',
+        name: 'Frequency of the most frequent update in the sequence (upd/min)',
         type: 'line',
-        data: [1, 2, 10, 5, 17, 22, 24],
-        color: '#009879',
+        data: [1, 2, 10, 5, 17, 22, 24, 50],
+        color: 'rgb(56,78,222)',
         }
     ],
     legend: {
@@ -92,15 +111,9 @@ export class ModalFrequencyUpdateComponent implements OnInit {
                     enabled: true,
                     symbol: 'menu',
                     symbolStroke: '#666666',
-                    symbolFill: 'black',
+                    symbolFill: 'darkgrey',
                     theme: {
-                      fill: {
-            linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-            stops: [
-                [0, '#2a2a2b'],
-                [1, '#3e3e40']
-            ]
-        },
+                      fill: 'white'
                     },
                 }
               }
@@ -111,7 +124,7 @@ export class ModalFrequencyUpdateComponent implements OnInit {
           fontFamily: 'arial'
       },
       menuItemHoverStyle: {
-        background: 'whitesmoke',
+        background: 'lightgrey',
         color: 'black'
       }
     },

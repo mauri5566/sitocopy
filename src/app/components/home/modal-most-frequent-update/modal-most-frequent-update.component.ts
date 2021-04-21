@@ -20,6 +20,7 @@ HighchartsExportData(Highcharts);
 export class ModalMostFrequentUpdateComponent implements OnInit {
 
   Highcharts: typeof Highcharts = Highcharts;
+  highChart!: Highcharts.Chart | null;
 
   chartOptions: Options = {
     title: {
@@ -29,6 +30,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
       }
     },
     chart: {
+      type: 'area',
       zoomType: 'x',
       backgroundColor: '#323232', /*{
             linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
@@ -38,20 +40,40 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
             ]
         },
       borderColor: 'black',
-      borderWidth: 2,*/
+      borderWidth: 2,
+      height: 550,*/
+    },
+    plotOptions: {
+      area:{
+      marker: {
+                enabled: false,
+                symbol: 'circle',
+                radius: 2,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            }
+          }
     },
     tooltip: {
+      formatter: function () {
+            return '<b>' + this.series.name +
+            '</b><br>x: <b>' + this.x +
+                '</b><br>y: <b>' + this.y + '</b>'},
       backgroundColor: 'black',
       borderColor: '#009879',
       style: {
-        color: 'white'
+        color: '#A0A0A3',
       }
     },
-    yAxis: {
+    xAxis: {
         gridLineColor: '#707073',
         labels: {
             style: {
-                color: '#E0E0E3'
+                color: '#E0E0E3',
+                fontSize: '1.3em'
             }
         },
         lineColor: '#707073',
@@ -59,16 +81,31 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
         tickColor: '#707073',
         tickWidth: 1,
         title: {
+            text: 'Frequency of the most frequent update in the sequence (upd/min)',
             style: {
-                color: '#A0A0A3'
+                color: '#A0A0A3',
+                fontSize: '1.3em'
             }
         }
+
     },
-    xAxis: {
+    yAxis: {
         gridLineColor: '#707073',
         labels: {
             style: {
-                color: '#E0E0E3'
+                color: '#E0E0E3',
+                fontSize: '1.3em'
+            }
+        },
+        lineColor: '#707073',
+        minorGridLineColor: '#505053',
+        tickColor: '#707073',
+        tickWidth: 1,
+        title: {
+            text: 'Fraction of sequences',
+            style: {
+                color: '#A0A0A3',
+                fontSize: '1.3em'
             }
         }
     },
@@ -77,9 +114,9 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
     },
     series: [
       {
-        name: 'boooomba',
+        name: 'Frequency of the most frequent update in the sequence (upd/min)',
         type: 'line',
-        data: [1, 2, 10, 5, 17, 22, 24],
+        data: [1, 2, 10, 5, 17, 22, 24, 50],
         color: '#009879',
         }
     ],
@@ -91,16 +128,10 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
                 contextButton: {
                     enabled: true,
                     symbol: 'menu',
-                    symbolStroke: '#666666',
+                    symbolStroke: '#A0A0A3',
                     symbolFill: 'black',
                     theme: {
-                      fill: {
-            linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-            stops: [
-                [0, '#2a2a2b'],
-                [1, '#3e3e40']
-            ]
-        },
+                      fill: '#323232'
                     },
                 }
               }
@@ -111,7 +142,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
           fontFamily: 'arial'
       },
       menuItemHoverStyle: {
-        background: 'whitesmoke',
+        background: 'lightgrey',
         color: 'black'
       }
     },

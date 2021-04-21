@@ -66,14 +66,11 @@ export class SequencesService {
       }
       return this.http.get<PaginatedResult>('https://bgpie.net/api/rrc/' + rrc + '/sequence', { params});
     }
+    getSequenceFilter(id: string): Observable<Sequence[]> {
+        return this.http.get<Sequence[]>('https://bgpie.net/api/sequence/' + id);
+    }
 
-    /*findSequence(pageIndex: number, pageSize: number, rrc: string, datiForm: FormComponent): Observable<Sequence>{
-      let params = new HttpParams();
-      params = params.append('page', pageIndex.toString());
-      params = params.append('limit', pageSize.toString());*/
-      
-
-  getSequence(id: string): Observable<Sequence> {
-      return this.http.get<Sequence>('https://bgpie.net/api/sequence/' + id);
+    getSequence(id: string): Observable<Sequence> {
+        return this.http.get<Sequence>('https://bgpie.net/api/sequence/' + id);
     }
 }

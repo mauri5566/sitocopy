@@ -594,3 +594,6 @@ p {
    height: 800px;
 }*/
 
+.trend-dialog .mat-dialog-container{
+    overflow-y: hidden;
+}
