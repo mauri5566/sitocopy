@@ -30,20 +30,11 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
       }
     },
     chart: {
-      type: 'area',
+      type: 'line',
       zoomType: 'x',
-      backgroundColor: '#323232', /*{
-            linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-            stops: [
-                [0, '#2a2a2b'],
-                [1, '#3e3e40']
-            ]
-        },
-      borderColor: 'black',
-      borderWidth: 2,
-      height: 550,*/
+      backgroundColor: '#323232',
     },
-    plotOptions: {
+    /*plotOptions: {
       area:{
       marker: {
                 enabled: false,
@@ -56,7 +47,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
                 }
             }
           }
-    },
+    },*/
     tooltip: {
       formatter: function () {
             return '<b>' + this.series.name +

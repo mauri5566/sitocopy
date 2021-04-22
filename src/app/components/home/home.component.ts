@@ -117,8 +117,10 @@ export class HomeComponent implements OnInit {
 
   openDialog8(){
     this.dialog.open(ModalLongestSuffixComponent, {
-      width: '100%',
-      height: '640px'
+      width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw'
     });
   }
 
@@ -133,8 +135,10 @@ export class HomeComponent implements OnInit {
 
   openDialog10(){
     this.dialog.open(ModalPercentageUnstablePrefixesComponent, {
-      width: '100%',
-      height: '640px'
+      width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw'
     });
   }
 }

@@ -99,7 +99,7 @@ export class ModalFrequencyUpdateComponent implements OnInit {
         name: 'Frequency of the most frequent update in the sequence (upd/min)',
         type: 'line',
         data: [1, 2, 10, 5, 17, 22, 24, 50],
-        color: 'rgb(56,78,222)',
+        color: 'rgb(133,186,235)',
         }
     ],
     legend: {
