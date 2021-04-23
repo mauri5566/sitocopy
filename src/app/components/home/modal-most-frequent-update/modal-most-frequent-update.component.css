@@ -1,5 +1,7 @@
+
+
 .task-header {
-    background-color: rgb(54,71,225);
+    background-color: #009879;
     padding: 0 5px;
 	 height: 80px;
 	 margin:-24px;
@@ -17,12 +19,13 @@
 .icona{
 	position:absolute;
 	left:82%;
-	background-color: rgb(54,71,225);
+	background-color: #009879;
 	color:white;
 	border: none;
 }
 
 mat-dialog-content{
+<<<<<<< HEAD
 	position: relative;
 	top:20px;
 	left:3%;
@@ -33,4 +36,18 @@ mat-dialog-content{
 
 .highcharts-chart{
 	width: 100%;
+=======
+	max-height: initial;
+	width:100%;
+	height:95.5%;
+	background-color: #323232;
+}
+
+
+
+highcharts-chart{
+	display:block;
+	width: 100%;
+	height:100%;
+>>>>>>> f5ad799b708b6c24ebe56523f385a266edb970d6
 }

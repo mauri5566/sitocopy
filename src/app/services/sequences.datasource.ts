@@ -12,12 +12,11 @@ import {RipeService} from './ripe.service';
 import { Ripe } from '../model/ripe';
 import { sequence } from '@angular/animations';
 import { FormComponent } from '../components/sequences/form/form.component';
+import { map } from 'rxjs/operators';
 
 export class SequencesDataSource implements DataSource<Sequence> {
 
     private sequencesSubject = new BehaviorSubject<Sequence[]>([]);
-
-    private ripeSubject = new BehaviorSubject<Ripe[]>([]);
 
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
@@ -37,22 +36,35 @@ export class SequencesDataSource implements DataSource<Sequence> {
 
         this.loadingSubject.next(true);
 
+        if (datiForm.sequenceId != null && datiForm.sequenceId !== ''){
+            this.sequencesService.getSequence(datiForm.sequenceId).pipe(
+                finalize(() => this.loadingSubject.next(false)),
+            finalize(() => this.length.next(1)),
+            map(sequence => [sequence]),
+            tap(sequence => this.sequencesSubject.next(sequence))
+        )
+        .subscribe()
+        }
+        else{
         this.sequencesService.findSequences(pageIndex, pageSize, rrc, datiForm).pipe(
                 finalize(() => this.loadingSubject.next(false)),
                 tap(x => this.length.next(x.total))
             )
             .subscribe((sequences: PaginatedResult) => {
             this.sequencesSubject.next(sequences.items);
-        });
+        });}
     }
 
     /*loadSequence(datiForm: FormComponent){
         this.loadingSubject.next(true);
 
-        this.sequencesService.findSequence(datiForm).pipe(
-            finalize(() => this.loadingSubject.next(false))
+        this.sequencesService.getSequence(datiForm.sequenceId).pipe(
+            finalize(() => this.loadingSubject.next(false)),
+            finalize(() => this.length.next(1)),
+            map(sequence => [sequence]),
+            tap(sequence => this.sequencesSubject.next(sequence))
         )
-        .subscribe((sequence: Sequence))
+        .subscribe()
     }*/
 
     loadSequencesById(oldSequence: Sequence){

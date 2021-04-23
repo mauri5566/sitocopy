@@ -38,6 +38,10 @@ import { ModalLongestSuffixComponent } from './components/home/modal-longest-suf
 import { ModalFrequencyUpdateComponent } from './components/home/modal-frequency-update/modal-frequency-update.component';
 import { ModalPercentageUnstablePrefixesComponent } from './components/home/modal-percentage-unstable-prefixes/modal-percentage-unstable-prefixes.component';
 import { HighchartsChartModule } from "highcharts-angular";
+<<<<<<< HEAD
+=======
+import {OverlayModule} from '@angular/cdk/overlay';
+>>>>>>> f5ad799b708b6c24ebe56523f385a266edb970d6
 
 @NgModule({
   declarations: [
@@ -97,6 +101,10 @@ import { HighchartsChartModule } from "highcharts-angular";
     MatListModule,
     ListViewModule,
     HighchartsChartModule,
+<<<<<<< HEAD
+=======
+    OverlayModule,
+>>>>>>> f5ad799b708b6c24ebe56523f385a266edb970d6
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'sequences', component: SequencesComponent}
