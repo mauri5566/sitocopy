@@ -39,6 +39,7 @@ import { ModalFrequencyUpdateComponent } from './components/home/modal-frequency
 import { ModalPercentageUnstablePrefixesComponent } from './components/home/modal-percentage-unstable-prefixes/modal-percentage-unstable-prefixes.component';
 import { HighchartsChartModule } from "highcharts-angular";
 import {OverlayModule} from '@angular/cdk/overlay';
+import { InvolvedCpsComponent } from './components/involved-cps/involved-cps.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     ModalLongestSuffixComponent,
     ModalFrequencyUpdateComponent,
     ModalPercentageUnstablePrefixesComponent,
+    InvolvedCpsComponent,
   ],
   entryComponents: [
     ModalChartComponent,
@@ -101,7 +103,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
     OverlayModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'sequences', component: SequencesComponent}
+      { path: 'sequences', component: SequencesComponent},
+      { path: 'involvedCps', component: InvolvedCpsComponent}
     ]),
     BrowserAnimationsModule
   ],

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
-import {ModalService} from 'src/app/services/modal.service';
 import {ChartData} from 'src/app/model/chartData';
 /*import * as HighchartsExporting from 'highcharts/modules/exporting';
 import * as HighchartsExportData from 'highcharts/modules/export-data';*/
@@ -130,7 +129,7 @@ export class ModalFrequencyUpdateComponent implements OnInit {
     },
   };
 
-  constructor(private modalService: ModalService) { }
+  constructor() { }
 
   ngOnInit(): void {
     /*this.modalService.getData().subscribe(

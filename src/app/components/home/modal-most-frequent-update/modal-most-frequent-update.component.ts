@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
-import {ModalService} from 'src/app/services/modal.service';
 import {ChartData} from 'src/app/model/chartData';
+import { ChartService } from 'src/app/services/chart.service';
 /*import * as HighchartsExporting from 'highcharts/modules/exporting';
 import * as HighchartsExportData from 'highcharts/modules/export-data';*/
 
@@ -12,12 +12,23 @@ const HighchartsExportData = require('highcharts/modules/export-data');
 HighchartsExporting(Highcharts);
 HighchartsExportData(Highcharts);
 
+interface ExtendedAxis extends Highcharts.Axis {
+  dataMin: number;
+  dataMax: number;
+}
+
+// Introducing a custom property.
+interface ExtendedYAxis extends Highcharts.YAxisOptions {
+  myCustomProperty: boolean;
+}
+
 @Component({
   selector: 'app-modal-most-frequent-update',
   templateUrl: './modal-most-frequent-update.component.html',
   styleUrls: ['./modal-most-frequent-update.component.css']
 })
 export class ModalMostFrequentUpdateComponent implements OnInit {
+
 
   Highcharts: typeof Highcharts = Highcharts;
   highChart!: Highcharts.Chart | null;
@@ -34,20 +45,6 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
       zoomType: 'x',
       backgroundColor: '#323232',
     },
-    /*plotOptions: {
-      area:{
-      marker: {
-                enabled: false,
-                symbol: 'circle',
-                radius: 2,
-                states: {
-                    hover: {
-                        enabled: true
-                    }
-                }
-            }
-          }
-    },*/
     tooltip: {
       formatter: function () {
             return '<b>' + this.series.name +
@@ -107,7 +104,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
       {
         name: 'Frequency of the most frequent update in the sequence (upd/min)',
         type: 'line',
-        data: [1, 2, 10, 5, 17, 22, 24, 50],
+        data: [],
         color: '#009879',
         }
     ],
@@ -139,12 +136,12 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
     },
   };
 
-  constructor(private modalService: ModalService) { }
+  constructor(public chartService: ChartService) { }
 
   ngOnInit(): void {
-    /*this.modalService.getData().subscribe(
+    /*this.chartService.getMostFrequentUpdateData().subscribe(
       (data: ChartData[]) => {
-        if (this.chartOptions.series[0].type === 'line'){
+        if(this.chartOptions.series){
           this.chartOptions.series[0].data = data;
         }
       }
