@@ -15,8 +15,8 @@ export interface Sequence{
   asPathNumber: number;
   asOrigins: number;
   hasAggregator: boolean;
-  containsLoops: boolean;
   containsAsPathLoops: boolean;
+  containsLoops: boolean;
   mostFrequentUpdateFrequency: number;
   mostFrequentUpdateFrequencyInMin: number;
   hasAsPathsNotValid: boolean;

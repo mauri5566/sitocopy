@@ -53,21 +53,6 @@ export class FormComponent implements /*AfterViewInit,*/ OnInit {
   }
 
   ngAfterViewInit(): void {
-    /*this.timerSubscription = timer(0, 5000).pipe(
-      map(() => {
-        this.sequencesComponent.paginator.pageIndex = 0; // load data contains the http request
-      })
-    ).subscribe();*/
-    /*fromEvent(this.input.nativeElement, 'keyup')
-    .pipe(
-        debounceTime(150),
-        distinctUntilChanged(),
-        tap(() => {
-            this.sequencesComponent.paginator.pageIndex = 0;
-            this.sequencesComponent.loadSequences();
-        })
-    )
-    .subscribe();*/
   }
 
   loadSequences(): void {
@@ -80,15 +65,6 @@ export class FormComponent implements /*AfterViewInit,*/ OnInit {
     }
   }
 
-  /*hideOrShow(): void{
-    if (this.sequenceId == null || this.sequenceId === ''){
-      this.show = true;
-    }
-    else{
-      this.show = false;
-    }
-
-  }*/
 
 
     // tslint:disable-next-line: typedef

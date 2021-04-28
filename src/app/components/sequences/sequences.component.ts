@@ -154,6 +154,7 @@ export class SequencesComponent implements AfterViewInit, OnInit {
       this.dataSource.loadSequencesById(element);
       this.ripeService.getRipe(element.prefix).subscribe((ripe: Ripe) => this.elementRipe[element.asOrigins] = ripe);
       this.expandedElement.push(element);
+      console.log(element.containsLoops)
     } else {
       this.expandedElement.splice(index, 1);
     }
@@ -163,6 +164,14 @@ export class SequencesComponent implements AfterViewInit, OnInit {
     window.location.href = "https://stat.ripe.net/ + prefix + #tabId=at-a-glance";
   }
 
+  show(element: Sequence){
+    if(element.containsLoops === true){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }
 
 
