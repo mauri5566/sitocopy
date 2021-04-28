@@ -64,5 +64,26 @@ mat-toolbar{
     color: white;
 }
 
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+button{
+  border-width: 0px;
+  border-radius: 5px;
+  background-color: rgba(0, 152, 121, 0.5);
+  width: 70px;
+  transition: background-color 0.25s
+}
+
+button:hover{
+  border-width: 0px;
+  border-radius: 5px;
+  background-color: rgba(0, 152, 121, 0.75);
+  width: 70px;
+}
+
 
 

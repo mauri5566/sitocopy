@@ -40,6 +40,7 @@ import { ModalPercentageUnstablePrefixesComponent } from './components/home/moda
 import { HighchartsChartModule } from "highcharts-angular";
 import {OverlayModule} from '@angular/cdk/overlay';
 import { InvolvedCpsComponent } from './components/involved-cps/involved-cps.component';
+import { ModalSegmentChartComponent } from './components/involved-cps/modal-segment-chart/modal-segment-chart.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { InvolvedCpsComponent } from './components/involved-cps/involved-cps.com
     ModalFrequencyUpdateComponent,
     ModalPercentageUnstablePrefixesComponent,
     InvolvedCpsComponent,
+    ModalSegmentChartComponent,
   ],
   entryComponents: [
     ModalChartComponent,
@@ -74,7 +76,8 @@ import { InvolvedCpsComponent } from './components/involved-cps/involved-cps.com
     ModalMostFrequentUpdateComponent,
     ModalLongestSuffixComponent,
     ModalFrequencyUpdateComponent,
-    ModalPercentageUnstablePrefixesComponent
+    ModalPercentageUnstablePrefixesComponent,
+    ModalSegmentChartComponent
   ],
   imports: [
     BrowserModule,

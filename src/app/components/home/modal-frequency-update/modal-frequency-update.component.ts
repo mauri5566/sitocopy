@@ -21,71 +21,90 @@ export class ModalFrequencyUpdateComponent implements OnInit {
 
   chartOptions: Options = {
     title: {
-      text: 'CDF of the most frequent update frequency',
+      text: 'CDF of the frequency of updates per sequence',
       style: {
-        color: '#323232',
+        color: 'whitesmoke'
       }
     },
     chart: {
+      type: 'area',
       zoomType: 'x',
-      backgroundColor: 'white', /*{
-            linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-            stops: [
-                [0, '#2a2a2b'],
-                [1, '#3e3e40']
-            ]
-        },
-      borderColor: 'black',
-      borderWidth: 2,
-      height: 550,*/
+      backgroundColor: '#323232',
+    },
+    plotOptions: {
+      area: {
+        marker: {
+                enabled: false,
+                symbol: 'circle',
+                radius: 2,
+                states: {
+                    hover: {
+                        enabled: true
+                    }
+                }
+            },
+            fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 1,
+                            x2: 0,
+                            y2: 0
+                        },
+                        stops: [
+                            [0, '#323232'],
+                            [1, '#009879']
+                        ]
+                    },
+          }
     },
     tooltip: {
       formatter: function () {
             return '<b>' + this.series.name +
             '</b><br>x: <b>' + this.x +
                 '</b><br>y: <b>' + this.y + '</b>'},
-      backgroundColor: 'whitesmoke',
-      borderColor: 'black',
+      backgroundColor: 'black',
+      borderColor: '#009879',
       style: {
-        color: 'black'
+        color: '#A0A0A3',
       }
     },
     xAxis: {
-        gridLineColor: 'lightgrey',
+        gridLineColor: '#707073',
         labels: {
             style: {
-                color: '#323232',
+                color: '#E0E0E3',
                 fontSize: '1.3em'
             }
         },
-        lineColor: 'lightgrey',
-        minorGridLineColor: 'lightgrey',
-        tickColor: 'lightgrey',
+        lineColor: '#707073',
+        minorGridLineColor: '#505053',
+        tickColor: '#707073',
         tickWidth: 1,
         title: {
             text: 'Frequency of updates per sequence (Hz)',
             style: {
-                color: '#323232',
+                color: '#A0A0A3',
                 fontSize: '1.3em'
             }
         }
+
     },
     yAxis: {
-        gridLineColor: 'lightgrey',
+        gridLineColor: '#707073',
         labels: {
             style: {
-                color: '#323232',
+                color: '#E0E0E3',
                 fontSize: '1.3em'
             }
         },
-        lineColor: 'lightgrey',
-        minorGridLineColor: 'lightgrey',
-        tickColor: 'lightgrey',
+        lineColor: '#707073',
+        minorGridLineColor: '#505053',
+        tickColor: '#707073',
         tickWidth: 1,
         title: {
             text: 'Fraction of sequences',
             style: {
-                color: '#323232',
+                color: '#A0A0A3',
                 fontSize: '1.3em'
             }
         }
@@ -95,10 +114,10 @@ export class ModalFrequencyUpdateComponent implements OnInit {
     },
     series: [
       {
-        name: 'Frequency of the most frequent update in the sequence (upd/min)',
-        type: 'line',
-        data: [1, 2, 10, 5, 17, 22, 24, 50],
-        color: 'rgb(133,186,235)',
+        name: 'Frequency of updates per sequence (Hz)',
+        type: 'area',
+        data: [1, 4, 7, 18, 30, 40, 45, 48, 50],
+        color: '#009879',
         }
     ],
     legend: {
@@ -109,10 +128,10 @@ export class ModalFrequencyUpdateComponent implements OnInit {
                 contextButton: {
                     enabled: true,
                     symbol: 'menu',
-                    symbolStroke: '#666666',
-                    symbolFill: 'darkgrey',
+                    symbolStroke: '#A0A0A3',
+                    symbolFill: 'black',
                     theme: {
-                      fill: 'white'
+                      fill: '#323232'
                     },
                 }
               }
@@ -128,7 +147,6 @@ export class ModalFrequencyUpdateComponent implements OnInit {
       }
     },
   };
-
   constructor() { }
 
   ngOnInit(): void {
