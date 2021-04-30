@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
 import {ChartData} from 'src/app/model/chartData';
@@ -12,15 +12,9 @@ const HighchartsExportData = require('highcharts/modules/export-data');
 HighchartsExporting(Highcharts);
 HighchartsExportData(Highcharts);
 
-interface ExtendedAxis extends Highcharts.Axis {
-  dataMin: number;
-  dataMax: number;
-}
-
-// Introducing a custom property.
-interface ExtendedYAxis extends Highcharts.YAxisOptions {
-  myCustomProperty: boolean;
-}
+interface Ao extends Highcharts.PointOptionsObject{
+    chartData: ChartData
+  }
 
 @Component({
   selector: 'app-modal-most-frequent-update',
@@ -32,7 +26,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
 
   Highcharts: typeof Highcharts = Highcharts;
   highChart!: Highcharts.Chart | null;
-
+  chartData: any = [];
   chartOptions: Options = {
     title: {
       text: 'CDF of the most frequent update frequency',
@@ -49,7 +43,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
       formatter: function () {
             return '<b>' + this.series.name +
             '</b><br>x: <b>' + this.x +
-                '</b><br>y: <b>' + this.y + '</b>'},
+                '</b><br>y: <b>' + this.y + '</b>'; },
       backgroundColor: 'black',
       borderColor: '#009879',
       style: {
@@ -98,16 +92,9 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
         }
     },
     credits: {
-      enabled: false
-    },
-    series: [
-      {
-        name: 'Frequency of the most frequent update in the sequence (upd/min)',
-        type: 'line',
-        data: [],
-        color: '#009879',
-        }
-    ],
+      enabled: false,
+    }as Highcharts.CreditsOptions,
+    series: [],
     legend: {
         enabled: false
     },
@@ -139,12 +126,17 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
   constructor(public chartService: ChartService) { }
 
   ngOnInit(): void {
-    /*this.chartService.getMostFrequentUpdateData().subscribe(
+    this.chartService.getMostFrequentUpdateData().subscribe(
       (data: ChartData[]) => {
-        if(this.chartOptions.series){
-          this.chartOptions.series[0].data = data;
-        }
-      }
-    );*/
-  }
+    this.chartOptions.series = [
+          {
+            name: 'ao',
+            type: 'line',
+            data: data,
+            color: '#009879',
+          }
+        ];
+        });
+}
+
 }
