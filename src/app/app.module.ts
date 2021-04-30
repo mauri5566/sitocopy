@@ -41,7 +41,12 @@ import { HighchartsChartModule } from "highcharts-angular";
 <<<<<<< HEAD
 =======
 import {OverlayModule} from '@angular/cdk/overlay';
+<<<<<<< HEAD
 >>>>>>> f5ad799b708b6c24ebe56523f385a266edb970d6
+=======
+import { InvolvedCpsComponent } from './components/involved-cps/involved-cps.component';
+import { ModalSegmentChartComponent } from './components/involved-cps/modal-segment-chart/modal-segment-chart.component';
+>>>>>>> a926c87480d8c71749e2430fd90bf2749d2773e3
 
 @NgModule({
   declarations: [
@@ -62,6 +67,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
     ModalLongestSuffixComponent,
     ModalFrequencyUpdateComponent,
     ModalPercentageUnstablePrefixesComponent,
+    InvolvedCpsComponent,
+    ModalSegmentChartComponent,
   ],
   entryComponents: [
     ModalChartComponent,
@@ -75,7 +82,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
     ModalMostFrequentUpdateComponent,
     ModalLongestSuffixComponent,
     ModalFrequencyUpdateComponent,
-    ModalPercentageUnstablePrefixesComponent
+    ModalPercentageUnstablePrefixesComponent,
+    ModalSegmentChartComponent
   ],
   imports: [
     BrowserModule,
@@ -107,7 +115,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
 >>>>>>> f5ad799b708b6c24ebe56523f385a266edb970d6
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'sequences', component: SequencesComponent}
+      { path: 'sequences', component: SequencesComponent},
+      { path: 'involvedCps', component: InvolvedCpsComponent}
     ]),
     BrowserAnimationsModule
   ],

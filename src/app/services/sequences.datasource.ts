@@ -86,6 +86,8 @@ export class SequencesDataSource implements DataSource<Sequence> {
             oldSequence.duration = newSequence.duration;
             oldSequence.frequency = newSequence.frequency;
             oldSequence.runID = newSequence.runID;
+            oldSequence.containsLoops = newSequence.containsLoops;
+            oldSequence.containsAsPathLoops = newSequence.containsAsPathLoops;
     });
         /*this.sequencesService.getRipe(oldSequence.prefix).subscribe((newSequence: Sequence) => {
         oldSequence.ripe.data.announced = newSequence.ripe.data.announced;

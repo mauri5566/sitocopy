@@ -101,8 +101,10 @@ export class HomeComponent implements OnInit {
 
   openDialog6(){
     this.dialog.open(ModalNumberSequencesCpComponent, {
-      width: '100%',
-      height: '640px'
+     width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
     });
   }
 

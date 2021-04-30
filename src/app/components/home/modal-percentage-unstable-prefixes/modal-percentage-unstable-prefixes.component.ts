@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
-import {ModalService} from 'src/app/services/modal.service';
 import {ChartData} from 'src/app/model/chartData';
 /*import * as HighchartsExporting from 'highcharts/modules/exporting';
 import * as HighchartsExportData from 'highcharts/modules/export-data';*/
@@ -21,15 +20,15 @@ export class ModalPercentageUnstablePrefixesComponent implements OnInit {
 
   chartOptions: Options = {
     title: {
-      text: 'CDF of the most frequent update frequency',
+      text: 'CDF of the percentage of prefixes appearing in at least a sequence among those announced by an AS',
       style: {
-        color: '#323232',
+        color: 'whitesmoke'
       }
     },
     chart: {
+      type: 'area',
       zoomType: 'x',
-      backgroundColor: 'white',
-      type: 'area'
+      backgroundColor: '#323232',
     },
     plotOptions: {
       area: {
@@ -51,8 +50,8 @@ export class ModalPercentageUnstablePrefixesComponent implements OnInit {
                             y2: 0
                         },
                         stops: [
-                            [0, 'white'],
-                            [1, 'rgb(133,186,235)']
+                            [0, '#323232'],
+                            [1, '#009879']
                         ]
                     },
           }
@@ -62,48 +61,49 @@ export class ModalPercentageUnstablePrefixesComponent implements OnInit {
             return '<b>' + this.series.name +
             '</b><br>x: <b>' + this.x +
                 '</b><br>y: <b>' + this.y + '</b>'},
-      backgroundColor: 'whitesmoke',
-      borderColor: 'black',
+      backgroundColor: 'black',
+      borderColor: '#009879',
       style: {
-        color: 'black'
+        color: '#A0A0A3',
       }
     },
     xAxis: {
-        gridLineColor: 'lightgrey',
+        gridLineColor: '#707073',
         labels: {
             style: {
-                color: '#323232',
+                color: '#E0E0E3',
                 fontSize: '1.3em'
             }
         },
-        lineColor: 'lightgrey',
-        minorGridLineColor: 'lightgrey',
-        tickColor: 'lightgrey',
+        lineColor: '#707073',
+        minorGridLineColor: '#505053',
+        tickColor: '#707073',
         tickWidth: 1,
         title: {
-            text: 'Frequency of updates per sequence (Hz)',
+            text: 'CDF of the percentage of prefixes appearing in at least a sequence among those announced by an AS',
             style: {
-                color: '#323232',
+                color: '#A0A0A3',
                 fontSize: '1.3em'
             }
         }
+
     },
     yAxis: {
-        gridLineColor: 'lightgrey',
+        gridLineColor: '#707073',
         labels: {
             style: {
-                color: '#323232',
+                color: '#E0E0E3',
                 fontSize: '1.3em'
             }
         },
-        lineColor: 'lightgrey',
-        minorGridLineColor: 'lightgrey',
-        tickColor: 'lightgrey',
+        lineColor: '#707073',
+        minorGridLineColor: '#505053',
+        tickColor: '#707073',
         tickWidth: 1,
         title: {
-            text: 'Fraction of sequences',
+            text: 'Fraction of ASes',
             style: {
-                color: '#323232',
+                color: '#A0A0A3',
                 fontSize: '1.3em'
             }
         }
@@ -113,10 +113,10 @@ export class ModalPercentageUnstablePrefixesComponent implements OnInit {
     },
     series: [
       {
-        name: 'Frequency of the most frequent update in the sequence (upd/min)',
+        name: 'CDF of the percentage of prefixes appearing in at least a sequence among those announced by an AS',
         type: 'area',
-        data: [1, 5, 20, 40, 50, 55, 58, 60],
-        color: 'rgb(133,186,235)',
+        data: [1, 4, 7, 18, 30, 40, 45, 48, 50],
+        color: '#009879',
         }
     ],
     legend: {
@@ -127,10 +127,10 @@ export class ModalPercentageUnstablePrefixesComponent implements OnInit {
                 contextButton: {
                     enabled: true,
                     symbol: 'menu',
-                    symbolStroke: '#666666',
-                    symbolFill: 'darkgrey',
+                    symbolStroke: '#A0A0A3',
+                    symbolFill: 'black',
                     theme: {
-                      fill: 'white'
+                      fill: '#323232'
                     },
                 }
               }

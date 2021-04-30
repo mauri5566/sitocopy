@@ -1,0 +1,89 @@
+html {
+  background-image: url(../../../assets/images/bianco.jpg);
+  overflow: hidden;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+  scroll-behavior: auto;
+  overflow-y: scroll;
+}
+
+th {  
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+  font-size: calc(1.1em + 1vh);
+}
+
+td {
+    width:100%;
+    font-size: 1.2em;
+}
+
+.tabella{
+  position:relative;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  width: 95%;
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+}
+
+.collectorAS{
+    padding-right:15vw;
+    white-space: nowrap;
+}
+
+.location{
+    padding-right: 20vw;
+}
+
+.chart{
+    white-space: nowrap;
+}
+
+mat-toolbar{
+    background-color: #009879;
+    color: #ffffff;
+    height: 40px;
+}
+
+.mat-toolbar span{
+  padding-left:50px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-weight:400;
+}
+
+.home{
+    color: white;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+button{
+  border-width: 0px;
+  border-radius: 5px;
+  background-color: rgba(0, 152, 121, 0.5);
+  width: 70px;
+  transition: background-color 0.25s
+}
+
+button:hover{
+  border-width: 0px;
+  border-radius: 5px;
+  background-color: rgba(0, 152, 121, 0.75);
+  width: 70px;
+}
+
+
+

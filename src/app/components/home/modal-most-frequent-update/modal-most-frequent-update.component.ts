@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
-import {ModalService} from 'src/app/services/modal.service';
 import {ChartData} from 'src/app/model/chartData';
+import { ChartService } from 'src/app/services/chart.service';
 /*import * as HighchartsExporting from 'highcharts/modules/exporting';
 import * as HighchartsExportData from 'highcharts/modules/export-data';*/
 
@@ -12,6 +12,10 @@ const HighchartsExportData = require('highcharts/modules/export-data');
 HighchartsExporting(Highcharts);
 HighchartsExportData(Highcharts);
 
+interface Ao extends Highcharts.PointOptionsObject{
+    chartData: ChartData
+  }
+
 @Component({
   selector: 'app-modal-most-frequent-update',
   templateUrl: './modal-most-frequent-update.component.html',
@@ -19,12 +23,17 @@ HighchartsExportData(Highcharts);
 })
 export class ModalMostFrequentUpdateComponent implements OnInit {
 
+
   Highcharts: typeof Highcharts = Highcharts;
 <<<<<<< HEAD
 =======
   highChart!: Highcharts.Chart | null;
+<<<<<<< HEAD
 >>>>>>> f5ad799b708b6c24ebe56523f385a266edb970d6
 
+=======
+  chartData: any = [];
+>>>>>>> a926c87480d8c71749e2430fd90bf2749d2773e3
   chartOptions: Options = {
     title: {
       text: 'CDF of the most frequent update frequency',
@@ -63,25 +72,11 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
       zoomType: 'x',
       backgroundColor: '#323232',
     },
-    /*plotOptions: {
-      area:{
-      marker: {
-                enabled: false,
-                symbol: 'circle',
-                radius: 2,
-                states: {
-                    hover: {
-                        enabled: true
-                    }
-                }
-            }
-          }
-    },*/
     tooltip: {
       formatter: function () {
             return '<b>' + this.series.name +
             '</b><br>x: <b>' + this.x +
-                '</b><br>y: <b>' + this.y + '</b>'},
+                '</b><br>y: <b>' + this.y + '</b>'; },
       backgroundColor: 'black',
       borderColor: '#009879',
       style: {
@@ -144,6 +139,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
         }
     },
     credits: {
+<<<<<<< HEAD
       enabled: false
     },
     series: [
@@ -160,6 +156,11 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
         color: '#009879',
         }
     ],
+=======
+      enabled: false,
+    }as Highcharts.CreditsOptions,
+    series: [],
+>>>>>>> a926c87480d8c71749e2430fd90bf2749d2773e3
     legend: {
         enabled: false
     },
@@ -205,15 +206,20 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
     },
   };
 
-  constructor(private modalService: ModalService) { }
+  constructor(public chartService: ChartService) { }
 
   ngOnInit(): void {
-    /*this.modalService.getData().subscribe(
+    this.chartService.getMostFrequentUpdateData().subscribe(
       (data: ChartData[]) => {
-        if (this.chartOptions.series[0].type === 'line'){
-          this.chartOptions.series[0].data = data;
-        }
-      }
-    );*/
-  }
+    this.chartOptions.series = [
+          {
+            name: 'ao',
+            type: 'line',
+            data: data,
+            color: '#009879',
+          }
+        ];
+        });
+}
+
 }
