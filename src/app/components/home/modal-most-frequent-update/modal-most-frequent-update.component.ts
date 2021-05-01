@@ -3,6 +3,7 @@ import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
 import {ChartData} from 'src/app/model/chartData';
 import { ChartService } from 'src/app/services/chart.service';
+import { Subscription, timer, interval } from 'rxjs';
 /*import * as HighchartsExporting from 'highcharts/modules/exporting';
 import * as HighchartsExportData from 'highcharts/modules/export-data';*/
 
@@ -21,12 +22,15 @@ interface Ao extends Highcharts.PointOptionsObject{
   templateUrl: './modal-most-frequent-update.component.html',
   styleUrls: ['./modal-most-frequent-update.component.css']
 })
-export class ModalMostFrequentUpdateComponent implements OnInit {
+export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
 
 
   Highcharts: typeof Highcharts = Highcharts;
   highChart!: Highcharts.Chart | null;
-  chartData: any = [];
+  chartDataX: number[] = [];
+  chartDataY: number[] = [];
+  chartData: number[][] = [];
+  timerSubscription!: Subscription;
   chartOptions: Options = {
     title: {
       text: 'CDF of the most frequent update frequency',
@@ -128,15 +132,25 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.chartService.getMostFrequentUpdateData().subscribe(
       (data: ChartData[]) => {
-    this.chartOptions.series = [
+        for (let i = 0; i < data.length; i++){
+          this.chartDataX.push(data[i].item1);
+          this.chartDataY.push(data[i].item2);
+          this.chartData.push([this.chartDataX[i], this.chartDataY[i]])
+        }
+        this.chartOptions.series = [
           {
             name: 'ao',
             type: 'line',
-            data: data,
+            data: this.chartData,
             color: '#009879',
           }
         ];
-        });
+      });
+
 }
+
+  ngAfterViewInit(){
+    setInterval(() => {console.log(this.chartData);}, 1000)
+  }
 
 }
