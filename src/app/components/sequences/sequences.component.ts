@@ -167,11 +167,15 @@ export class SequencesComponent implements AfterViewInit, OnInit {
   }
 
   prefixRef(prefix: string) {
-    window.location.href = "https://stat.ripe.net/ + prefix + #tabId=at-a-glance";
+    window.open(`https://stat.ripe.net/${prefix}#tabId=at-a-glance`, '_blank');
+  }
+
+  openAsRank(element: Sequence): void{
+    window.open(`https://asrank.caida.org/asns?asn=${element.asOrigins}`, '_blank');
   }
 
   show(element: Sequence){
-    if(element.containsLoops === true){
+    if (element.containsLoops === true){
       return true;
     }
     else{

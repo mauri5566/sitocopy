@@ -3,6 +3,7 @@ import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
 import {ChartData} from 'src/app/model/chartData';
 import { ChartService } from 'src/app/services/chart.service';
+import { Subscription, timer, interval } from 'rxjs';
 /*import * as HighchartsExporting from 'highcharts/modules/exporting';
 import * as HighchartsExportData from 'highcharts/modules/export-data';*/
 
@@ -21,7 +22,7 @@ interface Ao extends Highcharts.PointOptionsObject{
   templateUrl: './modal-most-frequent-update.component.html',
   styleUrls: ['./modal-most-frequent-update.component.css']
 })
-export class ModalMostFrequentUpdateComponent implements OnInit {
+export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
 
 
   Highcharts: typeof Highcharts = Highcharts;
@@ -29,11 +30,18 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
 =======
   highChart!: Highcharts.Chart | null;
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> f5ad799b708b6c24ebe56523f385a266edb970d6
 
 =======
   chartData: any = [];
 >>>>>>> a926c87480d8c71749e2430fd90bf2749d2773e3
+=======
+  chartDataX: number[] = [];
+  chartDataY: number[] = [];
+  chartData: any[] = [];
+  timerSubscription!: Subscription;
+>>>>>>> 5aa58d6a28e844b24025f944c4e9c23f53b329d6
   chartOptions: Options = {
     title: {
       text: 'CDF of the most frequent update frequency',
@@ -211,15 +219,25 @@ export class ModalMostFrequentUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.chartService.getMostFrequentUpdateData().subscribe(
       (data: ChartData[]) => {
+        for (let i = 0; i < data.length; i++){
+          this.chartDataX.push(data[i].item1);
+          this.chartDataY.push(data[i].item2);
+          this.chartData.push([this.chartDataX[i], this.chartDataY[i]]);
+        }
+      });
     this.chartOptions.series = [
           {
             name: 'ao',
             type: 'line',
-            data: data,
+            data: this.chartData,
             color: '#009879',
           }
         ];
-        });
+
 }
+
+  ngAfterViewInit(){
+    setInterval(() => {console.log(this.chartData);}, 1000)
+  }
 
 }
