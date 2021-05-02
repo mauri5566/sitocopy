@@ -29,7 +29,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
   highChart!: Highcharts.Chart | null;
   chartDataX: number[] = [];
   chartDataY: number[] = [];
-  chartData: number[][] = [];
+  chartData: any[] = [];
   timerSubscription!: Subscription;
   chartOptions: Options = {
     title: {
@@ -135,9 +135,10 @@ export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
         for (let i = 0; i < data.length; i++){
           this.chartDataX.push(data[i].item1);
           this.chartDataY.push(data[i].item2);
-          this.chartData.push([this.chartDataX[i], this.chartDataY[i]])
+          this.chartData.push([this.chartDataX[i], this.chartDataY[i]]);
         }
-        this.chartOptions.series = [
+      });
+    this.chartOptions.series = [
           {
             name: 'ao',
             type: 'line',
@@ -145,7 +146,6 @@ export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
             color: '#009879',
           }
         ];
-      });
 
 }
 
