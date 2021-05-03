@@ -30,6 +30,8 @@ export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
   chartDataX: number[] = [];
   chartDataY: number[] = [];
   chartData: any[] = [];
+  update = false;
+  show = false;
   timerSubscription!: Subscription;
   chartOptions: Options = {
     title: {
@@ -55,6 +57,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
       }
     },
     xAxis: {
+        type: 'logarithmic',
         gridLineColor: '#707073',
         labels: {
             style: {
@@ -76,6 +79,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
 
     },
     yAxis: {
+        min: 98.5,
         gridLineColor: '#707073',
         labels: {
             style: {
@@ -98,7 +102,13 @@ export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
     credits: {
       enabled: false,
     }as Highcharts.CreditsOptions,
-    series: [],
+    series: [{
+      name: 'ao',
+            type: 'line',
+            data: [],
+            color: '#009879',
+    }
+    ],
     legend: {
         enabled: false
     },
@@ -132,25 +142,37 @@ export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.chartService.getMostFrequentUpdateData().subscribe(
       (data: ChartData[]) => {
-        for (let i = 0; i < data.length; i++){
+        /*for (let i = 0; i < data.length; i++){
           this.chartDataX.push(data[i].item1);
           this.chartDataY.push(data[i].item2);
           this.chartData.push([this.chartDataX[i], this.chartDataY[i]]);
-        }
-      });
-    this.chartOptions.series = [
+        }*/
+        /*this.chartOptions.series = [
           {
             name: 'ao',
             type: 'line',
-            data: this.chartData,
+            data: data.map(e => [e.item1, e.item2]),
+            color: '#009879',
+          }
+        ];*/
+        this.update = true;
+        this.show = true;
+        this.chartOptions.series = [
+          {
+            name: 'ao',
+            type: 'line',
+            data: data.map(e => [e.item1, e.item2]),
             color: '#009879',
           }
         ];
+      });
+
+
 
 }
 
   ngAfterViewInit(){
-    setInterval(() => {console.log(this.chartData);}, 1000)
+    setInterval(() => {console.log(this.chartOptions.series);}, 1000)
   }
 
 }
