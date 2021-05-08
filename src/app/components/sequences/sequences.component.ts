@@ -122,10 +122,17 @@ export class SequencesComponent implements AfterViewInit, OnInit {
   }
 
   // tslint:disable-next-line: typedef
-  openDialog2() {
+  openDialog2(peerAS: number, peerIPAddress: string, prefix: string) {
     this.dialog.open(ModalChartComponent, {
       width: '90%',
-      height: '640px'
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
+      data: {
+        peerAS,
+        peerIPAddress,
+        prefix
+      }
     });
   }
 

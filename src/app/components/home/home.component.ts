@@ -16,6 +16,8 @@ import { ModalPercentageUnstablePrefixesComponent } from './modal-percentage-uns
 import { HomeData2 } from 'src/app/model/homedata2';
 import { RouteConfigLoadEnd } from '@angular/router';
 import {Overlay} from '@angular/cdk/overlay';
+import { ChartService } from 'src/app/services/chart.service';
+import { SequenceChartData } from 'src/app/model/sequenceChartData';
 
 /*const  elements: HomeData[] = [{
     aSes: 25494,
@@ -46,6 +48,7 @@ export class HomeComponent implements OnInit {
   element2!: HomeData2;
   /*elements = elements;*/
   constructor(private homeService: HomeService,
+              private chartService: ChartService,
               public dialog: MatDialog,
               ) {
    }
