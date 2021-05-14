@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
-import {ChartData} from 'src/app/model/chartData';
+import {CDFData} from 'src/app/model/cdfData';
+import { ChartService } from 'src/app/services/chart.service';
+import { Subscription, timer, interval } from 'rxjs';
+import { CPData } from 'src/app/model/cpData';
+import { DataSet } from 'src/app/model/dataSet';
+import { Data } from '@angular/router';
 /*import * as HighchartsExporting from 'highcharts/modules/exporting';
 import * as HighchartsExportData from 'highcharts/modules/export-data';*/
 
@@ -17,6 +22,9 @@ export class ModalNumberSequencesCpComponent implements OnInit {
 
   Highcharts: typeof Highcharts = Highcharts;
   highChart!: Highcharts.Chart | null;
+  update = false;
+  show = false;
+  dataSet: DataSet[] = [];
 
   chartOptions: Options = {
     title: {
@@ -32,9 +40,8 @@ export class ModalNumberSequencesCpComponent implements OnInit {
     },
     tooltip: {
       formatter: function () {
-            return '<b>' + this.series.name +
-            '</b><br>x: <b>' + this.x +
-                '</b><br>y: <b>' + this.y + '</b>'},
+            return '</b><br> <b>' + this.point.name +
+                '</b><br>number of sequences: <b>' + this.y + '</b>'},
       backgroundColor: 'whitesmoke',
       borderColor: 'black',
       style: {
@@ -44,17 +51,14 @@ export class ModalNumberSequencesCpComponent implements OnInit {
     xAxis: {
         gridLineColor: '#707073',
         labels: {
-            style: {
-                color: '#E0E0E3',
-                fontSize: '1.3em'
-            }
+            enabled: false
         },
         lineColor: '#707073',
         minorGridLineColor: '#505053',
         tickColor: '#707073',
         tickWidth: 1,
         title: {
-            text: 'Frequency of updates per sequence (Hz)',
+            text: 'CPs',
             style: {
                 color: '#A0A0A3',
                 fontSize: '1.3em'
@@ -62,6 +66,7 @@ export class ModalNumberSequencesCpComponent implements OnInit {
         }
     },
     yAxis: {
+        type: 'logarithmic',
         gridLineColor: '#707073',
         labels: {
             style: {
@@ -74,7 +79,7 @@ export class ModalNumberSequencesCpComponent implements OnInit {
         tickColor: '#707073',
         tickWidth: 1,
         title: {
-            text: 'Fraction of sequences',
+            text: 'Found sequences per CP',
             style: {
                 color: '#A0A0A3',
                 fontSize: '1.3em'
@@ -88,17 +93,11 @@ export class ModalNumberSequencesCpComponent implements OnInit {
       {
         name: 'Frequency of the most frequent update in the sequence (upd/min)',
         type: 'column',
-        data: [1, 2, 10, 5, 17, 22, 24, 50, 40, 4, 50, 60, 32, 32, 43, 54, 56, 67, 32, 43, 58, 24, 12,
-        1, 2, 10, 5, 17, 22, 24, 50, 40, 4, 50, 60, 32, 32, 43, 54, 56, 67, 32, 43, 58, 24, 12,
-      1, 2, 10, 5, 17, 22, 24, 50, 40, 4, 50, 60, 32, 32, 43, 54, 56, 67, 32, 43, 58, 24, 12,
-    1, 2, 10, 5, 17, 22, 24, 50, 40, 4, 50, 60, 32, 32, 43, 54, 56, 67, 32, 43, 58, 24, 12,
-  1, 2, 10, 5, 17, 22, 24, 50, 40, 4, 50, 60, 32, 32, 43, 54, 56, 67, 32, 43, 58, 24, 12,
-1, 2, 10, 5, 17, 22, 24, 50, 40, 4, 50, 60, 32, 32, 43, 54, 56, 67, 32, 43, 58, 24, 12,
-1, 2, 10, 5, 17, 22, 24, 50, 40, 4, 50, 60, 32, 32, 43, 54, 56, 67, 32, 43, 58, 24, 12],
+        data: [{name: '', y: 0}],
         color: '#009879',
         }
     ],
-    plotOptions:{
+    plotOptions: {
       column: {
         borderWidth: 0
       }
@@ -131,9 +130,39 @@ export class ModalNumberSequencesCpComponent implements OnInit {
     },
   };
 
-  constructor() { }
+  constructor(public chartService: ChartService) { }
 
   ngOnInit(): void {
+    this.chartService.getNumberOfSequencesData().subscribe(
+      (data: CPData[]) => {
+        for (let i = 0; i < data.length; i++){
+          this.dataSet.push({name: data[i].cp.peerIPAddress + " (AS: " + data[i].cp.peerAS + ")", y: data[i].sequencesCount})
+        }
+        this.dataSet.sort(this.compare);
+
+        this.chartOptions.series = [
+          {
+            name: 'ao',
+            type: 'column',
+            data: this.dataSet,
+            color: '#009879',
+          }
+        ];
+        this.update = true;
+        this.show = true;
+      }
+    );
   }
+
+  compare(a: DataSet, b: DataSet) {
+			if (a.y < b.y) {
+				return 1;
+			}
+			if (a.y > b.y) {
+				return -1;
+      }
+      return 0
+		}
+
 
 }

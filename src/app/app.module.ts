@@ -69,6 +69,7 @@ import { ModalSegmentChartComponent } from './components/involved-cps/modal-segm
     ModalPercentageUnstablePrefixesComponent,
     InvolvedCpsComponent,
     ModalSegmentChartComponent,
+    ModalAbBaChartComponent,
   ],
   entryComponents: [
     ModalChartComponent,
@@ -83,7 +84,8 @@ import { ModalSegmentChartComponent } from './components/involved-cps/modal-segm
     ModalLongestSuffixComponent,
     ModalFrequencyUpdateComponent,
     ModalPercentageUnstablePrefixesComponent,
-    ModalSegmentChartComponent
+    ModalSegmentChartComponent,
+    ModalAbBaChartComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { Ripe } from 'src/app/model/ripe';
 import { FormComponent } from './form/form.component';
 import { RipeService } from 'src/app/services/ripe.service';
+import { ModalAbBaChartComponent } from './modal-ab-ba-chart/modal-ab-ba-chart.component';
 
 @Component({
   selector: 'app-sequences',
@@ -128,10 +129,29 @@ export class SequencesComponent implements AfterViewInit, OnInit {
   }
 
   // tslint:disable-next-line: typedef
-  openDialog2() {
+  openDialog2(peerAS: number, peerIPAddress: string, prefix: string) {
     this.dialog.open(ModalChartComponent, {
       width: '90%',
-      height: '640px'
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
+      data: {
+        peerAS,
+        peerIPAddress,
+        prefix
+      }
+    });
+  }
+
+  openDialog3(sequenceId: string){
+    this.dialog.open(ModalAbBaChartComponent, {
+      width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
+      data: {
+        sequenceId
+      }
     });
   }
 
@@ -160,18 +180,21 @@ export class SequencesComponent implements AfterViewInit, OnInit {
       this.dataSource.loadSequencesById(element);
       this.ripeService.getRipe(element.prefix).subscribe((ripe: Ripe) => this.elementRipe[element.asOrigins] = ripe);
       this.expandedElement.push(element);
-      console.log(element.containsLoops)
     } else {
       this.expandedElement.splice(index, 1);
     }
   }
 
-  prefixRef(prefix: string) {
+  prefixRef(prefix: string): void {
     window.open(`https://stat.ripe.net/${prefix}#tabId=at-a-glance`, '_blank');
   }
 
   openAsRank(element: Sequence): void{
     window.open(`https://asrank.caida.org/asns?asn=${element.asOrigins}`, '_blank');
+  }
+
+  ripestatBgpUpdate(startTime: string, endTime: string, prefix: string): void{
+    window.open(`https://stat.ripe.net/widget/bgp-update-activity#w.starttime=${startTime}&w.endtime=${endTime}&w.resource=${prefix}`);
   }
 
   show(element: Sequence){
