@@ -139,7 +139,7 @@ export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
         this.show = true;
         this.chartOptions.series = [
           {
-            name: 'ao',
+            name: 'Frequency of the most frequent update in the sequence',
             type: 'line',
             data: data.map(e => [e.item1, e.item2]),
             color: '#009879',

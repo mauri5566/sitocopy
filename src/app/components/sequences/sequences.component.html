@@ -104,12 +104,12 @@
                       </a>
                     </div>
                     <div class="container2">
-                      <a href="https://twitter.com/masuwa1018" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                      <a (click) = "ripestatBgpUpdate(element.start, element.end, element.prefix)" class="btn effect04" data-sm-link-text="CLICK" href ="" target="_blank">
                         <span>RIPE STAT BGP UPDATE ACTIVITY</span>
                       </a>
                     </div>
                     <div class="container3" *ngIf="show(element)">
-                      <a href="https://twitter.com/masuwa1018" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                      <a (click) = "openDialog3(element.id)" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
                         <span>AB-BA CHART</span>
                       </a>
                     </div>

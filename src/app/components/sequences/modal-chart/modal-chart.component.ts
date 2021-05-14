@@ -26,11 +26,11 @@ export class ModalChartComponent implements OnInit {
   peerAS!: number;
   peerIPAddress!: string;
   prefix!: string;
-  bucketAnnouncements!: Bucket[];
-  bucketWithdrawals!: Bucket[];
+  bucketAnnouncements: Array<[Date, number]> = [];
+  bucketWithdrawals: Array<{x: number, y: number}> = [];
   chartOptions: Options = {
     title: {
-      text: 'CDF of the most frequent update frequency',
+      text: 'Sequences detected for prefix' + this.data.prefix + 'as seen from collector peer' + this.data.peerIPAddress + '(AS' + this.data.peerAS + ')',
       style: {
         color: 'whitesmoke'
       }
@@ -51,8 +51,59 @@ export class ModalChartComponent implements OnInit {
         color: '#A0A0A3',
       }
     },
+    plotOptions: {
+      series: {
+        turboThreshold: 500000,
+        dataGrouping: {
+          approximation: "sum",
+          smoothed: false,
+          groupPixelWidth: 2,
+          enabled: true,
+          dateTimeLabelFormats: {
+            millisecond: [
+                '%A, %b %e, %H:%M:%S.%L', '%A, %b %e, %H:%M:%S.%L', '-%H:%M:%S.%L'
+              ],
+              second: ['%A, %b %e, %H:%M:%S', '%A, %b %e, %H:%M:%S', '-%H:%M:%S'],
+              minute: ['%A, %b %e, %H:%M', '%A, %b %e, %H:%M', '-%H:%M'],
+              hour: ['%A, %b %e, %H:%M', '%A, %b %e, %H:%M', '-%H:%M'],
+              day: ['%A, %b %e, %Y', '%A, %b %e', '-%A, %b %e, %Y'],
+              week: ['Week from %A, %b %e, %Y', '%A, %b %e', '-%A, %b %e, %Y'],
+              month: ['%B %Y', '%B', '-%B %Y'],
+              year: ['%Y', '%Y', '-%Y']
+            },
+            units: [
+              ['millisecond', []],
+              ['second', []],
+              ['minute', [30]],
+              ['hour', [1, 6, 12]],
+              ['day', [1]],
+              ['week', null],
+							['month', null],
+							['year', null]
+						]
+          }
+        }
+    },
+    rangeSelector: {
+				enabled: false
+			},
+			navigator: {
+				enabled: false
+			},
+
     xAxis: {
-        type: 'logarithmic',
+      type: 'datetime',
+      visible: true,
+      dateTimeLabelFormats: {
+        millisecond: '%e/%b/%y %H:%M:%S.%L',
+        second: '%e/%b/%y %H:%M:%S',
+        minute: '%e/%b/%y %H:%M',
+        hour: '%e/%b/%y %H:%M',
+        day: '%e/%b/%y',
+        week: '%e/%b/%y',
+        month: '%e/%b/%y',
+        year: '%m/%y'
+      },
         gridLineColor: '#707073',
         labels: {
             style: {
@@ -65,7 +116,7 @@ export class ModalChartComponent implements OnInit {
         tickColor: '#707073',
         tickWidth: 1,
         title: {
-            text: 'Frequency of the most frequent update in the sequence (upd/min)',
+            text: '',
             style: {
                 color: '#A0A0A3',
                 fontSize: '1.3em'
@@ -74,7 +125,6 @@ export class ModalChartComponent implements OnInit {
 
     },
     yAxis: {
-        min: 98.5,
         gridLineColor: '#707073',
         labels: {
             style: {
@@ -87,7 +137,7 @@ export class ModalChartComponent implements OnInit {
         tickColor: '#707073',
         tickWidth: 1,
         title: {
-            text: 'Fraction of sequences',
+            text: 'Number of messages',
             style: {
                 color: '#A0A0A3',
                 fontSize: '1.3em'
@@ -102,6 +152,7 @@ export class ModalChartComponent implements OnInit {
             type: 'line',
             data: [],
             color: '#009879',
+            boostThreshold: 0
     }
     ],
     legend: {
@@ -137,33 +188,48 @@ export class ModalChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.chartService.getSequenceChartData(this.data.peerAS, this.data.peerIPAddress, this.data.prefix)
-    .subscribe((data: SequenceChartData[]) => { this.dataChart = data; })
-    let firstDay = Infinity;
-    let lastDay = -Infinity;
-    for (const val of this.dataChart){
-      const date = moment.utc(val.date).unix();
-      if (firstDay > date) {
-        firstDay = date;
-      }
-      if (lastDay < date) {
-        lastDay = date;
-      }
-    }
-    for (let n = firstDay; n <= lastDay; n += 300) {
-      this.bucketAnnouncements[n] = {
-        x: new Date(n),
-        y: 0
-      };
-      this.bucketWithdrawals[n] = {
-        x: new Date(n),
-        y: 0
-      };
+    .subscribe((data: SequenceChartData[]) => {
+      this.dataChart = data;
       this.update = true;
       this.show = true;
+      let firstDay = Infinity;
+      let lastDay = -Infinity;
+      for (const val of this.dataChart){
+        const date = moment.utc(val.date).unix();
+        if (firstDay > date) {
+          firstDay = date;
+        }
+        if (lastDay < date) {
+          lastDay = date;
+        }
+      }
+      for (let n = firstDay; n <= lastDay; n += 300) {
+        this.bucketAnnouncements[n] = [
+          new Date(n * 1000),
+          0
+        ];
+        this.bucketWithdrawals[n] = {
+          x: 1,
+          y: 0
+        };
+      }
+      for (const val of this.dataChart) {
+        const date = val.date;
+        this.bucketAnnouncements[moment.utc(date).unix()][1] = val.announces;
+      }
+
+      this.chartOptions.series = [
+          {
+            name: 'ao',
+            type: 'line',
+            data: this.bucketAnnouncements,
+            color: '#009879',
+          }
+        ];
+        });
     }
 
-
-
-
-    }
+    ngAfterViewInit(): void{
+      setInterval(() => {console.log(this.bucketAnnouncements); }, 1000);
+  }
 }

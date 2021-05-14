@@ -58,7 +58,7 @@ export class ModalNumberSequencesCpComponent implements OnInit {
         tickColor: '#707073',
         tickWidth: 1,
         title: {
-            text: 'Frequency of updates per sequence (Hz)',
+            text: 'CPs',
             style: {
                 color: '#A0A0A3',
                 fontSize: '1.3em'
@@ -79,7 +79,7 @@ export class ModalNumberSequencesCpComponent implements OnInit {
         tickColor: '#707073',
         tickWidth: 1,
         title: {
-            text: 'Fraction of sequences',
+            text: 'Found sequences per CP',
             style: {
                 color: '#A0A0A3',
                 fontSize: '1.3em'

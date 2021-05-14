@@ -4,6 +4,8 @@ import { CDFData } from '../model/cdfData';
 import { Observable } from 'rxjs';
 import { CPData } from '../model/cpData';
 import { SequenceChartData } from '../model/sequenceChartData';
+import { ABBAData } from '../model/ABBAData';
+import { sequence } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +28,9 @@ export class ChartService {
     params = params.append('peerIPAddress', peerIPAddress.toString());
     params = params.append('prefix', prefix.toString());
     return this.http.get<SequenceChartData[]>('https://bgpie.net/api/bgphistory/', {params});
+  }
+
+  getABBAChartData(sequenceId: string): Observable<ABBAData[]>{
+    return this.http.get<ABBAData[]>('https://bgpie.net/api/aspathloop/sequence/' + sequenceId);
   }
 }
