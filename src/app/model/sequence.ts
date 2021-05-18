@@ -1,4 +1,5 @@
 import {Ripe} from './ripe';
+import { TreeNodeWithValue, TreeNodeWithChildren } from './treeNode';
 export interface Sequence{
   id: string;
   prefix: string;
@@ -18,8 +19,13 @@ export interface Sequence{
   containsAsPathLoops: boolean;
   containsLoops: boolean;
   mostFrequentUpdateFrequency: number;
-  mostFrequentUpdateFrequencyInMin: number;
   hasAsPathsNotValid: boolean;
+  asTreeWithoutAggregator: {
+    head: {
+      name: string;
+      children: (TreeNodeWithChildren|TreeNodeWithValue)[];
+    }
+  };
   announces: number;
   withdraws: number;
   updates: number;

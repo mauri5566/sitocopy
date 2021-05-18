@@ -42,6 +42,9 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import { InvolvedCpsComponent } from './components/involved-cps/involved-cps.component';
 import { ModalSegmentChartComponent } from './components/involved-cps/modal-segment-chart/modal-segment-chart.component';
 import { ModalAbBaChartComponent } from './components/sequences/modal-ab-ba-chart/modal-ab-ba-chart.component';
+import * as Highcharts from 'highcharts';
+import * as highchartsSankey from 'highcharts/modules/sankey';
+require('highcharts/modules/sankey')(Highcharts);
 
 @NgModule({
   declarations: [

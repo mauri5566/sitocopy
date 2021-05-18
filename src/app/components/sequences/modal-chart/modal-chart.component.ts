@@ -7,8 +7,7 @@ import { SequenceChartData } from 'src/app/model/sequenceChartData';
 import { Route } from 'src/app/model/route';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as moment from 'moment';
-import 'moment/locale/pt-br';
-import { Bucket } from 'src/app/model/bucket';
+
 
 @Component({
   selector: 'app-modal-chart',
@@ -26,8 +25,8 @@ export class ModalChartComponent implements OnInit {
   peerAS!: number;
   peerIPAddress!: string;
   prefix!: string;
-  bucketAnnouncements: Array<[Date, number]> = [];
-  bucketWithdrawals: Array<{x: number, y: number}> = [];
+  bucketAnnouncements: Array<[number, number]> = [];
+  bucketWithdrawals: Array<[number, number]> = [];
   chartOptions: Options = {
     title: {
       text: 'Sequences detected for prefix' + this.data.prefix + 'as seen from collector peer' + this.data.peerIPAddress + '(AS' + this.data.peerAS + ')',
@@ -43,7 +42,7 @@ export class ModalChartComponent implements OnInit {
     tooltip: {
       formatter: function () {
             return '<b>' + this.series.name +
-            '</b><br>x: <b>' + this.x +
+            '</b><br>x: <b>' + new Date(this.x).toUTCString() +
                 '</b><br>y: <b>' + this.y + '</b>'; },
       backgroundColor: 'black',
       borderColor: '#009879',
@@ -55,10 +54,10 @@ export class ModalChartComponent implements OnInit {
       series: {
         turboThreshold: 500000,
         dataGrouping: {
-          approximation: "sum",
+          approximation: 'sum',
           smoothed: false,
-          groupPixelWidth: 2,
           enabled: true,
+          groupPixelWidth: 2,
           dateTimeLabelFormats: {
             millisecond: [
                 '%A, %b %e, %H:%M:%S.%L', '%A, %b %e, %H:%M:%S.%L', '-%H:%M:%S.%L'
@@ -86,10 +85,17 @@ export class ModalChartComponent implements OnInit {
     },
     rangeSelector: {
 				enabled: false
-			},
-			navigator: {
-				enabled: false
-			},
+		},
+		navigator: {
+			enabled: false
+    },
+    legend: {
+      enabled: true,
+      itemStyle: {
+          color: '#E0E0E3',
+        }
+		},
+
 
     xAxis: {
       type: 'datetime',
@@ -152,12 +158,8 @@ export class ModalChartComponent implements OnInit {
             type: 'line',
             data: [],
             color: '#009879',
-            boostThreshold: 0
     }
     ],
-    legend: {
-        enabled: false
-    },
     exporting: {
             buttons: {
                 contextButton: {
@@ -195,7 +197,7 @@ export class ModalChartComponent implements OnInit {
       let firstDay = Infinity;
       let lastDay = -Infinity;
       for (const val of this.dataChart){
-        const date = moment.utc(val.date).unix();
+        const date = moment.utc(val.date).unix() / 300;
         if (firstDay > date) {
           firstDay = date;
         }
@@ -203,33 +205,40 @@ export class ModalChartComponent implements OnInit {
           lastDay = date;
         }
       }
-      for (let n = firstDay; n <= lastDay; n += 300) {
-        this.bucketAnnouncements[n] = [
-          new Date(n * 1000),
+      for (let n = firstDay; n <= lastDay; n ++) {
+        this.bucketAnnouncements[n - firstDay] = [
+          (n * 300000) - firstDay,
           0
         ];
-        this.bucketWithdrawals[n] = {
-          x: 1,
-          y: 0
-        };
+        this.bucketWithdrawals[n - firstDay] = [
+          (n * 300000) - firstDay,
+          0
+        ];
       }
       for (const val of this.dataChart) {
         const date = val.date;
-        this.bucketAnnouncements[moment.utc(date).unix()][1] = val.announces;
+        this.bucketAnnouncements[moment.utc(date).unix() / 300 - firstDay][1] = val.announces;
+        this.bucketWithdrawals[moment.utc(date).unix() / 300 - firstDay][1] = val.withdraws;
       }
 
       this.chartOptions.series = [
           {
-            name: 'ao',
+            name: 'Number of announcements',
             type: 'line',
             data: this.bucketAnnouncements,
             color: '#009879',
-          }
+          },
+          {
+            name: 'Number of withdrawals',
+            type: 'line',
+            data: this.bucketWithdrawals,
+            color: 'yellow',
+          },
         ];
         });
     }
 
     ngAfterViewInit(): void{
-      setInterval(() => {console.log(this.bucketAnnouncements); }, 1000);
+      /*setInterval(() => {console.log(this.bucketAnnouncements); }, 1000);*/
   }
 }
