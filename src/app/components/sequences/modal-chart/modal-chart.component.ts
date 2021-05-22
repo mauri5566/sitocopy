@@ -52,7 +52,6 @@ export class ModalChartComponent implements OnInit {
     },
     plotOptions: {
       series: {
-        turboThreshold: 500000,
         dataGrouping: {
           approximation: 'sum',
           smoothed: false,
@@ -239,6 +238,6 @@ export class ModalChartComponent implements OnInit {
     }
 
     ngAfterViewInit(): void{
-      /*setInterval(() => {console.log(this.bucketAnnouncements); }, 1000);*/
+      /*setInterval(() => {console.log(this.chartOptions.plotOptions); }, 1000);*/
   }
 }

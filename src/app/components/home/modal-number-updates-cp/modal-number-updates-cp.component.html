@@ -1,3 +1,4 @@
+<html>
 <h4 mat-dialog-title>
         <mat-toolbar class="task-header">
             <span class="titolo">Number Of Updates per CP</span>
@@ -6,6 +7,13 @@
             </button>
         </mat-toolbar>
 </h4>
-<mat-dialog-content>Updates per CP will appear here</mat-dialog-content>
+<div *ngIf = "!show">
+    <mat-spinner></mat-spinner>
+  </div>
+<mat-dialog-content *ngIf="show">
+    <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+    [(update)] = "update"></highcharts-chart>
+</mat-dialog-content>
+</html>
 
 

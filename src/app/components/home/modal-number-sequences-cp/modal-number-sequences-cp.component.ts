@@ -28,7 +28,7 @@ export class ModalNumberSequencesCpComponent implements OnInit {
 
   chartOptions: Options = {
     title: {
-      text: 'CDF of the most frequent update frequency',
+      text: 'Found sequences per CP',
       style: {
         color: '#A0A0A3',
       }
@@ -79,7 +79,7 @@ export class ModalNumberSequencesCpComponent implements OnInit {
         tickColor: '#707073',
         tickWidth: 1,
         title: {
-            text: 'Found sequences per CP',
+            text: 'Number of sequences',
             style: {
                 color: '#A0A0A3',
                 fontSize: '1.3em'

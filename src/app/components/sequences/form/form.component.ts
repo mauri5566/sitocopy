@@ -39,8 +39,8 @@ export class FormComponent implements /*AfterViewInit,*/ OnInit {
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       sequenceId: new FormControl(null, [Validators.pattern('[0-9a-fA-F]{24}')]),
-      prefix: new FormControl(null/*, [Validators.pattern('[a-z0-9.:]{,20}((::)|.)/[0-9]{2}')]*/),
-      collectorPeerIp: new FormControl(null, [Validators.pattern('[a-z0-9]{5,}')]),
+      prefix: new FormControl(null, /*[Validators.pattern('[a-z0-9.:]{,20}((::)|.)/[0-9]{2}')]*/),
+      collectorPeerIp: new FormControl(null, /*[Validators.pattern('[a-z0-9]{5,}')]*/),
       asOrigin: new FormControl(null),
       suffix: new FormControl(null),
       collectorAsn: new FormControl(null),
@@ -53,6 +53,7 @@ export class FormComponent implements /*AfterViewInit,*/ OnInit {
   }
 
   ngAfterViewInit(): void {
+    setInterval(() => {console.log(this.startDate); }, 1000);
   }
 
   loadSequences(): void {

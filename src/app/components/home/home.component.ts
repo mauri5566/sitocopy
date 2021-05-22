@@ -69,36 +69,46 @@ export class HomeComponent implements OnInit {
 
   openDialog(){
     this.dialog.open(ModalDurationCdfComponent, {
-      width: '100%',
-      height: '640px'
+      width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
     });
   }
 
   openDialog2(){
     this.dialog.open(ModalAsPathNumberCdfComponent, {
-      width: '100%',
-      height: '640px'
+      width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
     });
   }
 
   openDialog3(){
     this.dialog.open(ModalPrefixDistributionCdfComponent, {
-      width: '100%',
-      height: '640px'
+      width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
     });
   }
 
   openDialog4(){
     this.dialog.open(ModalUpdatesPerSequenceCdfComponent, {
-      width: '100%',
-      height: '640px'
+      width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
     });
   }
 
   openDialog5(){
     this.dialog.open(ModalNumberUpdatesCpComponent, {
-      width: '100%',
-      height: '640px'
+      width: '90%',
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
     });
   }
 

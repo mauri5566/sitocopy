@@ -4,7 +4,7 @@ import * as Highcharts from 'highcharts';
 import { Sequence } from 'src/app/model/sequence';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Edge } from 'src/app/model/edge';
-import { TreeNode, TreeNodeWithChildren, TreeNodeWithValue } from 'src/app/model/treeNode';
+import { TreeNode } from 'src/app/model/treeNode';
 import { trace } from 'console';
 
 @Component({
@@ -18,7 +18,7 @@ export class ModalAsTreeComponent implements OnInit {
   highChart!: Highcharts.Chart | null;
   update = false;
   show = false;
-  edges: Edge[] = [];
+  edges: any[] = [];
 
   chartOptions: Options = {
     chart: {
@@ -48,7 +48,7 @@ export class ModalAsTreeComponent implements OnInit {
 				// minPointLength: 1,
 				keys: ['from', 'to', 'weight', 'id'],
 				// colors,
-				data: [{
+				data: [/*{
 					from: 'ciao',
 					to: 'buongiorno',
 					weight: 2
@@ -57,8 +57,8 @@ export class ModalAsTreeComponent implements OnInit {
 					from: 'buongiorno',
 					to: 'steronzo',
 					weight: 2
-				}],
-				nodes: [{
+				}*/],
+				nodes: [/*{
 					id: 'ciao',
 					color: 'green',
 				},
@@ -66,7 +66,7 @@ export class ModalAsTreeComponent implements OnInit {
 					id: 'buongiorno',
 					color: 'red',
 				
-				}],
+				}*/],
 				type: 'sankey',
 				name: ''
 			}]
@@ -89,32 +89,44 @@ export class ModalAsTreeComponent implements OnInit {
   }
 }*/
 
-	isTreeNodeWithChildren(node: TreeNodeWithChildren|TreeNodeWithValue): node is TreeNodeWithChildren{
+/*	isTreeNodeWithChildren(node: TreeNodeWithChildren|TreeNodeWithValue): node is TreeNodeWithChildren{
 		return (node as TreeNodeWithChildren).children !== undefined;
-	}
+	}*/
 
 	cleanLabel(name: string){
 		name = name.replace('ROOT', '.')
 					.replace('AS-', '');
 	}
 
-	addEdge(from: string, to: string, edges: Edge[], parent: TreeNodeWithChildren, value: number){
-		
+/*	addValueToParent(parent: TreeNodeWithChildren, value: number){
+		if (parent) {
+			parent.weight += value;
+		return addValueToParent(parent.parent, value);
+	}
+};*/
+
+
+	addEdge(from: string, to: string, tree: any[], /*parent: TreeNodeWithChildren*/ value: number){
+		const key = parseInt([from, to].sort().join('-'));
+		if (!tree[key]) {
+			tree[key] = { from, to, weight: value };
+		}
+
+		/*if (value > 1) {
+			addValueToParent(tree[key].parent, value);
+		}
+
+		return tree[key];*/
+
+		tree[0] = {from, to, weight: 1};
 	}
 
-	funzioneDellaMadonna(data: TreeNodeWithChildren|TreeNodeWithValue, edges: Edge[], parent: TreeNodeWithChildren){
+	funzioneDellaMadonna(data: TreeNode, edges: any[]/*, parent: TreeNodeWithChildren*/){
 		const from = data;
 		this.cleanLabel(from.name)
-		if(this.isTreeNodeWithChildren(data)){
-			for (const to of data.children || []){
-				if(this.isTreeNodeWithChildren(to)){
-					const newParent = this.addEdge(from.name, to.name, this.edges, parent, 1);
-				}
-				else{
-					const newParent = this.addEdge(from.name, to.name, this.edges, parent, to.value);
-				}
-				this.funzioneDellaMadonna(to, this.edges, newParent);
-			}
+		for (const to of data.children){
+					this.addEdge(from.name, to.name, this.edges/*, parent*/, 1);
+				this.funzioneDellaMadonna(to, this.edges/*, newParent*/);
 		}
 	}
 
@@ -125,7 +137,23 @@ export class ModalAsTreeComponent implements OnInit {
   ngOnInit(): void {
 	  this.update = true;
 	  this.show = true;
+	  this.funzioneDellaMadonna(this.data.asTreeWithoutAggregator.head, this.edges);
+	  this.chartOptions.series = [{
+		dataLabels: {
+			enabled: true,
+		},
+		clip: false,
+		keys: ['from', 'to', 'weight', 'id'],
+		data: this.edges,
+		type: 'sankey',
+		name: ''
+	  }]
 
+
+  }
+
+  ngAfterViewInit(): void {
+	  setInterval(() => {console.log(this.data); }, 1000)
   }
 
 }

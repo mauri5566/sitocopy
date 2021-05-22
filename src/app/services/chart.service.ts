@@ -7,6 +7,7 @@ import { SequenceChartData } from '../model/sequenceChartData';
 import { ABBAData } from '../model/ABBAData';
 import { sequence } from '@angular/animations';
 import { numberFormat } from 'highcharts';
+import { CPDataUpdates } from '../model/cpdataupdates';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,39 @@ export class ChartService {
   getNumberOfSequencesData(): Observable<CPData[]>{
     return this.http.get<CPData[]>('https://bgpie.net/api/rrc/00/sequencecountpercp');
   }
+
+  getNumberOfUpdatesData(): Observable<CPDataUpdates[]>{
+    return this.http.get<CPDataUpdates[]>('https://bgpie.net/api/rrc/00/sequenceupdatestpercp');
+  }
+
+  getAsPathData(): Observable<CDFData[]>{
+    return this.http.get<CDFData[]>('https://bgpie.net/api/rrc/00/aspathnumbercdf');
+  }
+
+  getDurationData(): Observable<CDFData[]>{
+    return this.http.get<CDFData[]>('https://bgpie.net/api/rrc/00/durationcdf');
+  }
+
+  getFrequencyData(): Observable<CDFData[]>{
+    return this.http.get<CDFData[]>('https://bgpie.net/api/rrc/00/frequencycdf');
+  }
+
+  getLongestSuffixData(): Observable<CDFData[]>{
+    return this.http.get<CDFData[]>('https://bgpie.net/api/rrc/00/longestcommonassuffixcdf');
+  }
+
+  getPercentageData(): Observable<CDFData[]>{
+    return this.http.get<CDFData[]>('https://bgpie.net/api/rrc/00/unstablepercentagecdf');
+  }
+
+  getPrefixDistributionData(): Observable<CDFData[]>{
+    return this.http.get<CDFData[]>('https://bgpie.net/api/rrc/00/prefixdistributioncdf');
+  }
+
+  getUpdatesPerSequenceData(): Observable<CDFData[]>{
+    return this.http.get<CDFData[]>('https://bgpie.net/api/rrc/00/updatesnumbercdf');
+  }
+
 
   getSequenceChartData(peerAS: number, peerIPAddress: string, prefix: string): Observable<SequenceChartData[]>{
     let params = new HttpParams();

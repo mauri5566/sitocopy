@@ -19,7 +19,10 @@ export class ModalSegmentChartComponent implements OnInit {
   dataset: any[] = [];
 
   chartOptions: Options = {
-    chart: {
+	title: {
+		text: 'Sequences of CP:' + this.data.peerIPAddress + '[' + this.data.peerAS + ']'
+	},
+	chart: {
 				type: 'line',
 				//zoomType: 'x',
 				animation: false
@@ -45,9 +48,6 @@ export class ModalSegmentChartComponent implements OnInit {
 				animation: {
 					duration: 0
 				}
-			},
-			title: {
-				text: ''
 			},
 			tooltip: {
 				enabled: false

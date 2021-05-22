@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
+import { Subscription } from 'rxjs';
+import { ChartService } from 'src/app/services/chart.service';
+import { CDFData } from 'src/app/model/cdfData';
 /*import * as HighchartsExporting from 'highcharts/modules/exporting';
 import * as HighchartsExportData from 'highcharts/modules/export-data';*/
 
@@ -17,7 +20,10 @@ HighchartsExportData(Highcharts);
 export class ModalFrequencyUpdateComponent implements OnInit {
 
   Highcharts: typeof Highcharts = Highcharts;
-
+  highChart!: Highcharts.Chart | null;
+  update = false;
+  show = false;
+  timerSubscription!: Subscription;
   chartOptions: Options = {
     title: {
       text: 'CDF of the frequency of updates per sequence',
@@ -26,41 +32,15 @@ export class ModalFrequencyUpdateComponent implements OnInit {
       }
     },
     chart: {
-      type: 'area',
+      type: 'line',
       zoomType: 'x',
       backgroundColor: '#323232',
-    },
-    plotOptions: {
-      area: {
-        marker: {
-                enabled: false,
-                symbol: 'circle',
-                radius: 2,
-                states: {
-                    hover: {
-                        enabled: true
-                    }
-                }
-            },
-            fillColor: {
-                        linearGradient: {
-                            x1: 0,
-                            y1: 1,
-                            x2: 0,
-                            y2: 0
-                        },
-                        stops: [
-                            [0, '#323232'],
-                            [1, '#009879']
-                        ]
-                    },
-          }
     },
     tooltip: {
       formatter: function () {
             return '<b>' + this.series.name +
             '</b><br>x: <b>' + this.x +
-                '</b><br>y: <b>' + this.y + '</b>'},
+                '</b><br>y: <b>' + this.y + '</b>'; },
       backgroundColor: 'black',
       borderColor: '#009879',
       style: {
@@ -68,6 +48,7 @@ export class ModalFrequencyUpdateComponent implements OnInit {
       }
     },
     xAxis: {
+        type: 'logarithmic',
         gridLineColor: '#707073',
         labels: {
             style: {
@@ -94,7 +75,8 @@ export class ModalFrequencyUpdateComponent implements OnInit {
             style: {
                 color: '#E0E0E3',
                 fontSize: '1.3em'
-            }
+            },
+            format: '{value}%'
         },
         lineColor: '#707073',
         minorGridLineColor: '#505053',
@@ -109,15 +91,14 @@ export class ModalFrequencyUpdateComponent implements OnInit {
         }
     },
     credits: {
-      enabled: false
-    },
-    series: [
-      {
-        name: 'Frequency of updates per sequence (Hz)',
-        type: 'area',
-        data: [1, 4, 7, 18, 30, 40, 45, 48, 50],
-        color: '#009879',
-        }
+      enabled: false,
+    }as Highcharts.CreditsOptions,
+    series: [{
+      name: 'ao',
+            type: 'line',
+            data: [],
+            color: '#009879',
+    }
     ],
     legend: {
         enabled: false
@@ -146,15 +127,25 @@ export class ModalFrequencyUpdateComponent implements OnInit {
       }
     },
   };
-  constructor() { }
+
+  constructor(public chartService: ChartService) { }
 
   ngOnInit(): void {
-    /*this.modalService.getData().subscribe(
-      (data: ChartData[]) => {
-        if (this.chartOptions.series[0].type === 'line'){
-          this.chartOptions.series[0].data = data;
-        }
-      }
-    );*/
+    this.chartService.getFrequencyData().subscribe(
+      (data: CDFData[]) => {
+        this.update = true;
+        this.show = true;
+        this.chartOptions.series = [
+          {
+            name: 'Frequency of updates per sequence (Hz)',
+            type: 'line',
+            data: data.map(e => [e.item1, e.item2]),
+            color: '#009879',
+          }
+        ];
+      });
+
+
+
   }
 }

@@ -34,7 +34,7 @@ export class InvolvedCpsComponent implements OnInit {
 
   openDialog(peerAS: number, peerIPAddress: string): void{
     this.dialog.open(ModalSegmentChartComponent, {
-     width: '90%',
+      width: '90%',
       height: '580px',
       maxHeight: '100vh',
       maxWidth: '100vw',
