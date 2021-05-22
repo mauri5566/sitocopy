@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
-import { animate, state, style, transition, trigger, sequence } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { SequencesService } from '../../services/sequences.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,15 +7,17 @@ import { ModalChartComponent } from './modal-chart/modal-chart.component';
 import { ModalAsTreeComponent } from './modal-as-tree/modal-as-tree.component';
 import { SequencesDataSource } from '../../services/sequences.datasource';
 import { Sequence } from '../../model/sequence';
-import { FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ElementRef } from '@angular/core';
-import { fromEvent, Subscription, timer } from 'rxjs';
-import { debounceTime, distinctUntilChanged, tap, map } from 'rxjs/operators';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Ripe } from 'src/app/model/ripe';
 import { FormComponent } from './form/form.component';
 import { RipeService } from 'src/app/services/ripe.service';
 import { ModalAbBaChartComponent } from './modal-ab-ba-chart/modal-ab-ba-chart.component';
+import '../../../assets/beacons.js';
+import { Beacons } from 'src/app/model/beacons';
+
+declare const allBeacons: Beacons;
+
 
 @Component({
   selector: 'app-sequences',
@@ -50,6 +52,7 @@ export class SequencesComponent implements AfterViewInit, OnInit {
   formGroup!: FormGroup;
   @ViewChild(FormComponent)
   datiForm!: FormComponent;
+  beacon: (boolean|string) = false; 
 
   elementRipe: Ripe[] = [{
     version: '',
@@ -86,7 +89,7 @@ export class SequencesComponent implements AfterViewInit, OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.formGroup = new FormGroup({
       sequenceId: new FormControl(null, [Validators.pattern('[0-9a-fA-F]{24}')]),
       prefix: new FormControl(null, [Validators.pattern('[a-z0-9.:]{,20}((::)|.)/[0-9]{2}')]),
@@ -94,8 +97,8 @@ export class SequencesComponent implements AfterViewInit, OnInit {
     });
   }
 
-  // tslint:disable-next-line: typedef
-  ngAfterViewInit() {
+
+  ngAfterViewInit(): void {
     this.paginator.page.subscribe(x => this.loadSequences());
     this.loadSequences();
     this.dataSource.length.subscribe(x => this.paginator.length = x);
@@ -121,10 +124,15 @@ export class SequencesComponent implements AfterViewInit, OnInit {
   }*/
 
   // tslint:disable-next-line: typedef
-  openDialog() {
+  openDialog(sequence: Sequence) {
     this.dialog.open(ModalAsTreeComponent, {
       width: '90%',
-      height: '640px'
+      height: '580px',
+      maxHeight: '100vh',
+      maxWidth: '100vw',
+      data: {
+        sequence
+      }
     });
   }
 
@@ -161,6 +169,15 @@ export class SequencesComponent implements AfterViewInit, OnInit {
       this.dataSource.filter = filterValue.trim().toLowerCase();
     }*/
 
+  checkBeacon(element: Sequence): void{
+    if ( allBeacons.RIPE.includes(element.prefix)){
+      this.beacon = 'RIPE';
+    }
+    if ( allBeacons['rfd.rg.net'].includes(element.prefix)){
+      this.beacon = 'rfd.rg.net';
+    }
+  }
+
   checkExpanded(element: Sequence): boolean {
     let flag = false;
     this.expandedElement.forEach(e => {
@@ -179,6 +196,7 @@ export class SequencesComponent implements AfterViewInit, OnInit {
     if (index === -1) {
       this.dataSource.loadSequencesById(element);
       this.ripeService.getRipe(element.prefix).subscribe((ripe: Ripe) => this.elementRipe[element.asOrigins] = ripe);
+      this.checkBeacon(element);
       this.expandedElement.push(element);
     } else {
       this.expandedElement.splice(index, 1);

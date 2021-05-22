@@ -1,4 +1,5 @@
-import {Ripe} from './ripe';
+
+import { TreeNode } from './treeNode';
 export interface Sequence{
   id: string;
   prefix: string;
@@ -20,10 +21,12 @@ export interface Sequence{
   mostFrequentUpdateFrequency: number;
   mostFrequentUpdateFrequencyInMin: number;
   hasAsPathsNotValid: boolean;
+  asTreeWithoutAggregator: {
+    head: TreeNode;
+  };
   announces: number;
   withdraws: number;
   updates: number;
   duration: string;
   frequency: number;
-  readonly ripe: Ripe;
 }

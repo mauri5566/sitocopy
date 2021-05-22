@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ChartService } from 'src/app/services/chart.service';
+import { RouteSegment } from 'src/app/model/routeSegment';
+import * as Highcharts from 'highcharts';
+import { Options } from 'highcharts';
 
 @Component({
   selector: 'app-modal-segment-chart',
@@ -7,9 +12,91 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalSegmentChartComponent implements OnInit {
 
-  constructor() { }
+  Highcharts: typeof Highcharts = Highcharts;
+  highChart!: Highcharts.Chart | null;
+  update = false;
+  show = false;
+  dataset: any[] = [];
+
+  chartOptions: Options = {
+	title: {
+		text: 'Sequences of CP:' + this.data.peerIPAddress + '[' + this.data.peerAS + ']'
+	},
+	chart: {
+				type: 'line',
+				//zoomType: 'x',
+				animation: false
+			},
+			plotOptions: {
+				series: {
+					turboThreshold: 5000000,
+					enableMouseTracking: false,
+					animation: {
+						duration: 0
+					},
+					states: {
+						hover: {
+							enabled: false
+						}
+					},
+					marker: {
+						enabled: false
+					}
+				}
+			},
+			drilldown: {
+				animation: {
+					duration: 0
+				}
+			},
+			tooltip: {
+				enabled: false
+			},
+			legend: {
+				enabled: false
+			},
+			xAxis: {
+				visible: true,
+				type: 'datetime',
+				labels: {
+					style: {
+						fontSize: '20px',
+					}
+				},
+				showFirstLabel: true
+			},
+			yAxis: {
+				title: {
+					text: ''
+				},
+				labels: {
+					enabled: false
+				},
+				showLastLabel: false,
+				visible: false
+			},
+			series: [{
+        type: 'line',
+        data: []
+      }],
+  };
+
+
+  constructor(public chartService: ChartService,
+              @Inject(MAT_DIALOG_DATA) public data: RouteSegment) { }
 
   ngOnInit(): void {
+    this.chartService.getSegmentChartData(this.data.peerAS, this.data.peerIPAddress).subscribe((data: Array<Array<[number, number]>>) => {
+      this.update = true;
+      this.show = true;
+      data.forEach(line => {
+
+			line[0][0] *= 1000;
+      line[1][0] *= 1000;
+      this.dataset.push({data: line});
+      });
+      this.chartOptions.series = this.dataset
+    });
   }
 
 }

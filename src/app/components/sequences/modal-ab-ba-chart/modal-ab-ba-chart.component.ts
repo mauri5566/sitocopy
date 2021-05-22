@@ -106,7 +106,7 @@ export class ModalAbBaChartComponent implements OnInit {
     },
     credits: {
       enabled: false,
-    }as Highcharts.CreditsOptions,
+    },
     series: [{
       name: 'ao',
             type: 'scatter',

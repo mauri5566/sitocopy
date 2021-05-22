@@ -84,7 +84,7 @@
                   <br>Number of occurrencies of the most frequent announcement: <b>{{element.mostFrequentUpdateFrequency}}</b>
                   <br>Most Frequent announcement frequency (upd/min): <b>{{element.mostFrequentUpdateFrequencyInMin}}</b>
                   <br>Duration (days): <b>{{element.duration}}</b>
-                  <br>Is the prefix a beacon (if yes there will be the name):
+                  <br>Is the prefix a beacon (if yes there will be the name): <b>{{beacon}}</b>
                   <br>Average frequency of the sequence: <b>{{element.frequency}}</b>
                   <br>Run ID: <b>{{element.runID}}</b>
                 </div>
@@ -94,7 +94,7 @@
                   </div>
                   <div class="buttons">
                     <div class="container">
-                      <a (click) = "openDialog()" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
+                      <a (click) = "openDialog(element)" class="btn effect04" data-sm-link-text="CLICK" target="_blank">
                         <span>AS TREE WITHOUT AGGREGATOR</span>
                       </a>
                     </div>

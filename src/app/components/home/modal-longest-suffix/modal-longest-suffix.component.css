@@ -1,3 +1,9 @@
+mat-spinner{
+	position:absolute;
+	top:100px;
+	left:50px;
+}
+
 .task-header {
     background-color: #009879;
     padding: 0 5px;
@@ -36,8 +42,11 @@ highcharts-chart{
 	width: 100%;
 	height:100%;
 }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 }
 =======
 >>>>>>> f5ad799b708b6c24ebe56523f385a266edb970d6
+=======
+>>>>>>> 095ff15e2455969027a85eb53e52900cf9f3c197

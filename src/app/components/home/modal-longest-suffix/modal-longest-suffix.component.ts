@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Options } from 'highcharts';
+import { CDFData } from 'src/app/model/cdfData';
+import { ChartService } from 'src/app/services/chart.service';
+import { Subscription } from 'rxjs';
 /*import * as HighchartsExporting from 'highcharts/modules/exporting';
 import * as HighchartsExportData from 'highcharts/modules/export-data';*/
 
@@ -19,50 +22,26 @@ export class ModalLongestSuffixComponent implements OnInit {
 
   Highcharts: typeof Highcharts = Highcharts;
   highChart!: Highcharts.Chart | null;
-
+  update = false;
+  show = false;
+  timerSubscription!: Subscription;
   chartOptions: Options = {
     title: {
-      text: 'CDF of the most frequent update frequency',
+      text: 'CDF of the longest common AS-path suffix',
       style: {
         color: 'whitesmoke'
       }
     },
     chart: {
-      type: 'area',
+      type: 'line',
       zoomType: 'x',
       backgroundColor: '#323232',
-    },
-    plotOptions: {
-      area: {
-        marker: {
-                enabled: false,
-                symbol: 'circle',
-                radius: 2,
-                states: {
-                    hover: {
-                        enabled: true
-                    }
-                }
-            },
-            fillColor: {
-                        linearGradient: {
-                            x1: 0,
-                            y1: 1,
-                            x2: 0,
-                            y2: 0
-                        },
-                        stops: [
-                            [0, '#323232'],
-                            [1, '#009879']
-                        ]
-                    },
-          }
     },
     tooltip: {
       formatter: function () {
             return '<b>' + this.series.name +
             '</b><br>x: <b>' + this.x +
-                '</b><br>y: <b>' + this.y + '</b>'},
+                '</b><br>y: <b>' + this.y + '</b>'; },
       backgroundColor: 'black',
       borderColor: '#009879',
       style: {
@@ -70,6 +49,7 @@ export class ModalLongestSuffixComponent implements OnInit {
       }
     },
     xAxis: {
+        type: 'logarithmic',
         gridLineColor: '#707073',
         labels: {
             style: {
@@ -82,7 +62,7 @@ export class ModalLongestSuffixComponent implements OnInit {
         tickColor: '#707073',
         tickWidth: 1,
         title: {
-            text: 'Frequency of the most frequent update in the sequence (upd/min)',
+            text: 'Length of the longest common AS-path suffix',
             style: {
                 color: '#A0A0A3',
                 fontSize: '1.3em'
@@ -96,7 +76,8 @@ export class ModalLongestSuffixComponent implements OnInit {
             style: {
                 color: '#E0E0E3',
                 fontSize: '1.3em'
-            }
+            },
+            format: '{value}%'
         },
         lineColor: '#707073',
         minorGridLineColor: '#505053',
@@ -111,15 +92,14 @@ export class ModalLongestSuffixComponent implements OnInit {
         }
     },
     credits: {
-      enabled: false
-    },
-    series: [
-      {
-        name: 'Frequency of the most frequent update in the sequence (upd/min)',
-        type: 'area',
-        data: [1, 5, 20, 50, 10, 15, 45, 10],
-        color: '#009879',
-        }
+      enabled: false,
+    }as Highcharts.CreditsOptions,
+    series: [{
+      name: 'ao',
+            type: 'line',
+            data: [],
+            color: '#009879',
+    }
     ],
     legend: {
         enabled: false
@@ -149,9 +129,25 @@ export class ModalLongestSuffixComponent implements OnInit {
     },
   };
 
-  constructor() { }
+  constructor(public chartService: ChartService) { }
 
   ngOnInit(): void {
+    this.chartService.getLongestSuffixData().subscribe(
+      (data: CDFData[]) => {
+        this.update = true;
+        this.show = true;
+        this.chartOptions.series = [
+          {
+            name: 'Length of the longest common AS-path suffix',
+            type: 'line',
+            data: data.map(e => [e.item1, e.item2]),
+            color: '#009879',
+          }
+        ];
+      });
+
+
+
   }
 
 }

@@ -50,10 +50,10 @@ export class SequencesService {
         params = params.append('minNumAnnounces', datiForm.announces.toString());
       }
       if (datiForm.startDate != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
-        params = params.append('minStartDate', datiForm.startDate.toString());
+        params = params.append('minStartDate', datiForm.startDate.toISOString());
       }
       if (datiForm.endDate != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
-        params = params.append('minStartDate', datiForm.endDate.toString());
+        params = params.append('minStartDate', datiForm.endDate.toISOString());
       }
       if (datiForm.hasAggregator != null && (datiForm.sequenceId == null || datiForm.sequenceId === '')){
         params = params.append('hasAggregator', datiForm.hasAggregator.toString());

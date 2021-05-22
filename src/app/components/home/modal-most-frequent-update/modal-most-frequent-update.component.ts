@@ -131,7 +131,8 @@ export class ModalMostFrequentUpdateComponent implements OnInit, AfterViewInit {
             style: {
                 color: '#E0E0E3',
                 fontSize: '1.3em'
-            }
+            },
+            format: '{value}%'
         },
         lineColor: '#707073',
         minorGridLineColor: '#505053',
